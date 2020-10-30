@@ -7,14 +7,14 @@ require 'spina/conferences/primer_theme/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.name        = 'spina-conferences-primer_theme'
-  spec.version     = Spina::Conferences::PrimerTheme::VERSION
-  spec.authors     = ['Justin Malčić']
-  spec.email       = ['j.malcic@me.com']
-  spec.homepage    = 'https://jmalcic.github.io/projects/spina-conferences/primer-theme'
-  spec.summary     = 'Spina::Admin::Conferences frontend theme.'
+  spec.name = 'spina-conferences-primer_theme'
+  spec.version = Spina::Conferences::PrimerTheme::VERSION
+  spec.authors = ['Justin Malčić']
+  spec.email = ['j.malcic@me.com']
+  spec.homepage = 'https://jmalcic.github.io/projects/spina-conferences/primer-theme'
+  spec.summary = 'Spina::Admin::Conferences frontend theme.'
   spec.description = 'Frontend for Spina::Admin::Conferences plugin, based on Primer.'
-  spec.license     = 'MIT'
+  spec.license = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
