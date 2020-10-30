@@ -9,6 +9,7 @@ require 'spina/conferences/primer_theme/version'
 Gem::Specification.new do |spec|
   spec.name = 'spina-conferences-primer_theme'
   spec.version = Spina::Conferences::PrimerTheme::VERSION
+  spec.required_ruby_version = '~> 2.7'
   spec.authors = ['Justin Malčić']
   spec.email = ['j.malcic@me.com']
   spec.homepage = 'https://jmalcic.github.io/projects/spina-conferences/primer-theme'
