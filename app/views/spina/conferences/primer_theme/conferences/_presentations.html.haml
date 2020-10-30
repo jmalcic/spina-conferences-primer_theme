@@ -4,9 +4,11 @@
     .col-12.col-lg-3.pr-lg-4.mb-4.mb-lg-0
       %ul.filter-list
         - cache [@conference.presentations, @presentation_type] do
-          .filter-item
-            = link_to t('.all_presentation_types'), frontend_conference_url(@conference, tab: 'presentations')
-            %span.count{ title: t(:'.results') }= @conference.presentations.count
+          %li
+            = link_to frontend_conference_url(@conference, tab: 'presentations'),
+                      class: 'filter-item', aria: { current: @presentation_type == @conference ? 'page' : nil } do
+              = t('.all_presentation_types')
+              %span.count{ title: t(:'.results') }= @conference.presentations.count
         = render partial: 'presentation_type', collection: @conference.presentation_types,
                  cached: -> presentation_type { [presentation_type, @presentation_type] }
     .flex-auto.col-12.col-lg-8
