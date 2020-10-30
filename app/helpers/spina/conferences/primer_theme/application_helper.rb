@@ -49,7 +49,8 @@ module Spina
                         when Spina::Account then :layout_partable
                         else :partable
                         end
-          parent.parts.where(name: parts).extract_associated(association)
+          part = parent.parts.find_by(name: parts)
+          [part, part.try(association)]
         end
 
         def calendar(name:, &block)
