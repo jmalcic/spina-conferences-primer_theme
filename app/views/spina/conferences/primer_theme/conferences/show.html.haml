@@ -57,11 +57,11 @@
               = render Primer::OcticonComponent.new(icon: 'calendar')
               = t(:'.subscribe')
       .container-lg.p-responsive
-        - cache partable_for(:text, parent: @conference) do
+        - cache [partable_for(:text, parent: @conference), @tab] do
           = render partial: 'information', layout: 'tab',
                    locals: { text: (@conference.content(:text) if @conference.has_content? :text), hidden: @tab != 'information' }
         - cache [@conference.presentations, @presentation_type, @presentation_type.presentations,
-                 @presentation_type.presentations.collect(&:presenters)] do
+                 @presentation_type.presentations.collect(&:presenters), @tab] do
           = render partial: 'presentations', layout: 'tab', locals: { hidden: @tab != 'presentations' }
-        - cache @conference.events do
+        - cache [@conference.events, @tab] do
           = render partial: 'events', layout: 'tab', locals: { events: @conference.events, hidden: @tab != 'events' }
