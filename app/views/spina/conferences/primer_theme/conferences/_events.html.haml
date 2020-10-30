@@ -7,7 +7,7 @@
 %div{ id: 'event_list' }
   - if events.any?
     %ul{ class: dom_class(events), data: { filter: { list: true } } }
-      = render partial: 'event', collection: events, layout: 'list_item', cached: true
+      = render partial: 'event', collection: events.sorted, layout: 'list_item', cached: true
   - else
     = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
   = render Primer::BlankslateComponent.new(title: t(:'.no_matching_events'), icon: 'calendar', hidden: true,
