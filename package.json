@@ -1,0 +1,44 @@
+{
+  "name": "spina-conferences-primer-theme",
+  "version": "0.1.0",
+  "description": "Spina::Conferences plugin theme.",
+  "main": "app/assets/javascripts/spina/conferences/primer_theme/application.es6",
+  "files": [
+    "app/assets/javascripts/*.es6"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "jmalcic/spina-conferences-primer-theme"
+  },
+  "keywords": [
+    "conference-management",
+    "rails",
+    "spina-cms",
+    "primer"
+  ],
+  "author": "Justin Malčić <j.malcic@me.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmalcic/spina-conferences-primer-theme/issues"
+  },
+  "homepage": "https://jmalcic.github.io/projects/spina-conferences-primer-theme",
+  "dependencies": {
+    "@github/details-dialog-element": "^3.0.12",
+    "@github/filter-input-element": "^0.1.1",
+    "@github/include-fragment-element": "^5.1.0",
+    "@github/tab-container-element": "^3.0.7",
+    "@primer/css": "^15.0.0",
+    "@primer/octicons": "^10.0.0",
+    "stimulus": "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz",
+    "trix": "^1.2.1",
+    "turbolinks": "^5.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^7.5.0"
+  },
+  "scripts": {
+    "prebuild": "yarn lint",
+    "lint": "eslint app/javascript"
+  }
+}

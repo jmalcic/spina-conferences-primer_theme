@@ -1,0 +1,5 @@
+- content_for :breadcrumbs do
+  - if current_page.ancestors.any?
+    = ancestors
+
+= render template: 'layouts/spina/conferences/primer_theme/application'

@@ -1,0 +1,6 @@
+- cache current_page do
+  %h1= current_page.title
+  
+  - cache partable_for(:text) do
+    - if has_content? :text
+      .mt-4= render partial: 'text', object: content(:text)

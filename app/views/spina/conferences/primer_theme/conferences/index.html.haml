@@ -1,0 +1,21 @@
+.d-flex.flex-column-reverse.flex-sm-row
+  %filter-input.col-12.col-sm-8.mb-4.mb-sm-0.d-flex.flex-sm-justify-start{ aria: { owns: 'conference_list' } }
+    - if @conferences.any?
+      .subnav.subnav-flush
+        .subnav-search.m-0.width-full
+          = search_field_tag 'search', nil, class: %w[form-control subnav-search-input width-full], aria: { label: t(:'.search') }
+          = octicon 'search', class: 'subnav-search-icon'
+  .col-12.col-sm-4.mb-4.mb-sm-0.d-flex.flex-sm-justify-end
+    = render Primer::ButtonComponent.new(tag: :a, href: frontend_conferences_url(protocol: :webcal, format: :ics), button_type: :primary,
+                                         ml: [0, 6, nil, nil]) do
+      = render Primer::OcticonComponent.new(icon: 'calendar')
+      = t(:'.subscribe')
+%div{ id: 'conference_list' }
+  - if @conferences.any?
+    %ul{ class: dom_class(@conferences), data: { filter: { list: true } } }
+      = render partial: 'conference', collection: @conferences, layout: 'list_item',
+               cached: -> conference { [conference, conference.institutions, conference.institutions.collect(&:logo)] }
+  - else
+    = render Primer::BlankslateComponent.new(title: t(:'.no_conferences'), icon: 'mortar-board')
+  = render Primer::BlankslateComponent.new(title: t(:'.no_matching_conferences'), icon: 'mortar-board', hidden: true,
+                                           data: { 'filter-empty-state': true })

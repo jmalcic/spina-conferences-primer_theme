@@ -1,0 +1,6 @@
+- content_for :hero do
+  - cache current_page do
+    - cache partable_for(:gallery) do
+      = render partial: 'homepage_content',
+               layout: has_content?(:gallery) && content(:gallery).images.any? ? 'image_collection' : 'jumbotron',
+               locals: { conference: latest_conference, advance: true, image_collection: content(:gallery) }

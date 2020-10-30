@@ -1,0 +1,15 @@
+.py-3.py-lg-6
+  - if latest_conference.present? && latest_conference.finish_date >= Date.today
+    .text-shadow-dark
+      %h1.h000-mktg.lh-condensed-ultra= conference.name
+      %address.f2-light= conference.institutions.collect(&:name).to_sentence
+      %time.f2-light= t(:'.dates_html', start_date: time_tag(conference.start_date, format: :day_and_month),
+                                                        finish_date: time_tag(conference.finish_date, format: :day_and_month))
+      .markdown-body.my-4= content(:text).try(:html_safe)
+    .d-block.mt-4
+      = link_to t('.more_info'), frontend_conference_path(conference), class: %w[btn-mktg btn-large-mktg btn-primary-mktg f3]
+  - else
+    .text-shadow-dark
+      %h1.h000-mktg.lh-condensed-ultra= Spina::Account.first.name
+      .markdown-body.my-4= content(:text).try(:html_safe)
+

@@ -1,0 +1,341 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+agm_name:
+  structure_item: agm
+  name: name
+  title: Name
+  structure_partable: lipsum (Spina::Line)
+
+agm_start_time:
+  structure_item: agm
+  name: start_time
+  title: Time
+  structure_partable: valid_time (Spina::Admin::Conferences::TimePart)
+
+agm_location:
+  structure_item: agm
+  name: location
+  title: Location
+  structure_partable: lipsum (Spina::Line)
+
+agm_description:
+  structure_item: agm
+  name: description
+  title: Description
+  structure_partable: lipsum (Spina::Text)
+
+agm_without_partables_name:
+  structure_item: agm_without_partables
+  name: name
+  title: Name
+  structure_partable_type: Spina::Line
+
+agm_without_partables_start_time:
+  structure_item: agm_without_partables
+  name: start_time
+  title: Time
+  structure_partable_type: Spina::Admin::Conferences::TimePart
+
+agm_without_partables_location:
+  structure_item: agm_without_partables
+  name: location
+  title: Location
+  structure_partable_type: Spina::Line
+
+agm_without_partables_description:
+  structure_item: agm_without_partables
+  name: description
+  title: Description
+  structure_partable_type: Spina::Text
+
+joes_profile_name:
+  structure_item: joes_profile
+  name: name
+  title: Name
+  structure_partable: lipsum (Spina::Line)
+
+joes_profile_role:
+  structure_item: joes_profile
+  name: role
+  title: Role
+  structure_partable: lipsum (Spina::Line)
+
+joes_profile_bio:
+  structure_item: joes_profile
+  name: bio
+  title: Bio
+  structure_partable: lipsum (Spina::Text)
+
+joes_profile_profile_picture:
+  structure_item: joes_profile
+  name: profile_picture
+  title: Profile picture
+  structure_partable: dubrovnik (Spina::Image)
+
+joes_profile_facebook_profile:
+  structure_item: joes_profile
+  name: facebook_profile
+  title: Facebook profile
+  structure_partable: joes_facebook_profile (Spina::Admin::Conferences::UrlPart)
+
+joes_profile_twitter_profile:
+  structure_item: joes_profile
+  name: twitter_profile
+  title: Twitter profile
+  structure_partable: joes_twitter_profile (Spina::Admin::Conferences::UrlPart)
+
+profile_without_partables_name:
+  structure_item: profile_without_partables
+  name: name
+  title: Name
+  structure_partable_type: Spina::Line
+
+profile_without_partables_role:
+  structure_item: profile_without_partables
+  name: role
+  title: Role
+  structure_partable_type: Spina::Line
+
+profile_without_partables_bio:
+  structure_item: profile_without_partables
+  name: bio
+  title: Bio
+  structure_partable_type: Spina::Text
+
+profile_without_partables_profile_picture:
+  structure_item: profile_without_partables
+  name: profile_picture
+  title: Profile picture
+  structure_partable_type: Spina::Image
+
+profile_without_partables_facebook_profile:
+  structure_item: profile_without_partables
+  name: facebook_profile
+  title: Facebook profile
+  structure_partable_type: Spina::Admin::Conferences::UrlPart
+
+profile_without_partables_twitter_profile:
+  structure_item: profile_without_partables
+  name: twitter_profile
+  title: Twitter profile
+  structure_partable_type: Spina::Admin::Conferences::UrlPart
+
+uup_name:
+  structure_item: uup
+  name: name
+  title: Name
+  structure_partable: lipsum (Spina::Line)
+
+uup_logo:
+  structure_item: uup
+  name: logo
+  title: Logo
+  structure_partable: dubrovnik (Spina::Image)
+
+uup_website:
+  structure_item: uup
+  name: website
+  title: Website
+  structure_partable: uup_website (Spina::Admin::Conferences::UrlPart)
+
+sponsor_without_partables_name:
+  structure_item: sponsor_without_partables
+  name: name
+  title: Name
+  structure_partable_type: Spina::Line
+
+sponsor_without_partables_logo:
+  structure_item: sponsor_without_partables
+  name: logo
+  title: Logo
+  structure_partable_type: Spina::Image
+
+sponsor_without_partables_website:
+  structure_item: sponsor_without_partables
+  name: website
+  title: Website
+  structure_partable_type: Spina::Admin::Conferences::UrlPart
+
+bepis_name:
+  structure_item: bepis
+  name: name
+  title: Name
+  structure_partable: lipsum (Spina::Line)
+
+bepis_logo:
+  structure_item: bepis
+  name: logo
+  title: Logo
+  structure_partable: dubrovnik (Spina::Image)
+
+bepis_website:
+  structure_item: bepis
+  name: website
+  title: Website
+  structure_partable: bepis_website (Spina::Admin::Conferences::UrlPart)
+
+conk_name:
+  structure_item: conk
+  name: name
+  title: Name
+  structure_partable: lipsum (Spina::Line)
+
+conk_website:
+  structure_item: conk
+  name: website
+  title: Website
+  structure_partable: conk_website (Spina::Admin::Conferences::UrlPart)
+
+sprit_name:
+  structure_item: sprit
+  name: name
+  title: Name
+  structure_partable_type: Spina::Line
+
+sprit_logo:
+  structure_item: sprit
+  name: logo
+  title: Logo
+  structure_partable_type: Spina::Image
+
+sprit_website:
+  structure_item: sprit
+  name: website
+  title: Website
+  structure_partable_type: Spina::Admin::Conferences::UrlPart
+
+agm_2019_minutes_date:
+  structure_item: agm_2019_minutes
+  name: date
+  title: Date
+  structure_partable: valid_date (Spina::Admin::Conferences::DatePart)
+
+agm_2019_minutes_attachment:
+  structure_item: agm_2019_minutes
+  name: attachment
+  title: Attachment
+  structure_partable: agm_2019_minutes (Spina::Attachment)
+
+minutes_without_partables_date:
+  structure_item: minutes_without_partables
+  name: date
+  title: Date
+  structure_partable_type: Spina::Admin::Conferences::DatePart
+
+minutes_without_partables_attachment:
+  structure_item: minutes_without_partables
+  name: attachment
+  title: Attachment
+  structure_partable_type: Spina::Attachment
+
+pub_trip_name:
+  structure_item: pub_trip
+  name: name
+  title: Name
+  structure_partable: lipsum (Spina::Line)
+
+pub_trip_start_time:
+  structure_item: pub_trip
+  name: start_time
+  title: Time
+  structure_partable: valid_time (Spina::Admin::Conferences::TimePart)
+
+pub_trip_location:
+  structure_item: pub_trip
+  name: location
+  title: Location
+  structure_partable: lipsum (Spina::Line)
+
+pub_trip_description:
+  structure_item: pub_trip
+  name: description
+  title: Description
+  structure_partable: lipsum (Spina::Text)
+
+event_without_partables_name:
+  structure_item: event_without_partables
+  name: name
+  title: Name
+  structure_partable_type: Spina::Line
+
+event_without_partables_start_time:
+  structure_item: event_without_partables
+  name: start_time
+  title: Time
+  structure_partable_type: Spina::Admin::Conferences::TimePart
+
+event_without_partables_location:
+  structure_item: event_without_partables
+  name: location
+  title: Location
+  structure_partable_type: Spina::Line
+
+event_without_partables_description:
+  structure_item: event_without_partables
+  name: description
+  title: Description
+  structure_partable_type: Spina::Text
+
+ling_soc_cam_name:
+  structure_item: ling_soc_cam
+  name: name
+  title: Name
+  structure_partable: lipsum (Spina::Line)
+
+ling_soc_cam_logo:
+  structure_item: ling_soc_cam
+  name: logo
+  title: Logo
+  structure_partable: dubrovnik (Spina::Image)
+
+ling_soc_cam_description:
+  structure_item: ling_soc_cam
+  name: description
+  title: Description
+  structure_partable: lipsum (Spina::Text)
+
+ling_soc_cam_website:
+  structure_item: ling_soc_cam
+  name: website
+  title: Website
+  structure_partable: valid_url (Spina::Admin::Conferences::UrlPart)
+
+ling_soc_cam_email_address:
+  structure_item: ling_soc_cam
+  name: email_address
+  title: Email address
+  structure_partable: valid_email_address (Spina::Admin::Conferences::EmailAddressPart)
+
+society_without_partables_name:
+  structure_item: society_without_partables
+  name: name
+  title: Name
+  structure_partable_type: Spina::Line
+
+society_without_partables_logo:
+  structure_item: society_without_partables
+  name: logo
+  title: Logo
+  structure_partable_type: Spina::Image
+
+society_without_partables_description:
+  structure_item: society_without_partables
+  name: description
+  title: Description
+  structure_partable_type: Spina::Text
+
+society_without_partables_website:
+  structure_item: society_without_partables
+  name: website
+  title: Website
+  structure_partable_type: Spina::Admin::Conferences::UrlPart
+
+society_without_partables_email_address:
+  structure_item: society_without_partables
+  name: email_address
+  title: Email address
+  structure_partable_type: Spina::Admin::Conferences::EmailAddressPart

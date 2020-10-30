@@ -1,0 +1,6 @@
+.Subhead.Subhead--spacious
+  %h2.Subhead-heading= t :'.title'
+
+%ul.ml-n2.mr-n2.mb-n2.mt-n2{ class: dom_class(sponsors), id: dom_id(sponsors) }
+  = render partial: 'sponsor', collection: sponsors.structure_items,
+           cached: -> sponsor { [sponsor, sponsor.structure_parts.collect(&:structure_partable)] }

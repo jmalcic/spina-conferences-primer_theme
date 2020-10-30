@@ -1,0 +1,149 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t(:'hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  layouts:
+    spina:
+      conferences:
+        primer_theme:
+          application:
+            title: "%{title} — %{suffix}"
+
+  spina:
+    show: Show
+
+    application:
+      cookies:
+        title: About cookies
+        purpose: We use cookies for security, functionality, and analytics purposes.
+        no_advertising: We do not use Google Analytics Advertising features.
+        used:
+          rails_html: We use the %{cookie} cookie to track sessions.
+          google_analytics_html: Google Analytics sets the %{cookies} cookies for analytics purposes.
+      footer:
+        copyright: © %{name} %{year}
+        find_on_github: Find us on GitHub
+        cookies: About cookies
+      image_collection:
+        previous: Previous
+        next: Next
+
+    pages:
+      homepage_content:
+        more_info: More info
+        dates_html: "%{start_date}–%{finish_date}"
+      committee_bios:
+        no_bios: No bios added.
+      committee_bio:
+        twitter: Twitter
+        facebook: Facebook
+        name_and_role: "%{name}, %{role}"
+        contact_buttons: Contact buttons
+      constitution:
+        title: Constitution
+        uploaded: Uploaded %{date}
+        download: Download
+        no_constitution: No constitution uploaded.
+      contact:
+        title: Contact
+      minutes:
+        title: Minutes
+        no_minutes: No minutes added.
+      minutes_entry:
+        minutes_html: Minutes for %{date}
+        download: Download
+        no_file: No file uploaded.
+        no_date: No date specified.
+      partner_societies:
+        title: Partner societies
+        no_societies: No societies added.
+      partner_society:
+        website: Website
+        email: Email
+        contact_buttons: Contact buttons
+
+    conferences:
+      primer_theme:
+        conferences:
+          index:
+            subscribe: Subscribe
+            no_conferences: No conferences have been added.
+            search: Search
+            no_matching_conferences: No matching conferences.
+          show:
+            dates_html: "%{start_date}–%{finish_date}"
+            submit_by_html: Submit abstracts by %{date}
+            submit_abstract: Submit an abstract
+            information: Information
+            presentations: Presentations
+            events: Events
+            subscribe: Subscribe
+            locations: "%{institutions}, %{cities}"
+            tabs:
+              information: Information
+              presentations: Presentations
+              events: Events
+          presentations:
+            all_presentation_types: All
+            results: Results
+            search: Search
+            no_matching_presentations: No matching presentations.
+            no_presentations: No presentations.
+          presentation_type:
+            results: Results
+          events:
+            search: Search
+            no_matching_events: No matching events.
+            no_events: No events.
+          event:
+            times_html: "%{start_time}–%{finish_time}"
+          information:
+            no_information: No information.
+          sponsors:
+            title: Sponsors
+          conference:
+            dates_html: "%{start_date}–%{finish_date}"
+            locations: "%{institutions}, %{cities}"
+        presentations:
+          show:
+            room_and_institution: "%{room}, %{institution}"
+
+  languages:
+    en-GB: British English
+
+  time:
+    formats:
+      time: "%H:%M"
+
+  date:
+    formats:
+      date: "%d"
+      day_and_month: "%d/%m"

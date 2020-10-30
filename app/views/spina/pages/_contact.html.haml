@@ -1,0 +1,4 @@
+= render Primer::SubheadComponent.new do |component|
+  = component.slot(:heading) { t :'.title' }
+
+= render partial: 'text', object: contact

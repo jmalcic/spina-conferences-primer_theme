@@ -1,0 +1,11 @@
+%li.list-style-none.py-1.d-flex.flex-items-center
+  - cache partable_for(:date, parent: minutes_entry) do
+    .flex-auto= minutes_entry.has_content?(:date) ? t(:'.minutes_html', date: time_tag(minutes_entry.content(:date))) : t(:'.no_date')
+  - cache partable_for(:attachment, parent: minutes_entry) do
+    - if minutes_entry.has_content?(:attachment) && minutes_entry.content(:attachment).persisted?
+      = render Primer::ButtonComponent.new(tag: :a, ml: 2,
+                                           href: main_app.rails_blob_path(minutes_entry.content(:attachment), disposition: :attachment)) do
+        = render Primer::OcticonComponent.new(icon: 'desktop-download')
+        = t(:'.download')
+    - else
+      .text-small.text-gray= t :'.no_file'

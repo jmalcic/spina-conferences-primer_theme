@@ -1,0 +1,16 @@
+- cache [@presentation, @presentation.presenters, @presentation.attachments.collect(&:attachment)] do
+  - cache [@presentation, @presentation.presenters] do
+    %h1.mb-1.mb-md-2= @presentation.title
+    %ul.text-gray-dark.list-style-none.d-flex.flex-column.flex-sm-row.flex-wrap
+      %li.mr-sm-3.mb-1
+        = octicon @presentation.presenters.many? ? 'people' : 'person'
+        %address.d-inline= @presentation.presenters.collect(&:full_name_and_institution).to_sentence
+      %li.mr-sm-3.mb-1
+        = octicon 'clock'
+        = time_tag @presentation.start_datetime, format: :short
+      %li.mb-1
+        = octicon 'location'
+        %address.d-inline= t :'.room_and_institution', room: @presentation.session.room_name, institution: @presentation.room.institution.name
+
+  = render partial: 'attachments', object: @presentation.attachments
+  = render partial: 'abstract', object: @presentation.abstract

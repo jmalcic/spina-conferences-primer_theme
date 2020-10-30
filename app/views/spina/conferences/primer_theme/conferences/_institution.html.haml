@@ -1,0 +1,6 @@
+- cache [institution, institution.logo] do
+  %li
+    - if institution.logo.present?
+      = render partial: 'institution_logo', object: institution.logo, locals: { institution: institution }
+    - else
+      = institution.name

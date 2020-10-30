@@ -1,0 +1,23 @@
+.d-flex.flex-column.flex-md-row-reverse.flex-md-items-baseline
+  .flex-auto.d-flex.flex-column.flex-sm-row.flex-items-baseline.mb-4.mb-md-0
+    %ul.list-style-none.flex-auto.mb-2.mb-sm-0.mr-sm-2
+      - footer_navigation_items.each do |item|
+        - cache item do
+          %li
+            = render Primer::ButtonComponent.new(tag: :a, href: item.materialized_path, variant: :small) { item.menu_title }
+    %details.details-reset.details-overlay.details-overlay-dark.mb-2.mb-sm-0.mr-sm-2
+      %summary.btn.btn-outline.btn-sm{ aria: { haspopup: 'dialog' } }
+        = octicon 'info'
+        = t :'.cookies'
+      %details-dialog
+        %include-fragment{ src: frontend_cookies_info_path }
+          .Box.Box--overlay.d-flex.flex-column
+            = button_tag(data: { 'close-dialog': true }, aria: { label: t(:'spina.close') }, type: 'button',
+                         class: %w[Box-btn-octicon btn-octicon m-0 position-absolute right-0 top-0]) do
+              = render Primer::OcticonComponent.new(icon: 'x')
+            = render(Primer::SpinnerComponent.new(my: 6, mx: :auto))
+    - github_url = 'https://www.github.com/ulab-committee'
+    = render Primer::ButtonComponent.new(tag: :a, href: github_url, button_type: :outline, variant: :small, display: :inline_block) do
+      = render Primer::OcticonComponent.new(icon: 'mark-github')
+      = t :'.find_on_github'
+  %small.flex-auto.mr-sm-2.text-small.text-gray= t :'.copyright', name: Spina::Account.first.name, year: Date.today.year

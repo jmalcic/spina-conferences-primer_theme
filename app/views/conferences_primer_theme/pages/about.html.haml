@@ -1,0 +1,17 @@
+- cache current_page do
+  %h1= current_page.title
+
+  - cache partable_for(:text) do
+    - if has_content? :text
+      .mt-4= render partial: 'text', object: content(:text)
+  - cache partable_for(:contact) do
+    - if has_content? :contact
+      .mt-4= render partial: 'contact', object: content(:contact)
+  .clearfix.gutter
+    - cache partable_for(:constitution) do
+      .mt-4.col-12.col-md-6.float-md-left= render partial: 'constitution', object: content(:constitution)
+    - cache partable_for(:minutes) do
+      .mt-4.col-12.col-md-6.float-md-left= render partial: 'minutes', object: content(:minutes)
+  - cache partable_for(:partner_societies) do
+    - if has_content?(:partner_societies) && content(:partner_societies).structure_items.any?
+      .mt-4= render partial: 'partner_societies', object: content(:partner_societies)

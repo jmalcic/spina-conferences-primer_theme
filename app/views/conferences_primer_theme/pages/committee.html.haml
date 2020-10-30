@@ -1,0 +1,9 @@
+- cache current_page do
+  %h1= current_page.title
+  
+  - cache partable_for(:text) do
+    - if has_content? :text
+      .mt-4= render partial: 'text', object: content(:text)
+  - cache partable_for(:committee_bios) do
+    - if has_content?(:committee_bios) && content(:committee_bios).structure_items.any?
+      .mt-4= render partial: 'committee_bios', object: content(:committee_bios)

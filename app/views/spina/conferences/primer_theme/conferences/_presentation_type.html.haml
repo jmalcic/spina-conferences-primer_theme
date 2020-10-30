@@ -1,0 +1,5 @@
+- cache [presentation_type, @presentation_type] do
+  %li.filter-item
+    = link_to presentation_type.name.pluralize,
+              frontend_conference_url(presentation_type.conference, presentation_type: presentation_type.id, tab: 'presentations')
+    %span.count{ title: t(:'.results') }= presentation_type.presentations.count

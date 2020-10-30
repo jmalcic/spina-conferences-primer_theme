@@ -1,0 +1,4 @@
+- cache [attachments, attachments.collect(&:attachment)] do
+  - if attachments.any?
+    .BtnGroup.mt-1
+      = render partial: 'attachment', collection: attachments, cached: -> attachment { [attachment, attachment.attachment] }

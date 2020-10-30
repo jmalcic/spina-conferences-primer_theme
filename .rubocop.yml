@@ -1,0 +1,18 @@
+---
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+
+Style/CommandLiteral:
+  EnforcedStyle: mixed
+
+Layout/LineLength:
+  Max: 140
+  AutoCorrect: true
+
+Metrics/BlockLength:
+  Exclude:
+    - test/dummy/db/schema.rb

@@ -1,0 +1,19 @@
+- return if image_collection.images.none?
+
+.position-relative{ data: { controller: :slideshow, slideshow: { incrementer: 0, advance: (true if local_assigns[:advance]) } } }
+  - image_collection.images.each_with_index do |image, index|
+    - if image.file.present?
+      = image_tag(main_app.url_for(image.file.variant(resize_to_fill: [1680, 600])), alt_description: image.file.name, draggable: false,
+                  srcset: srcset(image.file, variant: { resize_to_fill: [1680, 600] }), hidden: index != 0,
+                  data: { 'slideshow-target': 'slide' })
+  .position-absolute.top-0.left-0.right-0.bottom-0.container-lg.p-responsive{ class: ('position-absolute top-0' if local_assigns[:controls]) }
+    - if local_assigns[:controls]
+      .d-none.d-sm-flex.flex-justify-between.flex-items-center.height-full
+        = render Primer::ButtonComponent.new(data: { action: :'slideshow#previous' }) do
+          = render Primer::OcticonComponent.new(icon: 'arrow-left')
+          = t(:'.previous')
+        = render Primer::ButtonComponent.new(data: { action: :'slideshow#next' }) do
+          = t(:'.next')
+          = render Primer::OcticonComponent.new(icon: 'arrow-right')
+    - else
+      .text-white= yield

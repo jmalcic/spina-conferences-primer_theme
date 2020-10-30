@@ -1,0 +1,3 @@
+- if institution_logo.file.present?
+  = image_tag main_app.url_for(institution_logo.file.variant(resize_to_limit: [300, 60])), srcset: srcset(institution_logo.file,
+              variant: { resize_to_limit: [300, 60] }), alt_description: institution.name, draggable: false, class: 'p-1'

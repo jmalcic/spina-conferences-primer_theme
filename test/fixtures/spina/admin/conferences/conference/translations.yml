@@ -1,0 +1,85 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+university_of_atlantis_2017:
+  name: University of Atlantis 2017
+  locale: en-GB
+  translated_model: university_of_atlantis_2017
+
+university_of_shangri_la_2018:
+  name: University of Shangri-La 2018
+  locale: en-GB
+  translated_model: university_of_shangri_la_2018
+
+empty_conference:
+  name: Empty conference
+  locale: en-GB
+  translated_model: empty_conference
+
+conference_with_parts:
+  name: Conference with parts
+  locale: en-GB
+  translated_model: conference_with_parts
+
+conference_without_parts:
+  name: Conference without parts
+  locale: en-GB
+  translated_model: conference_without_parts
+
+conference_without_partables:
+  name: Conference without partables
+  locale: en-GB
+  translated_model: conference_without_partables
+
+conference_with_old_submission_info:
+  name: Conference with old submission info
+  locale: en-GB
+  translated_model: conference_with_old_submission_info
+
+conference_with_current_submission_info:
+  name: Conference with current submission info
+  locale: en-GB
+  translated_model: conference_with_current_submission_info
+
+conference_without_submission_info:
+  name: Conference without submission info
+  locale: en-GB
+  translated_model: conference_without_submission_info
+
+conference_without_submission_info_partables:
+  name: Conference without submission info partables
+  locale: en-GB
+  translated_model: conference_without_submission_info_partables
+
+conference_with_institutions:
+  name: Conference with institutions
+  locale: en-GB
+  translated_model: conference_with_institutions
+
+conference_without_institutions:
+  name: Conference without institutions
+  locale: en-GB
+  translated_model: conference_without_institutions
+
+conference_with_presentations:
+  name: Conference with presentations
+  locale: en-GB
+  translated_model: conference_with_presentations
+
+conference_without_presentations:
+  name: Conference without presentations
+  locale: en-GB
+  translated_model: conference_without_presentations
+
+conference_with_events:
+  name: Conference with events
+  locale: en-GB
+  translated_model: conference_with_events
+
+conference_without_events:
+  name: Conference without events
+  locale: en-GB
+  translated_model: conference_without_events

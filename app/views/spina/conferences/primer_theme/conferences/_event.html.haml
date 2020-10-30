@@ -1,0 +1,12 @@
+- cache event do
+  .d-flex.flex-column.flex-sm-row
+    .flex-shrink-0.mr-sm-3.mb-3.mb-sm-0.col-sm-4
+      %span.f3-light.mb-1
+        = octicon 'clock', class: 'v-align-baseline'
+        = t :'.times_html', start_time: time_tag(event.start_time, format: :short), finish_time: time_tag(event.finish_time, format: :time)
+      .text-gray
+        = octicon 'location'
+        %address.d-inline= event.location
+    .flex-auto
+      %h3.mb-1= event.name
+      .text-gray= event.description.try(:html_safe)

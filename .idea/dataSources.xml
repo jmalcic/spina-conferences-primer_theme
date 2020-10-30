@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails spina-conferences-primer_theme: production" uuid="4d8f284c-1f66-4d9b-90be-77912c2b9ee5">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/dummy_production</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails spina-conferences-primer_theme: development" uuid="9a3fc181-a7fc-4ba1-aac8-7f523f1b56ed">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/dummy_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails spina-conferences-primer_theme: test" uuid="2b72d33f-fbcb-4bf8-a33b-582abe2956e5">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/dummy_test</jdbc-url>
+    </data-source>
+  </component>
+</project>

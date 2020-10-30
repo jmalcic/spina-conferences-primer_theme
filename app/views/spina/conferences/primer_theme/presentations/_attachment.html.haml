@@ -1,0 +1,6 @@
+- cache [attachment, attachment.attachment] do
+  - unless attachment.attachment.blank?
+    = render Primer::ButtonComponent.new(tag: :a, group_item: true,
+                                         href: main_app.rails_blob_path(attachment.attachment.file, disposition: :attachment)) do
+      = render Primer::OcticonComponent.new(icon: 'download')
+      = attachment.name

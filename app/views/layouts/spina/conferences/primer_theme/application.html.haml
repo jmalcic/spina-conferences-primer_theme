@@ -1,0 +1,36 @@
+!!!
+%html.height-full{ lang: I18n.locale }
+  %head
+    %meta{ charset: 'utf-8' }
+    %meta{ name: 'author', content: author }
+    %meta{ name: 'description', content: description }
+    %meta{ name: 'viewport', content: 'initial-scale=1.0' }
+    %meta{ name: 'og:title', content: title }
+    %meta{ name: 'og:description', content: description }
+    %meta{ name: 'turbolinks-cache-control', content: 'no-preview' }
+    %base{ target: '_blank' }
+    = csrf_meta_tags
+    %title= seo_title
+    = render 'spina/shared/google_site_verification'
+    = render 'spina/shared/analytics'
+    = stylesheet_link_tag 'spina/conferences/primer_theme/application', media: 'all', data: { turbolinks_track: true }
+    = javascript_include_tag 'spina/conferences/primer_theme/application', data: { turbolinks_track: true }
+    %script{ type: 'module', src: asset_path('@github/details-dialog-element/dist/index.js') }
+    %script{ type: 'module', src: asset_path('@github/include-fragment-element/dist/index.js') }
+    %script{ type: 'module', src: asset_path('@github/tab-container-element/dist/index.js') }
+    %script{ type: 'module', src: asset_path('@github/filter-input-element/dist/index.js') }
+    = yield :head
+  %body
+    .admin= render 'spina/shared/admin_bar'
+    %header= render 'navigation'
+    = render 'current_conference_alert'
+    %main
+      - if content_for? :flash
+        .flash-messages= yield :flash
+      = yield :hero
+      - if content_for? :breadcrumbs
+        .container-lg.p-responsive.mt-4= yield :breadcrumbs
+      = yield :header
+      .container-lg.p-responsive.mt-4= yield
+    %footer.container-lg.p-responsive.py-4= render 'footer'
+    = render 'spina/shared/social'
