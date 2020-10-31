@@ -17,15 +17,6 @@ Gem::Specification.new do |spec|
   spec.description = 'Frontend for Spina::Admin::Conferences plugin, based on Primer.'
   spec.license = 'MIT'
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise 'RubyGems 2.0 or newer is required to protect against ' \
-      'public gem pushes.'
-  end
-
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
   spec.add_dependency 'babel-transpiler', '~> 0.7'
@@ -36,16 +27,16 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'spina', '~> 1.1'
   spec.add_dependency 'spina-admin-conferences', '~> 1.3.3'
 
-  spec.add_development_dependency 'capybara'
-  spec.add_development_dependency 'dotenv-rails'
-  spec.add_development_dependency 'minitest-rails'
-  spec.add_development_dependency 'minitest-reporters'
-  spec.add_development_dependency 'puma'
-  spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'rubocop-rails'
-  spec.add_development_dependency 'rubocop-performance'
-  spec.add_development_dependency 'selenium-webdriver'
-  spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'web-console'
-  spec.add_development_dependency 'webdrivers'
+  spec.add_development_dependency 'capybara', '~> 3.33'
+  spec.add_development_dependency 'dotenv-rails', '~> 2.7'
+  spec.add_development_dependency 'minitest-rails', '~> 6.0'
+  spec.add_development_dependency 'minitest-reporters', '~> 1.4'
+  spec.add_development_dependency 'puma', '~> 5.0'
+  spec.add_development_dependency 'rubocop', '~> 1.0'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.8'
+  spec.add_development_dependency 'rubocop-rails', '~> 2.8'
+  spec.add_development_dependency 'selenium-webdriver', '~> 3.142'
+  spec.add_development_dependency 'simplecov', '~> 0.19'
+  spec.add_development_dependency 'web-console', '~> 4.0'
+  spec.add_development_dependency 'webdrivers', '~> 4.4'
 end
