@@ -74,6 +74,10 @@
     name: 'current_conference_alert',
     title: 'Alert',
     partable_type: 'Spina::Line'
+  }, {
+    name: 'github_url',
+    title: 'GitHub URL',
+    partable_type: 'Spina::Line'
   }]
 
   theme.structures = [{

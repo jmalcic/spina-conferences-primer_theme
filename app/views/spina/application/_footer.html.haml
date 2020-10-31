@@ -16,8 +16,9 @@
                          class: %w[Box-btn-octicon btn-octicon m-0 position-absolute right-0 top-0]) do
               = render Primer::OcticonComponent.new(icon: 'x')
             = render(Primer::SpinnerComponent.new(my: 6, mx: :auto))
-    - github_url = 'https://www.github.com/ulab-committee'
-    = render Primer::ButtonComponent.new(tag: :a, href: github_url, button_type: :outline, variant: :small, display: :inline_block) do
-      = render Primer::OcticonComponent.new(icon: 'mark-github')
-      = t :'.find_on_github'
+    - if current_account.has_content? :github_url
+      = render Primer::ButtonComponent.new(tag: :a, href: current_account.content(:github_url), button_type: :outline, variant: :small,
+                                           display: :inline_block) do
+        = render Primer::OcticonComponent.new(icon: 'mark-github')
+        = t :'.find_on_github'
   %small.flex-auto.mr-sm-2.text-small.text-gray= t :'.copyright', name: Spina::Account.first.name, year: Date.today.year

@@ -1,6 +1,6 @@
 {
   "name": "spina-conferences-primer-theme",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Spina::Conferences plugin theme.",
   "main": "app/assets/javascripts/spina/conferences/primer_theme/application.es6",
   "files": [
@@ -28,14 +28,14 @@
     "@github/include-fragment-element": "^5.1.0",
     "@github/tab-container-element": "^3.0.7",
     "@primer/css": "^15.0.0",
-    "@primer/octicons": "^10.0.0",
+    "@primer/octicons": "^11.0.0",
     "stimulus": "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz",
     "trix": "^1.2.1",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "eslint": "^7.5.0"
+    "eslint": "^7.12.1"
   },
   "scripts": {
     "prebuild": "yarn lint",
