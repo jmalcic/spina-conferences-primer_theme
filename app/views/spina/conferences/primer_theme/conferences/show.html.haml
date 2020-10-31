@@ -15,7 +15,7 @@
             %p= @conference.content(:submission_text).html_safe
 
 - content_for :header do
-  - cache [@conference, @conference.institutions, @tab, @presentations, @conference.content(:gallery)&.images,
+  - cache [@conference, @conference.institutions, @conference.content(:gallery)&.images,
            @conference.parts.collect(&:partable), @conference.content(:sponsors)&.structure_items,
            @conference.content(:sponsors)&.structure_items&.extract_associated(structure_parts: [:structure_partable])] do
     .container-lg.p-responsive.mb-4{ class: dom_class(@conference), id: dom_id(@conference) }
@@ -41,27 +41,27 @@
       - if @conference.has_content? :gallery
         .mb-4= render partial: 'image_collection', object: @conference.content(:gallery), locals: { controls: true }
 
-    %tab-container
-      %nav.UnderlineNav
-        .container-lg.p-responsive.d-flex.flex-justify-between.flex-auto
-          .UnderlineNav-body{ role: 'tablist' }
-            = button_tag t(:'.tabs.information'), aria: { selected: (@tab == 'information').to_s }, class: 'UnderlineNav-item', role: 'tab',
-                                                  type: 'button'
-            = button_tag t(:'.tabs.presentations'), aria: { selected: (@tab == 'presentations').to_s }, class: 'UnderlineNav-item',
-                                                    role: 'tab', type: 'button'
-            = button_tag t(:'.tabs.events'), aria: { selected: (@tab == 'events').to_s }, class: 'UnderlineNav-item', role: 'tab',
-                                             type: 'button'
-          .UnderlineNav-actions
-            = render Primer::ButtonComponent.new(tag: :a, href: frontend_conference_url(@conference, protocol: :webcal, format: :ics),
-                                                              button_type: :primary, variant: :small) do
-              = render Primer::OcticonComponent.new(icon: 'calendar')
-              = t(:'.subscribe')
-      .container-lg.p-responsive
-        - cache partable_for(:text, parent: @conference) do
-          = render partial: 'information', layout: 'tab',
-                   locals: { text: (@conference.content(:text) if @conference.has_content? :text), hidden: @tab != 'information' }
-        - cache [@conference.presentations, @presentation_type, @presentation_type.presentations,
-                 @presentation_type.presentations.collect(&:presenters)] do
-          = render partial: 'presentations', layout: 'tab', locals: { hidden: @tab != 'presentations' }
-        - cache @conference.events do
-          = render partial: 'events', layout: 'tab', locals: { events: @conference.events, hidden: @tab != 'events' }
+  %tab-container
+    %nav.UnderlineNav
+      .container-lg.p-responsive.d-flex.flex-justify-between.flex-auto
+        .UnderlineNav-body{ role: 'tablist' }
+          = button_tag t(:'.tabs.information'), aria: { selected: (@tab == 'information').to_s }, class: 'UnderlineNav-item', role: 'tab',
+                                                type: 'button'
+          = button_tag t(:'.tabs.presentations'), aria: { selected: (@tab == 'presentations').to_s }, class: 'UnderlineNav-item',
+                                                  role: 'tab', type: 'button'
+          = button_tag t(:'.tabs.events'), aria: { selected: (@tab == 'events').to_s }, class: 'UnderlineNav-item', role: 'tab',
+                                           type: 'button'
+        .UnderlineNav-actions
+          = render Primer::ButtonComponent.new(tag: :a, href: frontend_conference_url(@conference, protocol: :webcal, format: :ics),
+                                                            button_type: :primary, variant: :small) do
+            = render Primer::OcticonComponent.new(icon: 'calendar')
+            = t(:'.subscribe')
+    .container-lg.p-responsive
+      - cache [partable_for(:text, parent: @conference), @tab] do
+        = render partial: 'information', layout: 'tab',
+                 locals: { text: (@conference.content(:text) if @conference.has_content? :text), hidden: @tab != 'information' }
+      - cache [@conference.presentations, @presentation_type, @presentation_type.presentations,
+               @presentation_type.presentations.collect(&:presenters), @tab] do
+        = render partial: 'presentations', layout: 'tab', locals: { hidden: @tab != 'presentations' }
+      - cache [@conference.events, @tab] do
+        = render partial: 'events', layout: 'tab', locals: { events: @conference.events, hidden: @tab != 'events' }

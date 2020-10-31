@@ -1,14 +1,15 @@
-- if events.any?
-  %filter-input.d-flex.flex-sm-justify-start{ aria: { owns: 'event_list' } }
-    .subnav.subnav-flush
-      .subnav-search.m-0.width-full
-        = search_field_tag 'search', nil, class: %w[form-control subnav-search-input width-full], aria: { label: t(:'.search') }
-        = octicon 'search', class: 'subnav-search-icon'
-%div{ id: 'event_list' }
+- cache [events, @tab] do
   - if events.any?
-    %ul{ class: dom_class(events), data: { filter: { list: true } } }
-      = render partial: 'event', collection: events, layout: 'list_item', cached: true
-  - else
-    = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
-  = render Primer::BlankslateComponent.new(title: t(:'.no_matching_events'), icon: 'calendar', hidden: true,
-                                           data: { 'filter-empty-state': true })
+    %filter-input.d-flex.flex-sm-justify-start{ aria: { owns: 'event_list' } }
+      .subnav.subnav-flush
+        .subnav-search.m-0.width-full
+          = search_field_tag 'search', nil, class: %w[form-control subnav-search-input width-full], aria: { label: t(:'.search') }
+          = octicon 'search', class: 'subnav-search-icon'
+  %div{ id: 'event_list' }
+    - if events.any?
+      %ul{ class: dom_class(events), data: { filter: { list: true } } }
+        = render partial: 'event', collection: events.sorted, layout: 'list_item', cached: true
+    - else
+      = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
+    = render Primer::BlankslateComponent.new(title: t(:'.no_matching_events'), icon: 'calendar', hidden: true,
+                                             data: { 'filter-empty-state': true })

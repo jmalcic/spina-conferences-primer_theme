@@ -1,13 +1,15 @@
 - cache [@conference.presentations, @presentation_type, @presentation_type.presentations,
-         @presentation_type.presentations.collect(&:presenters)] do
+         @presentation_type.presentations.collect(&:presenters), @tab] do
   .d-flex.flex-column.flex-lg-row
     .col-12.col-lg-3.pr-lg-4.mb-4.mb-lg-0
       %ul.filter-list
         - cache [@conference.presentations, @presentation_type] do
-          .filter-item
-            = link_to t('.all_presentation_types'), frontend_conference_url(@conference, tab: 'presentations')
-            %span.count{ title: t(:'.results') }= @conference.presentations.count
-        = render partial: 'presentation_type', collection: @conference.presentation_types,
+          %li
+            = link_to frontend_conference_url(@conference, tab: 'presentations'),
+                      class: 'filter-item', aria: { current: @presentation_type == @conference ? 'page' : nil } do
+              = t('.all_presentation_types')
+              %span.count{ title: t(:'.results') }= @conference.presentations.count
+        = render partial: 'presentation_type', collection: @conference.presentation_types.sorted,
                  cached: -> presentation_type { [presentation_type, @presentation_type] }
     .flex-auto.col-12.col-lg-8
       - if @presentation_type.presentations.any?
@@ -19,7 +21,7 @@
       %div{ id: 'presentation_list' }
         - if @presentation_type.presentations.any?
           %ul{ class: dom_class(@presentation_type.presentations), data: { filter: { list: true } } }
-            = render partial: 'presentation', collection: @presentation_type.presentations, layout: 'list_item',
+            = render partial: 'presentation', collection: @presentation_type.presentations.sorted, layout: 'list_item',
                      locals: { conference: @conference }, cached: -> presentation { [presentation, presentation.presenters] }
         - else
           = render Primer::BlankslateComponent.new(title: t(:'.no_presentations'), icon: 'mortar-board')
