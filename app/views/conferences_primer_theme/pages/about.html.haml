@@ -10,8 +10,10 @@
   .clearfix.gutter
     - cache partable_for(:constitution) do
       .mt-4.col-12.col-md-6.float-md-left= render partial: 'constitution', object: content(:constitution)
-    - cache partable_for(:minutes) do
+    - cache [partable_for(:minutes), content(:minutes)&.structure_items,
+             content(:minutes)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
       .mt-4.col-12.col-md-6.float-md-left= render partial: 'minutes', object: content(:minutes)
-  - cache partable_for(:partner_societies) do
+  - cache [partable_for(:partner_societies), content(:partner_societies)&.structure_items,
+           content(:partner_societies)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
     - if has_content?(:partner_societies) && content(:partner_societies).structure_items.any?
       .mt-4= render partial: 'partner_societies', object: content(:partner_societies)
