@@ -1,4 +1,4 @@
-- cache sponsor, sponsor.structure_parts.collect(&:structure_partable) do
+- cache [sponsor, sponsor.structure_parts.collect(&:structure_partable)] do
   %li.d-inline-block.m-2.v-align-middle
     - if sponsor.has_content?(:logo) && sponsor.content(:logo).file.present?
       = link_to sponsor.content(:website) do
