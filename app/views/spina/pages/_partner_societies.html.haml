@@ -4,6 +4,7 @@
 - if partner_societies.structure_items.any?
   %ul{ class: dom_class(partner_societies), id: dom_id(partner_societies) }
     = render partial: 'partner_society', collection: partner_societies.structure_items.sorted_by_structure,
-             layout: 'list_item', cached: true
+             layout: 'list_item',
+             cached: ->(partner_society) { [partner_society, partner_society.structure_parts.collect(&:structure_partable)] }
 - else
   = render Primer::BlankslateComponent.new(title: t(:'.no_societies'), icon: 'organization')
