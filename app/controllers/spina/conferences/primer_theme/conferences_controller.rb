@@ -25,6 +25,8 @@ module Spina
                                                                 presentation_types: [:translations],
                                                                 presentations: [session: [:room], presenters: [:institution]])
                                                       .find(params[:id])
+        rescue ActiveRecord::RecordNotFound
+          send_file Rails.root.join('public/404.html'), type: 'text/html; charset=utf-8', status: 404
         end
 
         def set_tab
