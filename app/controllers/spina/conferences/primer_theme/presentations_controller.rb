@@ -9,6 +9,10 @@ module Spina
 
         def show
           add_breadcrumb @presentation.name
+          respond_to do |format|
+            format.html
+            format.ics { render nothing: true, status: :gone }
+          end
         end
 
         private
@@ -16,6 +20,8 @@ module Spina
         def set_presentation
           @presentation = Admin::Conferences::Presentation.includes(:presenters, attachments: [attachment_type: [:translations]])
                                                           .find(params[:id])
+        rescue ActiveRecord::RecordNotFound
+          send_file Rails.root.join('public/404.html'), type: 'text/html; charset=utf-8', status: 404
         end
 
         def set_conference
