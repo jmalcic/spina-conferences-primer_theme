@@ -9,6 +9,10 @@ module Spina
 
         def show
           add_breadcrumb @presentation.name
+          respond_to do |format|
+            format.html
+            format.ics { render nothing: true, status: :gone }
+          end
         end
 
         private
