@@ -16,7 +16,7 @@ module Spina
         def ancestors
           return [] if current_page.blank?
 
-          render Primer::BreadcrumbComponent.new(mb: 4) do
+          render Primer::BreadcrumbComponent.new(mb: 4) do |component|
             current_page.ancestors.each do |ancestor|
               component.slot(:item, href: 'ancestor.materialized_path') { ancestor.menu_title }
             end
