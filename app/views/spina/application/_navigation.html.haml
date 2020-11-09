@@ -1,10 +1,9 @@
 .Header.bg-blue.px-3.px-md-4.px-lg-5
-  .Header-item.d-none.d-lg-flex.mt-n1.mb-n1= link_to render('logo'), root_path, class: 'Header-link'
+  .Header-item.mt-n1.mb-n1= link_to render('logo'), root_path, class: 'Header-link'
   .Header-item.Header-item--full.d-flex.d-lg-none{ aria: { hidden: true } }
-    = link_to render('logo'), root_path, class: %w[Header-link float-left]
-    %details.details-reset.text-right
+    %details.details-reset
       %summary.btn-link.Header-link= octicon 'three-bars', height: 24
-      .d-flex.flex-column.flex-self-stretch.mt-3.text-left
+      .px-3.px-md-4.px-lg-5.bg-blue.Popover.left-0.right-0.mt-3
         = render partial: 'mobile_navigation_item', collection: main_navigation_items, cached: true
         = link_to 'Conferences', frontend_conferences_url, class: %w[d-block py-2 border-top border-white-fade text-white]
   = render partial: 'navigation_item', collection: main_navigation_items, cached: true

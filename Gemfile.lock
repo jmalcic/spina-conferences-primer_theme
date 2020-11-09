@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spina-conferences-primer_theme (0.1.6)
+    spina-conferences-primer_theme (0.1.7)
       babel-transpiler (~> 0.7)
       icalendar (~> 2.5)
       image_processing (~> 1.9)
