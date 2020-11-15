@@ -11,7 +11,7 @@ module Spina
           add_breadcrumb @presentation.name
           respond_to do |format|
             format.html
-            format.ics { render nothing: true, status: :gone }
+            format.ics { head :not_found }
           end
         end
 
