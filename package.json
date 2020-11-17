@@ -28,7 +28,7 @@
     "@github/include-fragment-element": "^5.1.0",
     "@github/tab-container-element": "^3.0.7",
     "@primer/css": "^15.0.0",
-    "@primer/octicons": "^11.0.0",
+    "@primer/octicons": "^11.1.0",
     "stimulus": "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz",
     "trix": "^1.2.1",
     "turbolinks": "^5.2.0"
