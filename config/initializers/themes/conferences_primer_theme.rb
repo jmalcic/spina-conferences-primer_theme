@@ -37,6 +37,10 @@
     title: 'Minutes',
     partable_type: 'Spina::Structure'
   }, {
+    name: 'useful_documents',
+    title: 'Useful documents',
+    partable_type: 'Spina::Structure'
+  }, {
     name: 'contact',
     title: 'Contact',
     partable_type: 'Spina::Text'
@@ -109,6 +113,17 @@
       name: 'date',
       title: 'Date',
       partable_type: 'Spina::Admin::Conferences::DatePart'
+    }, {
+      name: 'attachment',
+      title: 'Attachment',
+      partable_type: 'Spina::Attachment'
+    }]
+  }, {
+    name: 'useful_documents',
+    structure_parts: [{
+      name: 'name',
+      title: 'Name',
+      partable_type: 'Spina::Line'
     }, {
       name: 'attachment',
       title: 'Attachment',
@@ -214,7 +229,7 @@
     name: 'about',
     title: 'About',
     description: 'Contains information about the society',
-    page_parts: %w[text constitution minutes partner_societies contact]
+    page_parts: %w[text constitution minutes useful_documents partner_societies contact]
   }, {
     name: 'show',
     title: 'Blank',

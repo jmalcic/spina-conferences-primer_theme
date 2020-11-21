@@ -82,6 +82,11 @@ en:
         download: Download
         no_file: No file uploaded.
         no_date: No date specified.
+      useful_documents:
+        title: Useful documents
+        download: Download
+        no_file: No file uploaded
+        no_name: Unnamed
       partner_societies:
         title: Partner societies
         no_societies: No societies added.

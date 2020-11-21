@@ -1,0 +1,15 @@
+- cache [useful_document, useful_document.structure_parts.collect(&:structure_partable)] do
+  %li.list-style-none.py-1.d-flex.flex-items-center
+    - cache partable_for(:name, parent: useful_document) do
+      - if(useful_document.has_content?(:name))
+        %h3.flex-auto= useful_document.content(:name)
+      - else
+        %h3.flex-auto= t :'.no_name'
+    - cache partable_for(:attachment, parent: useful_document) do
+      - if useful_document.has_content?(:attachment) && useful_document.content(:attachment).persisted?
+        = render Primer::ButtonComponent.new(tag: :a, ml: 2,
+                                             href: main_app.rails_blob_path(useful_document.content(:attachment), disposition: :attachment)) do
+          = render Primer::OcticonComponent.new(icon: 'desktop-download')
+          = t(:'.download')
+      - else
+        .text-small.text-gray= t :'.no_file'
