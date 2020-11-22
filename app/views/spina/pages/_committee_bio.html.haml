@@ -10,11 +10,14 @@
                                                mb: [3, nil, 0, nil])
     .flex-auto
       .d-flex.flex-column.flex-md-row.mb-1
-        - cache partable_for(:name, :role, parent: committee_bio) do
-          - if committee_bio.has_content?(:name) && committee_bio.has_content?(:role)
-            %h3.flex-auto= t :'.name_and_role', name: committee_bio.content(:name), role: committee_bio.content(:role)
-          - elsif committee_bio.has_content?(:name)
-            %h3.flex-auto= committee_bio.content(:name)
+        - cache partable_for(:name, :role, :institution, parent: committee_bio) do
+          .flex-column
+            - if committee_bio.has_content?(:name) && committee_bio.has_content?(:role)
+              %h3.flex-auto= t :'.name_and_role', name: committee_bio.content(:name), role: committee_bio.content(:role)
+            - elsif committee_bio.has_content?(:name)
+              %h3.flex-auto= committee_bio.content(:name)
+            - if committee_bio.has_content?(:institution)
+              %h4.flex-auto= committee_bio.content(:institution)
         .BtnGroup.mt-1.mt-md-0.ml-md-1{ aria: { label: t(:'.contact_buttons') } }
           - cache partable_for(:twitter_profile, parent: committee_bio) do
             - if committee_bio.has_content?(:twitter_profile)

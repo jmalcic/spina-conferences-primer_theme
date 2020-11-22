@@ -159,6 +159,10 @@
       title: 'Name',
       partable_type: 'Spina::Line'
     }, {
+      name: 'institution',
+      title: 'Institution',
+      partable_type: 'Spina::Line'
+    }, {
       name: 'role',
       title: 'Role',
       partable_type: 'Spina::Line'
