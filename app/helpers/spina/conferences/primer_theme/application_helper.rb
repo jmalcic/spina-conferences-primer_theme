@@ -42,15 +42,16 @@ module Spina
           t :'.title', title: current_page.present? ? current_page.seo_title : @title, suffix: current_account.name # rubocop:disable Rails/HelperInstanceVariable
         end
 
-        def partable_for(*parts, parent: current_page)
+        def partable_for(*part_names, parent: current_page)
           association = case parent
                         when Spina::Page then :page_partable
                         when Spina::StructureItem then :structure_partable
                         when Spina::Account then :layout_partable
                         else :partable
                         end
-          part = parent.parts.find_by(name: parts)
-          [part, part.try(association)]
+          parts = parent.parts.where(name: part_names)
+          part_parents = parts.collect { |part| part.try(association) }
+          [*parts, *part_parents]
         end
 
         def calendar(name:, &block)
