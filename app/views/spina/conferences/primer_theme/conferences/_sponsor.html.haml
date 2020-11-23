@@ -1,9 +1,8 @@
-- cache [sponsor, sponsor.structure_parts.collect(&:structure_partable)] do
-  %li.d-inline-block.m-2.v-align-middle
-    - if sponsor.has_content?(:logo) && sponsor.content(:logo).file.present?
-      = link_to sponsor.content(:website) do
-        = image_tag(main_app.url_for(sponsor.content(:logo).file.variant(resize_to_limit: [200, 60])),
-                    srcset: srcset(sponsor.content(:logo).file, variant: { resize_to_limit: [200, 60] }),
-                    alt_description: sponsor.content(:name), draggable: false)
-    - else
-      = link_to sponsor.content(:name), sponsor.content(:website)
+%li.d-inline-block.m-2.v-align-middle
+  - if sponsor.has_content?(:logo) && sponsor.content(:logo).file.present?
+    = link_to sponsor.content(:website) do
+      = image_tag(main_app.url_for(sponsor.content(:logo).file.variant(resize_to_limit: [200, 60])),
+                  srcset: srcset(sponsor.content(:logo).file, variant: { resize_to_limit: [200, 60] }),
+                  alt_description: sponsor.content(:name), draggable: false)
+  - else
+    = link_to sponsor.content(:name), sponsor.content(:website)
