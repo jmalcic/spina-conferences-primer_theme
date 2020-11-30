@@ -82,11 +82,11 @@ en:
         download: Download
         no_file: No file uploaded.
         no_date: No date specified.
-      useful_documents:
-        title: Useful documents
+      documents:
+        title: Documents
         download: Download
-        no_file: No file uploaded
-        no_name: Unnamed
+        no_file: No file uploaded.
+        no_name: No name.
       partner_societies:
         title: Partner societies
         no_societies: No societies added.

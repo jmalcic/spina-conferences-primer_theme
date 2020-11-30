@@ -1,8 +1,7 @@
-- if useful_documents.present? && useful_documents.structure_items.any?
+- if documents.present? && documents.structure_items.any?
   = render Primer::SubheadComponent.new do |component|
     = component.slot(:heading) { t :'.title' }
 
-  %ul{ class: dom_class(useful_documents), id: dom_id(useful_documents) }
-    = render partial: 'useful_document', collection: useful_documents.structure_items.sorted_by_structure,
-            cached: ->(useful_document) { [useful_document, useful_document.structure_parts.collect(&:structure_partable)] }
-
+  %ul{ class: dom_class(documents), id: dom_id(documents) }
+    = render partial: 'document', collection: documents.structure_items.sorted_by_structure,
+            cached: ->(document) { [document, document.structure_parts.collect(&:structure_partable)] }

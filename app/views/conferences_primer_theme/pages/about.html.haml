@@ -13,9 +13,9 @@
     - cache [partable_for(:minutes), content(:minutes)&.structure_items,
              content(:minutes)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
       .mt-4.col-12.col-md-6.float-md-left= render partial: 'minutes', object: content(:minutes)
-    - cache [partable_for(:useful_documents), content(:useful_documents)&.structure_items,
-             content(:useful_documents)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
-      .mt-4.col-12.col-md-6.float-md-left= render partial: 'useful_documents', object: content(:useful_documents)
+    - cache [partable_for(:documents), content(:documents)&.structure_items,
+             content(:documents)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
+      .mt-4.col-12.col-md-6.float-md-left= render partial: 'documents', object: content(:documents)
   - cache [partable_for(:partner_societies), content(:partner_societies)&.structure_items,
            content(:partner_societies)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
     - if has_content?(:partner_societies) && content(:partner_societies).structure_items.any?
