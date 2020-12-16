@@ -5,11 +5,11 @@
         - cache partable_for(:submission_url, parent: @conference) do
           - if @conference.content(:submission_url).present?
             = link_to t(:'.submit_abstract'), @conference.content(:submission_url),
-                      class: %i[btn btn-sm flash-action d-none d-sm-inline-block]
+                      class: %i[btn btn-sm flash-action p-3 p-sm-1]
         - cache partable_for(:submission_date, parent: @conference) do
           %p
             = octicon('clock')
-            = t :'.submit_by_html', date: time_tag(@conference.content(:submission_date), format: :short)
+            = t :'.submit_by_html', date: time_tag(@conference.content(:submission_date), format: :full)
         - cache partable_for(:submission_text, parent: @conference) do
           - if @conference.content(:submission_text).present?
             %p= @conference.content(:submission_text).html_safe
