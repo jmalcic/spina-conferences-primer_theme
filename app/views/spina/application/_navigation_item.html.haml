@@ -1,1 +1,13 @@
-.Header-item.d-none.d-lg-flex= link_to navigation_item.menu_title, navigation_item.materialized_path, class: 'Header-link'
+- if navigation_item.has_children?
+  .Header-item.d-none.d-lg-flex
+    %details.dropdown.details-reset.details-overlay
+      %summary.btn-link.Header-link
+        = navigation_item.menu_title
+        %span.dropdown-caret
+      %ul.dropdown-menu.dropdown-menu-se.mt-3
+        - navigation_item.children.each do |child|
+          %li.d-block.py-2.border-bottom.border-black-fade
+            = link_to child.menu_title, child.materialized_path, class: 'dropdown-item'
+- elsif not navigation_item.has_parent?
+  .Header-item.d-none.d-lg-flex
+    = link_to navigation_item.menu_title, navigation_item.materialized_path, class: 'Header-link'
