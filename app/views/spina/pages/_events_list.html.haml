@@ -1,6 +1,16 @@
 - if events_list.structure_items.any?
-  %ul{ class: dom_class(events_list), id: dom_id(events_list) }
-    = render partial: 'event', collection: events_list.structure_items.sorted_by_structure, layout: 'list_item',
-             cached: ->(event) { [event, event.structure_parts.collect(&:structure_partable)] }
+  %div{ class: dom_class(events_list), id: dom_id(events_list) }
+    %h2= t :'.upcoming'
+    %ul
+      = render partial: 'event', 
+               collection: events_list.structure_items.sorted_by_structure.filter { |item| item.has_content?(:start_time) && item.content(:start_time) >= Time.now }, 
+               layout: 'list_item',
+               cached: ->(event) { [event, event.structure_parts.collect(&:structure_partable)] }
+    %h2.mt-4= t :'.past'
+    %ul
+      = render partial: 'event', 
+               collection: events_list.structure_items.sorted_by_structure.filter { |item| item.has_content?(:start_time) && item.content(:start_time) < Time.now }, 
+               layout: 'list_item',
+               cached: ->(event) { [event, event.structure_parts.collect(&:structure_partable)] }
 - else
   = render Primer::BlankSlateComponent.new(title: t(:'.no_events'), icon: 'file')

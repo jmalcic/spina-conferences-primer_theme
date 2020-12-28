@@ -94,6 +94,9 @@ en:
         website: Website
         email: Email
         contact_buttons: Contact buttons
+      events_list:
+        upcoming: Upcoming events
+        past: Past events
       event:
         time_and_place: "%{place}, %{time}"
         time_tbc: Time TBC
