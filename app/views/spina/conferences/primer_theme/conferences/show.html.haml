@@ -5,7 +5,7 @@
         - cache partable_for(:submission_url, parent: @conference) do
           - if @conference.content(:submission_url).present?
             = link_to t(:'.submit_abstract'), @conference.content(:submission_url),
-                      class: %i[btn btn-sm flash-action p-3 p-sm-1]
+                      class: %i[btn btn-primary flash-action]
         - cache partable_for(:submission_date, parent: @conference) do
           %p
             = octicon('clock')
