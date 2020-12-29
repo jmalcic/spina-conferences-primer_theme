@@ -2,17 +2,17 @@
   %div{ class: dom_class(events_list), id: dom_id(events_list) }
     = render Primer::SubheadComponent.new(mt: 4) do |component|
       = component.slot(:heading) { t :'.upcoming' }
+    - events_list.structure_items.sorted_by_structure.filter { |item| item.has_content?(:start_time) && item.content(:start_time) >= Time.now }.then do |events|
+      - if events.any?
         %ul
-      = render partial: 'event', 
-               collection: events_list.structure_items.sorted_by_structure.filter { |item| item.has_content?(:start_time) && item.content(:start_time) >= Time.now }, 
-               layout: 'list_item',
-               cached: ->(event) { [event, event.structure_parts.collect(&:structure_partable)] }
+          = render partial: 'event', layout: 'list_item', cached: ->(event) { [event, event.structure_parts.collect(&:structure_partable)] },
+                   collection: events
     = render Primer::SubheadComponent.new(mt: 4) do |component|
       = component.slot(:heading) { t :'.past' }
+    - events_list.structure_items.sorted_by_structure.filter { |item| item.has_content?(:start_time) && item.content(:start_time) < Time.now }.then do |events|
+      - if events.any?
         %ul
-      = render partial: 'event', 
-               collection: events_list.structure_items.sorted_by_structure.filter { |item| item.has_content?(:start_time) && item.content(:start_time) < Time.now }, 
-               layout: 'list_item',
-               cached: ->(event) { [event, event.structure_parts.collect(&:structure_partable)] }
+          = render partial: 'event', layout: 'list_item', cached: ->(event) { [event, event.structure_parts.collect(&:structure_partable)] },
+                   collection: events
       - else
   = render Primer::BlankSlateComponent.new(title: t(:'.no_events'), icon: 'file')
