@@ -72,6 +72,10 @@
     name: 'sponsors',
     title: 'Sponsors',
     partable_type: 'Spina::Structure'
+  }, {
+    name: 'events_list',
+    title: 'Events',
+    partable_type: 'Spina::Structure'
   }]
 
   theme.layout_parts = [{
@@ -213,6 +217,30 @@
       title: 'Website',
       partable_type: 'Spina::Admin::Conferences::UrlPart'
     }]
+  }, {
+    name: 'events_list',
+    title: 'Events',
+    structure_parts: [{
+      name: 'name',
+      title: 'Name',
+      partable_type: 'Spina::Line'
+    }, {
+      name: 'start_time',
+      title: 'Time',
+      partable_type: 'Spina::Admin::Conferences::TimePart'
+    }, {
+      name: 'location',
+      title: 'Location',
+      partable_type: 'Spina::Line'
+    }, {
+      name: 'description',
+      title: 'Description',
+      partable_type: 'Spina::Text'
+    }, {
+      name: 'url',
+      title: 'Link',
+      partable_type: 'Spina::Admin::Conferences::UrlPart'
+    }]
   }]
 
   theme.view_templates = [{
@@ -234,6 +262,11 @@
     title: 'About',
     description: 'Contains information about the society',
     page_parts: %w[text constitution minutes documents partner_societies contact]
+  }, {
+    name: 'events',
+    title: 'Events',
+    description: 'Contains details of past and upcoming events',
+    page_parts: %w[text events_list]
   }, {
     name: 'show',
     title: 'Blank',
