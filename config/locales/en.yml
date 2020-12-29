@@ -82,6 +82,11 @@ en:
         download: Download
         no_file: No file uploaded.
         no_date: No date specified.
+      documents:
+        title: Documents
+        download: Download
+        no_file: No file uploaded.
+        no_name: No name.
       partner_societies:
         title: Partner societies
         no_societies: No societies added.
@@ -89,6 +94,17 @@ en:
         website: Website
         email: Email
         contact_buttons: Contact buttons
+      events:
+        no_events: No events.
+      events_list:
+        upcoming: Upcoming events
+        past: Past events
+        no_events: No events.
+      event:
+        time_and_place: "%{place}, %{time}"
+        time_tbc: Time TBC
+        location_tbc: Location TBC
+        more_info: More information
 
     conferences:
       primer_theme:

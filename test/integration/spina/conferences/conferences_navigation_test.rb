@@ -208,7 +208,7 @@ module Spina
       def assert_submission_info_for(conference, present: true)
         assert_select 'div.flash', present do
           assert_button_link conference.content(:submission_url), text: 'Submit an abstract'
-          assert_select 'p', "Submit abstracts by #{I18n.localize(conference.content(:submission_date), format: :short)}"
+          assert_select 'p', "Submit abstracts by #{I18n.localize(conference.content(:submission_date), format: :full)}"
           assert_select 'p', conference.content(:submission_text)
         end
       end
