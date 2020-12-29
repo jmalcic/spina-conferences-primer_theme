@@ -1,2 +1,11 @@
-= link_to mobile_navigation_item.menu_title, mobile_navigation_item.materialized_path,
-          class: %w[d-block py-2 border-top border-white-fade text-white]
+- if mobile_navigation_item.has_children?
+  %details.details-reset
+    %summary.btn-link.d-block.py-2.border-top.border-white-fade.text-white
+      = mobile_navigation_item.menu_title
+      = render Primer::OcticonComponent.new(icon: 'chevron-down')
+    %ul.list-style-none
+      - mobile_navigation_item.children.each do |child|
+        %li= link_to child.menu_title, child.materialized_path, class: %w[d-block py-2 pl-3 border-top border-white-fade text-white]
+- elsif mobile_navigation_item.is_root?
+  = link_to mobile_navigation_item.menu_title, mobile_navigation_item.materialized_path,
+            class: %w[d-block py-2 border-top border-white-fade text-white]
