@@ -4,7 +4,7 @@
       %summary.btn-link.Header-link
         = navigation_item.menu_title
         %span.dropdown-caret
-      %ul.dropdown-menu.dropdown-menu-se.mt-3
+      %details-menu.dropdown-menu.dropdown-menu-se.mt-3{ role: 'menu' }
         - navigation_item.children.each do |child|
           %li.d-block.py-2.border-bottom.border-black-fade
             = link_to child.menu_title, child.materialized_path, class: 'dropdown-item'
