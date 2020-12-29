@@ -94,6 +94,17 @@ en:
         website: Website
         email: Email
         contact_buttons: Contact buttons
+      events:
+        no_events: No events.
+      events_list:
+        upcoming: Upcoming events
+        past: Past events
+        no_events: No events.
+      event:
+        time_and_place: "%{place}, %{time}"
+        time_tbc: Time TBC
+        location_tbc: Location TBC
+        more_info: More information
 
     conferences:
       primer_theme:
