@@ -3,7 +3,7 @@
     %summary.btn-link.d-block.py-2.border-top.border-white-fade.text-white
       = mobile_navigation_item.menu_title
       %span.dropdown-caret
-    %ul{ style: "list-style:none;" }
+    %ul.list-style-none
       - mobile_navigation_item.children.each do |child|
         %li= link_to child.menu_title, child.materialized_path,
                       class: %w[d-block py-2 pl-3 border-top border-white-fade text-white]
