@@ -7,6 +7,6 @@
       - mobile_navigation_item.children.each do |child|
         %li= link_to child.menu_title, child.materialized_path,
                       class: %w[d-block py-2 pl-3 border-top border-white-fade text-white]
-- elsif not mobile_navigation_item.has_parent?
+- elsif navigation_item.is_root?
   = link_to mobile_navigation_item.menu_title, mobile_navigation_item.materialized_path,
             class: %w[d-block py-2 border-top border-white-fade text-white]
