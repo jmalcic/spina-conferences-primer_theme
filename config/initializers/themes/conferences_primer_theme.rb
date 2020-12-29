@@ -37,6 +37,10 @@
     title: 'Minutes',
     partable_type: 'Spina::Structure'
   }, {
+    name: 'documents',
+    title: 'Documents',
+    partable_type: 'Spina::Structure'
+  }, {
     name: 'contact',
     title: 'Contact',
     partable_type: 'Spina::Text'
@@ -67,6 +71,10 @@
   }, {
     name: 'sponsors',
     title: 'Sponsors',
+    partable_type: 'Spina::Structure'
+  }, {
+    name: 'events_list',
+    title: 'Events',
     partable_type: 'Spina::Structure'
   }]
 
@@ -109,6 +117,17 @@
       name: 'date',
       title: 'Date',
       partable_type: 'Spina::Admin::Conferences::DatePart'
+    }, {
+      name: 'attachment',
+      title: 'Attachment',
+      partable_type: 'Spina::Attachment'
+    }]
+  }, {
+    name: 'documents',
+    structure_parts: [{
+      name: 'name',
+      title: 'Name',
+      partable_type: 'Spina::Line'
     }, {
       name: 'attachment',
       title: 'Attachment',
@@ -159,6 +178,10 @@
       title: 'Name',
       partable_type: 'Spina::Line'
     }, {
+      name: 'institution',
+      title: 'Institution',
+      partable_type: 'Spina::Line'
+    }, {
       name: 'role',
       title: 'Role',
       partable_type: 'Spina::Line'
@@ -194,6 +217,30 @@
       title: 'Website',
       partable_type: 'Spina::Admin::Conferences::UrlPart'
     }]
+  }, {
+    name: 'events_list',
+    title: 'Events',
+    structure_parts: [{
+      name: 'name',
+      title: 'Name',
+      partable_type: 'Spina::Line'
+    }, {
+      name: 'start_time',
+      title: 'Time',
+      partable_type: 'Spina::Admin::Conferences::TimePart'
+    }, {
+      name: 'location',
+      title: 'Location',
+      partable_type: 'Spina::Line'
+    }, {
+      name: 'description',
+      title: 'Description',
+      partable_type: 'Spina::Text'
+    }, {
+      name: 'url',
+      title: 'Link',
+      partable_type: 'Spina::Admin::Conferences::UrlPart'
+    }]
   }]
 
   theme.view_templates = [{
@@ -214,7 +261,12 @@
     name: 'about',
     title: 'About',
     description: 'Contains information about the society',
-    page_parts: %w[text constitution minutes partner_societies contact]
+    page_parts: %w[text constitution minutes documents partner_societies contact]
+  }, {
+    name: 'events',
+    title: 'Events',
+    description: 'Contains details of past and upcoming events',
+    page_parts: %w[text events_list]
   }, {
     name: 'show',
     title: 'Blank',

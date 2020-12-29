@@ -18,7 +18,7 @@ module Spina
 
           render Primer::BreadcrumbComponent.new(mb: 4) do |component|
             current_page.ancestors.each do |ancestor|
-              component.slot(:item, href: 'ancestor.materialized_path') { ancestor.menu_title }
+              component.slot(:item, href: ancestor.materialized_path) { ancestor.menu_title }
             end
             component.slot(:item, selected: true) { current_page.menu_title }
           end
