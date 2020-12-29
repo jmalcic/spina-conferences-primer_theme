@@ -8,3 +8,5 @@
            content(:events_list)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
     - if has_content?(:events_list) && content(:events_list).structure_items.any?
       .mt-2= render partial: 'events_list', object: content(:events_list)
+    - else
+      = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
