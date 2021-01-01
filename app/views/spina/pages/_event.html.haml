@@ -4,8 +4,7 @@
       - if event.has_content?(:name)
         %h3.flex-auto= event.content(:name)
     - cache partable_for(:location, :start_time, parent: event) do
-      -# TODO: use 'format: :full' once edit-submission-flash is merged
-      %h4.flex-auto= t(:'.time_and_place', time: event.has_content?(:start_time) ? time_tag(event.content(:start_time), format: :short) : t('.time_tbc'),
+      %h4.flex-auto= t(:'.time_and_place', time: event.has_content?(:start_time) ? time_tag(event.content(:start_time), format: :ordinal_datetime_with_year) : t('.time_tbc'),
                                           place: event.has_content?(:location) ? event.content(:location) : t('.location_tbc')).try(:html_safe)
     - cache partable_for(:description, parent: event) do
       - if event.has_content?(:description)
