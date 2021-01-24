@@ -2,7 +2,20 @@
 
 require 'simplecov'
 
-SimpleCov.start 'rails'
+if ENV['CI']
+  require 'simplecov-lcov'
+
+  SimpleCov::Formatter::LcovFormatter.config do |config|
+    config.report_with_single_file = true
+  end
+
+  SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
+end
+
+SimpleCov.start 'rails' do
+  enable_coverage :branch
+  add_group 'Validators', 'app/validators'
+end
 
 require 'minitest/reporters'
 
@@ -38,38 +51,6 @@ module ActiveSupport
 
     setup { I18n.locale = I18n.default_locale }
     teardown { I18n.locale = I18n.default_locale }
-  end
-end
-
-module RemoveUploadedFiles
-  def setup
-    super
-    upload_files
-  end
-
-  def teardown
-    super
-    remove_uploaded_files
-  end
-
-  private
-
-  def upload_files
-    Spina::Image.all.each do |image|
-      unless image.file.attached?
-        file_fixture('dubrovnik.jpeg').then { |fixture| image.file.attach io: fixture.open, filename: fixture.basename }
-      end
-    end
-    Spina::Attachment.all.each do |attachment|
-      unless attachment.file.attached?
-        file_fixture('blank.pdf').then { |fixture| attachment.file.attach io: fixture.open, filename: fixture.basename }
-      end
-    end
-  end
-
-  def remove_uploaded_files
-    Spina::Image.all.each { |image| image.file.purge }
-    Spina::Attachment.all.each { |attachment| attachment.file.purge }
   end
 end
 
@@ -132,7 +113,6 @@ end
 
 module ActionDispatch
   class IntegrationTest
-    prepend RemoveUploadedFiles
     prepend CustomAssertions
   end
 end
