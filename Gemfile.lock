@@ -170,7 +170,7 @@ GEM
     minitest-rails (6.0.1)
       minitest (~> 5.10)
       railties (~> 6.0.0)
-    minitest-reporters (1.4.2)
+    minitest-reporters (1.4.3)
       ansi
       builder
       minitest (>= 5.0)
