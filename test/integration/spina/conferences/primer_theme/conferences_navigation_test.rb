@@ -12,20 +12,24 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conferences_path
             assert_response :success
-            assert_select 'ul.admin_conferences_conference' do
-              Spina::Admin::Conferences::Conference.sorted.each_with_index do |conference, index|
-                assert_select "li:nth-child(#{index + 1})" do
-                  assert_select 'ul.admin_conferences_institution' do
-                    assert_institution_logos_for conference
-                  end
-                  assert_select 'div.flex-auto' do
-                    assert_select 'h3', conference.name
-                    assert_select 'ul' do
-                      assert_select 'li:nth-child(1)', "#{I18n.localize(conference.start_date, format: :date)}–" \
-                                                     "#{I18n.localize(conference.finish_date, format: :long)}"
-                      assert_select 'li:nth-child(2)', count: conference.institutions.any? ? 1 : 0 do
-                        assert_select 'address', "#{conference.institutions.pluck(:name).to_sentence}, " \
-                                               "#{conference.institutions.pluck(:city).uniq.to_sentence}"
+            assert_select 'main' do
+              assert_select 'ul.admin_conferences_conference' do
+                Spina::Admin::Conferences::Conference.sorted.each do |conference|
+                  assert_select "li#admin_conferences_conference_#{conference.id}" do
+                    assert_select 'ul.admin_conferences_institution' do
+                      assert_institution_logos_for conference
+                    end
+                    assert_select 'div.flex-auto' do
+                      assert_select 'h3', conference.name
+                      assert_select 'ul' do
+                        assert_select 'li', text: "#{I18n.localize(conference.start_date, format: :date)}–" \
+                                                  "#{I18n.localize(conference.finish_date, format: :long)}"
+                        if conference.institutions.any?
+                          assert_select 'li > address', text: "#{conference.institutions.pluck(:name).to_sentence}, " \
+                                                              "#{conference.institutions.pluck(:city).uniq.to_sentence}"
+                        else
+                          assert_select 'li > address', false
+                        end
                       end
                     end
                   end
@@ -40,8 +44,10 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_conference_info_for conference
-            assert_conference_nav_for conference
+            assert_select 'main' do
+              assert_conference_info_for conference
+              assert_conference_nav_for conference
+            end
           end
         end
 
@@ -50,7 +56,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_conference_parts_for conference
+            assert_select 'main' do
+              assert_conference_parts_for conference
+            end
           end
         end
 
@@ -59,7 +67,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_no_conference_parts_for conference
+            assert_select 'main' do
+              assert_no_conference_parts_for conference
+            end
           end
         end
 
@@ -68,7 +78,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_no_conference_parts_for conference
+            assert_select 'main' do
+              assert_no_conference_parts_for conference
+            end
           end
         end
 
@@ -77,7 +89,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_no_submission_info_for conference
+            assert_select 'main' do
+              assert_no_submission_info_for conference
+            end
           end
         end
 
@@ -86,7 +100,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_submission_info_for conference
+            assert_select 'main' do
+              assert_submission_info_for conference
+            end
           end
         end
 
@@ -95,7 +111,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_no_submission_info_for conference
+            assert_select 'main' do
+              assert_no_submission_info_for conference
+            end
           end
         end
 
@@ -104,7 +122,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_no_submission_info_for conference
+            assert_select 'main' do
+              assert_no_submission_info_for conference
+            end
           end
         end
 
@@ -113,7 +133,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_institutions_for conference
+            assert_select 'main' do
+              assert_institutions_for conference
+            end
           end
         end
 
@@ -122,7 +144,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_no_institutions_for conference
+            assert_select 'main' do
+              assert_no_institutions_for conference
+            end
           end
         end
 
@@ -131,7 +155,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_presentations_for conference
+            assert_select 'main' do
+              assert_presentations_for conference
+            end
           end
         end
 
@@ -140,7 +166,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_no_presentations_for conference
+            assert_select 'main' do
+              assert_no_presentations_for conference
+            end
           end
         end
 
@@ -149,7 +177,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_events_for conference
+            assert_select 'main' do
+              assert_events_for conference
+            end
           end
         end
 
@@ -158,7 +188,9 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
-            assert_no_events_for conference
+            assert_select 'main' do
+              assert_no_events_for conference
+            end
           end
         end
 
@@ -167,10 +199,8 @@ module Spina
         def assert_conference_info_for(conference)
           assert_select 'div.admin_conferences_conference' do
             assert_select 'h1', conference.name
-            assert_select 'ul:not(.admin_conferences_institution)' do
-              assert_select 'li:nth-child(1)', "#{I18n.localize(conference.start_date, format: :date)}–" \
-                                             "#{I18n.localize(conference.finish_date, format: :long)}"
-            end
+            assert_select 'ul > li', text: "#{I18n.localize(conference.start_date, format: :date)}–" \
+                                          "#{I18n.localize(conference.finish_date, format: :long)}"
           end
         end
 
@@ -220,9 +250,11 @@ module Spina
         def assert_institutions_for(conference, present: true)
           assert_select 'div.admin_conferences_conference' do
             assert_select 'h1', conference.name
-            assert_select 'ul:not(.admin_conferences_institution)' do
-              assert_select 'li:nth-child(2)', count: present ? 1 : 0, text: "#{conference.institutions.pluck(:name).to_sentence}, "\
-                                                                           "#{conference.institutions.pluck(:city).uniq.to_sentence}"
+            if present
+              assert_select 'ul > li > address', text: "#{conference.institutions.pluck(:name).to_sentence}, "\
+                                             "#{conference.institutions.pluck(:city).uniq.to_sentence}"
+            else
+              assert_select 'ul > li > address', false
             end
             assert_select 'ul.admin_conferences_institution', present do
               assert_institution_logos_for conference
