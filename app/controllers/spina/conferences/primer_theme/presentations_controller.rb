@@ -36,8 +36,8 @@ module Spina
         end
 
         def set_metadata
-          @title = @presentation.present? ? @presentation.name : Admin::Conferences::Presentation.model_name.human(count: 0)
-          @description = @presentation.present? ? helpers.strip_tags(@presentation.abstract) : ''
+          @title = @presentation.name
+          @description = helpers.strip_tags(@presentation.abstract)
         end
       end
     end
