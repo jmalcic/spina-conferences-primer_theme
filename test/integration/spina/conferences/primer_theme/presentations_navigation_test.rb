@@ -13,19 +13,15 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_presentation_path(presentation)
             assert_response :success
-            assert_select 'h1', presentation.title
-            assert_select 'ul' do
-              assert_select 'li:nth-child(1)' do
-                assert_select 'address', presentation.presenters.collect(&:full_name_and_institution).to_sentence
+            assert_select 'main' do
+              assert_select 'h1', presentation.title
+              assert_select 'ul' do
+                assert_select 'li > address', presentation.presenters.collect(&:full_name_and_institution).to_sentence
+                assert_select 'li > time', I18n.localize(presentation.start_datetime, format: :short)
+                assert_select 'li > address', "#{presentation.session.room_name}, #{presentation.room.institution.name}"
               end
-              assert_select 'li:nth-child(2)' do
-                assert_select 'time', I18n.localize(presentation.start_datetime, format: :short)
-              end
-              assert_select 'li:nth-child(3)' do
-                assert_select 'address', "#{presentation.session.room_name}, #{presentation.room.institution.name}"
-              end
+              assert_markdown_component presentation.abstract
             end
-            assert_markdown_component presentation.abstract
           end
         end
 
@@ -34,8 +30,10 @@ module Spina
           in_locales :en, :'en-GB' do
             get frontend_presentation_path(presentation)
             assert_response :success
-            presentation.attachments.each do |attachment|
-              assert_button_link text: attachment.name
+            assert_select 'main' do
+              presentation.attachments.each do |attachment|
+                assert_button_link text: attachment.name
+              end
             end
           end
         end
@@ -44,7 +42,10 @@ module Spina
           presentation = spina_admin_conferences_presentations(:presentation_without_attachments)
           in_locales :en, :'en-GB' do
             get frontend_presentation_path(presentation)
-            assert_button_link false
+            assert_response :success
+            assert_select 'main' do
+              assert_button_link false
+            end
           end
         end
       end
