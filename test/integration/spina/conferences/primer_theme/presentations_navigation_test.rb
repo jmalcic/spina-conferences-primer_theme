@@ -35,7 +35,7 @@ module Spina
             get frontend_presentation_path(presentation)
             assert_response :success
             presentation.attachments.each do |attachment|
-              assert_button_link %r{/rails/active_storage/blobs/}, text: attachment.name
+              assert_button_link text: attachment.name
             end
           end
         end
@@ -44,7 +44,7 @@ module Spina
           presentation = spina_admin_conferences_presentations(:presentation_without_attachments)
           in_locales :en do
             get frontend_presentation_path(presentation)
-            assert_button_link %r{/rails/active_storage/blobs/}, false
+            assert_button_link false
           end
         end
       end

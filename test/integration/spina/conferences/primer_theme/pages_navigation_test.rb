@@ -104,7 +104,7 @@ module Spina
               assert_select 'div:nth-child(1)' do
                 assert_select 'div', 'Constitution'
                 assert_select 'div', "Uploaded #{I18n.localize(page.content(:constitution).created_at.to_date, format: :long)}"
-                assert_button_link %r{/rails/active_storage/blobs/}, text: 'Download'
+                assert_button_link text: 'Download'
               end
               assert_select 'div:nth-child(2)' do
                 assert_select 'div', 'Minutes'
@@ -118,8 +118,7 @@ module Spina
                       else
                         assert_select 'time', false
                       end
-                      assert_button_link %r{/rails/active_storage/blobs/},
-                                         text: 'Download', count: minutes_item.has_content?(:attachment) ? 1 : 0
+                      assert_button_link text: 'Download', count: minutes_item.has_content?(:attachment) ? 1 : 0
                     end
                   end
                 end

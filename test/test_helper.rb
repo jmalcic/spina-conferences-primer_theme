@@ -74,7 +74,7 @@ module CustomAssertions
   end
 
   def assert_slide(*args, &blk)
-    assert_select 'img[data-slideshow-target="slide"]:match(\'src\', ?)', %r{/rails/active_storage/representations/}, *args, &blk
+    assert_select 'img[data-slideshow-target="slide"]', *args, &blk
   end
 
   def assert_button_link(href_or_arg, *args, &blk)
