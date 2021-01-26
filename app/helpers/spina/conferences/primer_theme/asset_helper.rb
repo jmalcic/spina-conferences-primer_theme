@@ -5,14 +5,6 @@ module Spina
     module PrimerTheme
       # Helper for computing asset sources
       module AssetHelper
-        METHODS_TO_RESIZE = %i[resize_to_limit resize_to_fit resize_to_fill resize_and_pad].freeze
-        DEFAULT_FACTORS = [1, 2, 3, 4].freeze
-
-        def concat_srcset(image, **options)
-          srcset(image, **options).collect { |src_path, size| "#{src_path} #{size}" }
-                                  .join ', '
-        end
-
         def srcset(image, **options)
           return if image.blank?
 
@@ -22,11 +14,10 @@ module Spina
           variants_for image, variant_options: variant_options, factors: factors
         end
 
-        def src(image, **options)
-          main_app.url_for(image.variant(**options))
-        end
-
         private
+
+        METHODS_TO_RESIZE = %i[resize_to_limit resize_to_fit resize_to_fill resize_and_pad].freeze
+        DEFAULT_FACTORS = [1, 2, 3, 4].freeze
 
         def variants_for(image, variant_options:, factors:)
           factors.inject({}) { |srcset, factor| srcset.update(variant_url(image, variant_options, factor) => "#{factor}x") }
