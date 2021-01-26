@@ -16,3 +16,7 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 gem 'spina-admin-conferences', github: 'jmalcic/spina-admin-conferences'
+
+group 'test' do
+  gem 'rails', github: 'rails/rails', branch: 'main'
+end
