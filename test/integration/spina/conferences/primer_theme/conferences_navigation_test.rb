@@ -9,7 +9,7 @@ module Spina
         include ::Spina::Engine.routes.url_helpers
 
         test 'view conferences' do
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conferences_path
             assert_response :success
             assert_select 'ul.admin_conferences_conference' do
@@ -37,7 +37,7 @@ module Spina
 
         test 'view a conference' do
           conference = spina_admin_conferences_conferences :university_of_atlantis_2017
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_conference_info_for conference
@@ -47,7 +47,7 @@ module Spina
 
         test 'view a conference with parts' do
           conference = spina_admin_conferences_conferences :conference_with_parts
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_conference_parts_for conference
@@ -56,7 +56,7 @@ module Spina
 
         test 'view a conference without parts' do
           conference = spina_admin_conferences_conferences :conference_without_parts
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_no_conference_parts_for conference
@@ -65,7 +65,7 @@ module Spina
 
         test 'view a conference without partables' do
           conference = spina_admin_conferences_conferences :conference_without_partables
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_no_conference_parts_for conference
@@ -74,7 +74,7 @@ module Spina
 
         test 'view a conference with old submission info' do
           conference = spina_admin_conferences_conferences :conference_with_old_submission_info
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_no_submission_info_for conference
@@ -83,7 +83,7 @@ module Spina
 
         test 'view a conference with current submission info' do
           conference = spina_admin_conferences_conferences :conference_with_current_submission_info
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_submission_info_for conference
@@ -92,7 +92,7 @@ module Spina
 
         test 'view a conference without submission info' do
           conference = spina_admin_conferences_conferences :conference_without_submission_info
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_no_submission_info_for conference
@@ -101,7 +101,7 @@ module Spina
 
         test 'view a conference without submission info partables' do
           conference = spina_admin_conferences_conferences :conference_without_submission_info_partables
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_no_submission_info_for conference
@@ -110,7 +110,7 @@ module Spina
 
         test 'view a conference with institutions' do
           conference = spina_admin_conferences_conferences :conference_with_institutions
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_institutions_for conference
@@ -119,7 +119,7 @@ module Spina
 
         test 'view a conference without institutions' do
           conference = spina_admin_conferences_conferences :conference_without_institutions
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_no_institutions_for conference
@@ -128,7 +128,7 @@ module Spina
 
         test 'view a conference with presentations' do
           conference = spina_admin_conferences_conferences :conference_with_presentations
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_presentations_for conference
@@ -137,7 +137,7 @@ module Spina
 
         test 'view a conference without presentations' do
           conference = spina_admin_conferences_conferences :conference_without_presentations
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_no_presentations_for conference
@@ -146,7 +146,7 @@ module Spina
 
         test 'view a conference with events' do
           conference = spina_admin_conferences_conferences :conference_with_events
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_events_for conference
@@ -155,7 +155,7 @@ module Spina
 
         test 'view a conference without events' do
           conference = spina_admin_conferences_conferences :conference_without_events
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_conference_path(conference)
             assert_response :success
             assert_no_events_for conference

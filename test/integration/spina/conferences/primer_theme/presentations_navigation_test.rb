@@ -10,7 +10,7 @@ module Spina
 
         test 'view a presentation' do
           presentation = spina_admin_conferences_presentations(:asymmetry_and_antisymmetry)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_presentation_path(presentation)
             assert_response :success
             assert_select 'h1', presentation.title
@@ -31,7 +31,7 @@ module Spina
 
         test 'view a presentation with attachments' do
           presentation = spina_admin_conferences_presentations(:presentation_with_attachments)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_presentation_path(presentation)
             assert_response :success
             presentation.attachments.each do |attachment|
@@ -42,7 +42,7 @@ module Spina
 
         test 'view a presentation without attachments' do
           presentation = spina_admin_conferences_presentations(:presentation_without_attachments)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get frontend_presentation_path(presentation)
             assert_button_link false
           end

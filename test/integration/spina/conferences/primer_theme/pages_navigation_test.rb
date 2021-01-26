@@ -10,7 +10,7 @@ module Spina
 
         test 'visit homepage' do
           page = spina_pages(:homepage)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_slideshow do
@@ -25,7 +25,7 @@ module Spina
           latest_conference = Spina::Admin::Conferences::Conference.sorted.first
           travel_to 1.month.before(latest_conference.start_date)
           page = spina_pages(:homepage)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_slideshow do
@@ -42,7 +42,7 @@ module Spina
 
         test 'visit homepage without partables' do
           page = spina_pages(:homepage_without_partables)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_slideshow false
@@ -55,7 +55,7 @@ module Spina
 
         test 'visit empty homepage' do
           page = spina_pages(:empty_homepage)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_slideshow false
@@ -68,7 +68,7 @@ module Spina
 
         test 'visit information page' do
           page = spina_pages(:information)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_markdown_component page.content(:information)
@@ -77,7 +77,7 @@ module Spina
 
         test 'visit empty information page' do
           page = spina_pages(:empty_information)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_markdown_component false
@@ -86,7 +86,7 @@ module Spina
 
         test 'visit information page without partables' do
           page = spina_pages(:information_without_partables)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_markdown_component false
@@ -95,7 +95,7 @@ module Spina
 
         test 'visit about page' do
           page = spina_pages(:about)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_markdown_component page.content(:text)
@@ -144,7 +144,7 @@ module Spina
 
         test 'visit empty about page' do
           page = spina_pages(:empty_about)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_markdown_component false
@@ -165,7 +165,7 @@ module Spina
 
         test 'visit about page without partables' do
           page = spina_pages(:about_without_partables)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_markdown_component false
@@ -186,7 +186,7 @@ module Spina
 
         test 'visit committee page' do
           page = spina_pages(:committee)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_markdown_component page.content(:text)
@@ -217,7 +217,7 @@ module Spina
 
         test 'visit empty committee page' do
           page = spina_pages(:empty_committee)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_markdown_component false
@@ -227,7 +227,7 @@ module Spina
 
         test 'visit committee page without partables' do
           page = spina_pages(:committee_without_partables)
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get page.materialized_path
             assert_response :success
             assert_markdown_component false
@@ -236,7 +236,7 @@ module Spina
         end
 
         test 'visit blank page' do
-          in_locales :en do
+          in_locales :en, :'en-GB' do
             get spina_pages(:blank).materialized_path
             assert_response :success
             get spina_pages(:empty_blank).materialized_path
