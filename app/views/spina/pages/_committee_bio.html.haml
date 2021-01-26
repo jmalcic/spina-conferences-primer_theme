@@ -1,7 +1,7 @@
 - cache [committee_bio, committee_bio.structure_parts.collect(&:structure_partable)] do
   .d-flex.flex-column.flex-md-row.flex-items-start
     - cache partable_for(:profile_picture, parent: committee_bio) do
-      - if committee_bio.has_content?(:profile_picture) && committee_bio.content(:profile_picture).persisted?
+      - if committee_bio.has_content?(:profile_picture) && committee_bio.content(:profile_picture).persisted? && committee_bio.content(:profile_picture).file.present?
         .flex-shrink-0
           = render Primer::AvatarComponent.new(src: src(committee_bio.content(:profile_picture).file, resize_to_fill: [150, 150]),
                                                srcset: concat_srcset(committee_bio.content(:profile_picture).file,
