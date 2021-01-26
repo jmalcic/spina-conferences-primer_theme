@@ -29,7 +29,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'capybara', '~> 3.33'
   spec.add_development_dependency 'dotenv-rails', '~> 2.7'
-  spec.add_development_dependency 'minitest-rails', '~> 6.0'
   spec.add_development_dependency 'minitest-reporters', '~> 1.4'
   spec.add_development_dependency 'puma', '~> 5.0'
   spec.add_development_dependency 'rubocop', '~> 1.0'
