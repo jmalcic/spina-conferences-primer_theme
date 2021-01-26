@@ -1,6 +1,7 @@
 - if committee_bios.structure_items.any?
   %ul{ class: dom_class(committee_bios), id: dom_id(committee_bios) }
     = render partial: 'committee_bio', collection: committee_bios.structure_items.sorted_by_structure, layout: 'list_item',
+             locals: { list_item_id: ->(local_assigns) { dom_id(local_assigns[:committee_bio]) } },
              cached: ->(committee_bio) { [committee_bio, committee_bio.structure_parts.collect(&:structure_partable)] }
 - else
   = render Primer::BlankslateComponent.new(title: t(:'.no_bios'), icon: 'file')
