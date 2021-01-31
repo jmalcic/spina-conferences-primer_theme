@@ -1,7 +1,7 @@
 - if @conference.has_content?(:submission_date) && @conference.content(:submission_date) >= Date.today
   - content_for :flash do
     - cache partable_for(:submission_url, :submission_date, :submission_text, parent: @conference) do
-      = render Primer::FlashComponent.new(variant: :warning, full: true) do
+      = render Primer::FlashComponent.new(variant: :warning, full: true, classes: dom_class(@conference)) do
         - cache partable_for(:submission_url, parent: @conference) do
           - if @conference.content(:submission_url).present?
             = link_to t(:'.submit_abstract'), @conference.content(:submission_url),
