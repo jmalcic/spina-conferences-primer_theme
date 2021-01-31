@@ -55,6 +55,8 @@ jobs:
       run: sudo apt-get -yqq install libpq-dev
     - name: Set up Ruby
       uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7
     - name: Cache Bundler dependencies
       uses: actions/cache@v2
       with:
