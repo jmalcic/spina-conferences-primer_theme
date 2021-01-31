@@ -57,3 +57,16 @@ about_without_partables:
 committee_without_partables:
   name: committee
   view_template: committee
+
+page_with_ancestor:
+  name: page_with_ancestor
+  ancestry: <%= ActiveRecord::FixtureSet.identify(:blank) %>
+  view_template: information
+
+page_with_description:
+  name: page_with_description
+  view_template: blank
+
+page_without_description:
+  name: page_without_description
+  view_template: blank

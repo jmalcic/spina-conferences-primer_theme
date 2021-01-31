@@ -1,7 +1,15 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
-class Spina::Conferences::PrimerTheme::Test < ActiveSupport::TestCase
-  test "truth" do
-    assert_kind_of Module, Spina::Conferences::PrimerTheme
+module Spina
+  module Conferences
+    module PrimerTheme
+      class Test < ActiveSupport::TestCase
+        test 'truth' do
+          assert_kind_of Module, Spina::Conferences::PrimerTheme
+        end
+      end
+    end
   end
 end

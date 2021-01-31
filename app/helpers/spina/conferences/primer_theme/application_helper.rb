@@ -5,12 +5,10 @@ module Spina
     module PrimerTheme
       # Base helper
       module ApplicationHelper
+        include Spina::PagesHelper
+
         def latest_conference
           Spina::Admin::Conferences::Conference.sorted.first
-        end
-
-        def breadcrumbs(options = {}, &block)
-          render_breadcrumbs(builder: Breadcrumbs::Builder, **options, &block)
         end
 
         def ancestors
@@ -24,24 +22,6 @@ module Spina
           end
         end
 
-        def author
-          current_account.name
-        end
-
-        def description
-          current_page.present? ? current_page.description : @description # rubocop:disable Rails/HelperInstanceVariable
-        end
-
-        def title
-          # noinspection RailsI18nInspection
-          t :'.title', title: current_page.present? ? current_page.title : @title, suffix: current_account.name # rubocop:disable Rails/HelperInstanceVariable
-        end
-
-        def seo_title
-          # noinspection RailsI18nInspection
-          t :'.title', title: current_page.present? ? current_page.seo_title : @title, suffix: current_account.name # rubocop:disable Rails/HelperInstanceVariable
-        end
-
         def partable_for(*part_names, parent: current_page)
           association = case parent
                         when Spina::Page then :page_partable
@@ -50,12 +30,13 @@ module Spina
                         else :partable
                         end
           parts = parent.parts.where(name: part_names)
-          part_parents = parts.collect { |part| part.try(association) }
-          [*parts, *part_parents]
+          partables = parts.collect { |part| part.try(association) }
+          [*parts, *partables]
         end
 
         def calendar(name:, &block)
           # noinspection SpellCheckingInspection
+          block ||= proc { '' }
           Icalendar::Calendar.new.tap { |calendar| calendar.x_wr_calname = name }
                              .then(&:to_ical).then { |calendar| calendar.insert(calendar.index('END:VCALENDAR'), capture(&block)) }
         end

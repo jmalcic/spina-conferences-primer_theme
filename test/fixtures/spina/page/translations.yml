@@ -171,3 +171,22 @@ committee_without_partables:
   locale: en-GB
   translated_model: committee_without_partables
   materialized_path: /commitee-without-partables
+
+page_with_ancestor:
+  title: Page with ancestor
+  locale: en-GB
+  translated_model: page_with_ancestor
+  materialized_path: /page-with-ancestor
+
+page_with_description:
+  title: Page with description
+  description: Lorem ipsum
+  locale: en-GB
+  translated_model: page_with_description
+  materialized_path: /page-with-description
+
+page_without_description:
+  title: Page without description
+  locale: en-GB
+  translated_model: page_without_description
+  materialized_path: /page-without-description
