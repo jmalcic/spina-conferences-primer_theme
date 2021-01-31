@@ -10,6 +10,8 @@ module Spina
 
           options = options.symbolize_keys
           variant_options = options.delete(:variant)
+          return if variant_options.blank?
+
           factors = options.delete(:factors) || DEFAULT_FACTORS
           variants_for image, variant_options: variant_options, factors: factors
         end
@@ -32,7 +34,7 @@ module Spina
         end
 
         def resize_dimensions_for_key(key, factor, dimensions)
-          dimensions.collect { |dimension| resize_dimension(dimension, factor) } if METHODS_TO_RESIZE.include? key
+          METHODS_TO_RESIZE.include?(key) ? dimensions.collect { |dimension| resize_dimension(dimension, factor) } : dimensions
         end
 
         def resize_dimension(dimension = 0, factor = 0)
