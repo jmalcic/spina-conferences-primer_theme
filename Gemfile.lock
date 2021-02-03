@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: d5386cfba2ec5c80f09e37d44b87bcae9c6ab6a8
+  revision: 8f1d11027171202a78ef784459d43cb11438ca92
   branch: main
   specs:
     actioncable (6.2.0.alpha)
@@ -168,7 +168,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    i18n (1.8.7)
+    i18n (1.8.8)
       concurrent-ruby (~> 1.0)
     icalendar (2.7.0)
       ice_cube (~> 0.16)
