@@ -20,6 +20,16 @@ module Spina
           assert_response :success
         end
 
+        test 'should handle missing conference' do
+          get frontend_conference_url(Spina::Admin::Conferences::Conference.last.id + 1)
+          assert_response :missing
+        end
+
+        test 'should show conference with presentation type' do
+          get frontend_conference_url(@conference, presentation_type: @conference.presentation_types.first.id)
+          assert_response :success
+        end
+
         test 'should get index as ics' do
           get frontend_conferences_url(format: :ics)
           assert_response :success

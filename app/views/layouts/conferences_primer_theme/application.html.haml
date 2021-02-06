@@ -2,4 +2,7 @@
   - if current_page.ancestors.any?
     = ancestors
 
-= render template: 'layouts/spina/conferences/primer_theme/application'
+= render template: 'layouts/spina/conferences/primer_theme/application',
+         locals: { author: current_account.name, description: current_page.description,
+                   seo_title: t(:'.title', title: current_page.seo_title, suffix: current_account.name),
+                   title: t(:'.title', title: current_page.title, suffix: current_account.name) }

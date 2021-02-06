@@ -14,6 +14,16 @@ module Spina
           get frontend_presentation_url(@presentation)
           assert_response :success
         end
+
+        test 'should handle missing presentation' do
+          get frontend_presentation_url(Spina::Admin::Conferences::Presentation.last.id + 1)
+          assert_response :missing
+        end
+
+        test 'should show presentation with conference' do
+          get frontend_presentation_url(@presentation, conference_id: @presentation.conference.id)
+          assert_response :success
+        end
       end
     end
   end

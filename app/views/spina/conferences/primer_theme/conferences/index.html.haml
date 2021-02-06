@@ -14,6 +14,7 @@
   - if @conferences.any?
     %ul{ class: dom_class(@conferences), data: { filter: { list: true } } }
       = render partial: 'conference', collection: @conferences, layout: 'list_item',
+               locals: { list_item_id: ->(local_assigns) { dom_id(local_assigns[:conference]) } },
                cached: -> conference { [conference, conference.institutions, conference.institutions.collect(&:logo)] }
   - else
     = render Primer::BlankslateComponent.new(title: t(:'.no_conferences'), icon: 'mortar-board')

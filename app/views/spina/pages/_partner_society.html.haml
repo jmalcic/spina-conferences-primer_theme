@@ -20,7 +20,7 @@
         - if partner_society.has_content? :description
           .text-gray= render partial: 'text', object: partner_society.content(:description)
     - cache partable_for(:logo, parent: partner_society) do
-      - if partner_society.has_content?(:logo) && partner_society.content(:logo).persisted?
+      - if partner_society.has_content?(:logo) && partner_society.content(:logo).persisted? && partner_society.content(:logo).file.present?
         = image_tag(main_app.url_for(partner_society.content(:logo).file.variant(resize_to_limit: [200, 150])),
                     srcset: srcset(partner_society.content(:logo).file, variant: { resize_to_limit: [200, 150] }), size: nil,
                     alt_description: partner_society.content(:name), draggable: false, class: %w[mt-4 mt-md-0 mr-md-4])

@@ -4,22 +4,6 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-homepage_main:
-  page: homepage
-  navigation: main
-  position: 1
-
-information_main:
-  page: information
-  navigation: main
-  position: 3
-
-about_main:
-  page: about
-  navigation: main
-  position: 2
-
-about_footer:
-  page: about
-  navigation: footer
-  position: 1
+dubrovnik_photo: <%= ActiveStorage::FixtureSet.blob filename: 'dubrovnik.jpeg' %>
+rovinj_photo: <%= ActiveStorage::FixtureSet.blob filename: 'rovinj.jpeg' %>
+blank_pdf: <%= ActiveStorage::FixtureSet.blob filename: 'blank.pdf' %>
