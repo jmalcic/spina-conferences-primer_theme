@@ -18,5 +18,5 @@ gemspec
 gem 'spina-admin-conferences', github: 'jmalcic/spina-admin-conferences'
 
 group 'test' do
-  gem 'rails', github: 'rails/rails', branch: 'main'
+  gem 'rails', github: 'rails/rails', ref: 'c0f33b9'
 end
