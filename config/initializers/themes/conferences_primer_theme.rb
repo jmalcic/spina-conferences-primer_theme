@@ -81,7 +81,7 @@
   theme.layout_parts = [{
     name: 'current_conference_alert',
     title: 'Alert',
-    partable_type: 'Spina::Line'
+    partable_type: 'Spina::Text'
   }, {
     name: 'github_url',
     title: 'GitHub URL',
