@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jmalcic/spina-admin-conferences.git
-  revision: e9706561a01ca798a34b8cdd1cbe8ef5c1ae0aab
+  revision: 09616e4f19606e6790dab5d68dbcdc027347d932
   specs:
     spina-admin-conferences (1.3.7)
       icalendar (~> 2.5)
@@ -214,7 +214,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    mobility (1.0.5)
+    mobility (1.1.0)
       i18n (>= 0.6.10, < 2)
       request_store (~> 1.0)
     nio4r (2.5.5)
@@ -324,7 +324,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stimulus-rails (0.2.2)
+    stimulus-rails (0.2.3)
       rails (>= 6.0.0)
     temple (0.8.2)
     thor (1.1.0)
