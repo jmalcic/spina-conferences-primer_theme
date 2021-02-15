@@ -31,9 +31,11 @@
 
 en:
   layouts:
-    conferences_primer_theme:
-      application:
-        title: "%{title} — %{suffix}"
+    spina:
+      conferences:
+        primer_theme:
+          application:
+            title: "%{title} — %{suffix}"
 
   spina:
     show: Show
