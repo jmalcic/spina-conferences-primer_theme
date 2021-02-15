@@ -98,7 +98,7 @@ GIT
 PATH
   remote: .
   specs:
-    spina-conferences-primer_theme (0.1.12)
+    spina-conferences-primer_theme (0.1.13)
       babel-transpiler (~> 0.7)
       icalendar (~> 2.5)
       image_processing (~> 1.9)
