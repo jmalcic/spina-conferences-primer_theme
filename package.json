@@ -1,6 +1,6 @@
 {
   "name": "spina-conferences-primer-theme",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Spina::Conferences plugin theme.",
   "main": "app/assets/javascripts/spina/conferences/primer_theme/application.es6",
   "files": [
