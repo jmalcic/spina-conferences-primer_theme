@@ -16,6 +16,11 @@ module Spina
           variants_for image, variant_options: variant_options, factors: factors
         end
 
+        def srcset_string(image, **options)
+          srcset(image, **options).collect { |key, value| "#{key} #{value}" }
+                                  .join(', ')
+        end
+
         private
 
         METHODS_TO_RESIZE = %i[resize_to_limit resize_to_fit resize_to_fill resize_and_pad].freeze

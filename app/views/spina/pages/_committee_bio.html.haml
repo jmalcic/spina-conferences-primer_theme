@@ -4,8 +4,8 @@
       - if committee_bio.has_content?(:profile_picture) && committee_bio.content(:profile_picture).persisted? && committee_bio.content(:profile_picture).file.present?
         .flex-shrink-0
           = render Primer::AvatarComponent.new(src: main_app.url_for(committee_bio.content(:profile_picture).file.variant(resize_to_fill: [150, 150])),
-                                               srcset: srcset(committee_bio.content(:profile_picture).file,
-                                                              variant: { resize_to_limit: [150, 150] }),
+                                               srcset: srcset_string(committee_bio.content(:profile_picture).file,
+                                                                     variant: { resize_to_limit: [150, 150] }),
                                                draggable: false, alt: committee_bio.content(:name), size: 150, mr: [nil, nil, 3, nil],
                                                mb: [3, nil, 0, nil])
     .flex-auto
