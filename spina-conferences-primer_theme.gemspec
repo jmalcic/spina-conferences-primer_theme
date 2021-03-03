@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'babel-transpiler', '~> 0.7'
   spec.add_dependency 'icalendar', '~> 2.5'
   spec.add_dependency 'image_processing', '~> 1.9'
-  spec.add_dependency 'primer_view_components', '0.0.20'
+  spec.add_dependency 'primer_view_components', '0.0.25'
   spec.add_dependency 'rails', '~> 6.0'
   spec.add_dependency 'spina', '~> 1.1'
   spec.add_dependency 'spina-admin-conferences', '~> 1.3.3'
