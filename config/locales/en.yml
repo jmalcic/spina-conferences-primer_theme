@@ -43,7 +43,6 @@ en:
     application:
       cookies:
         title: About cookies
-        purpose: We use cookies for security, functionality, and analytics purposes.
       footer:
         copyright: © %{name} %{year}
         find_on_github: Find us on GitHub
