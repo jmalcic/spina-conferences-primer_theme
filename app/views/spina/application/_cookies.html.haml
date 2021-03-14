@@ -1,7 +1,7 @@
 = render Primer::BorderBoxComponent.new(classes: 'Box--overlay') do |component|
-  = component.slot :header do
+  - component.header do
     = button_tag(data: { 'close-dialog': true }, aria: { label: t(:'spina.close') }, type: 'button',
                  class: %w[Box-btn-octicon btn-octicon float-right]) do
       = render Primer::OcticonComponent.new(icon: 'x')
     .Box-title= t(:'.title')
-  = component.slot(:body) { t(:'.purpose') }
+  = component.body { t(:'.purpose') }
