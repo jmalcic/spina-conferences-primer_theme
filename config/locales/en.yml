@@ -46,7 +46,9 @@ en:
       footer:
         copyright: © %{name} %{year}
         find_on_github: Find us on GitHub
+      footer_content:
         cookies: About cookies
+        loading: Loading…
       image_collection:
         previous: Previous
         next: Next
