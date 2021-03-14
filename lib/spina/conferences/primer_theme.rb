@@ -4,9 +4,10 @@ require 'spina'
 require 'spina/conferences/primer_theme/engine'
 require 'spina/conferences/primer_theme/breadcrumbs/builder'
 require 'spina/admin/conferences'
+require 'octicons_helper'
+require 'view_component'
 require 'primer/view_components'
 require 'icalendar'
-require 'octicons_helper'
 
 module Spina
   module Conferences
