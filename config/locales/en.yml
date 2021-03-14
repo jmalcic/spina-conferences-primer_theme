@@ -44,10 +44,6 @@ en:
       cookies:
         title: About cookies
         purpose: We use cookies for security, functionality, and analytics purposes.
-        no_advertising: We do not use Google Analytics Advertising features.
-        used:
-          rails_html: We use the %{cookie} cookie to track sessions.
-          google_analytics_html: Google Analytics sets the %{cookies} cookies for analytics purposes.
       footer:
         copyright: © %{name} %{year}
         find_on_github: Find us on GitHub

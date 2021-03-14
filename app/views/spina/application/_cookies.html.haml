@@ -5,10 +5,3 @@
       = render Primer::OcticonComponent.new(icon: 'x')
     .Box-title= t(:'.title')
   = component.slot(:body) { t(:'.purpose') }
-  = component.slot :row do
-    = t :'.used.rails_html', cookie: tag.code(Rails.application.config.session_options[:key])
-  = component.slot :row do
-    - ga_cookie_names = %w[_ga _gat _gid].collect{ |cookie| tag.code(cookie) }.to_sentence.html_safe
-    - ga_cookie_info_url = 'https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage'
-    = t :'.used.google_analytics_html', cookies: link_to(ga_cookie_names, ga_cookie_info_url)
-    = t :'.no_advertising'
