@@ -1,7 +1,7 @@
 - cache [@conference.presentations, @presentation_type, @presentation_type.presentations,
          @presentation_type.presentations.collect(&:presenters), @tab] do
-  .d-flex.flex-column.flex-lg-row
-    .col-12.col-lg-3.pr-lg-4.mb-4.mb-lg-0
+  = render Primer::FlexComponent.new(direction: [:column, nil, nil, :row], my: 4) do
+    = render Primer::FlexItemComponent.new(pr: [nil, nil, nil, 4], mb: [4, nil, nil, 0], col: [12, nil, nil, 3]) do
       %ul.filter-list
         - cache [@conference.presentations, @presentation_type] do
           %li
@@ -11,12 +11,12 @@
               %span.count{ title: t(:'.results') }= @conference.presentations.count
         = render partial: 'presentation_type', collection: @conference.presentation_types.sorted,
                  cached: -> presentation_type { [presentation_type, @presentation_type] }
-    .flex-auto.col-12.col-lg-8
       - if @presentation_type.presentations.any?
-        %filter-input.d-flex.flex-sm-justify-start{ aria: { owns: 'presentation_list' } }
+    = render Primer::FlexItemComponent.new(col: [12, nil, nil, 9]) do
+        %filter-input{ aria: { owns: 'presentation_list' } }
           .subnav.subnav-flush
-            .subnav-search.m-0.width-full
-              = search_field_tag 'search', nil, class: %w[form-control subnav-search-input width-full], aria: { label: t(:'.search') }
+            .subnav-search.float-left.ml-0
+              = search_field_tag 'search', nil, class: %w[form-control subnav-search-input], aria: { label: t(:'.search') }
               = octicon 'search', class: 'subnav-search-icon'
       %div{ id: 'presentation_list' }
         - if @presentation_type.presentations.any?
