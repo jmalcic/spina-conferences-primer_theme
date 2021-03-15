@@ -43,15 +43,12 @@ en:
     application:
       cookies:
         title: About cookies
-        purpose: We use cookies for security, functionality, and analytics purposes.
-        no_advertising: We do not use Google Analytics Advertising features.
-        used:
-          rails_html: We use the %{cookie} cookie to track sessions.
-          google_analytics_html: Google Analytics sets the %{cookies} cookies for analytics purposes.
       footer:
         copyright: © %{name} %{year}
         find_on_github: Find us on GitHub
+      footer_content:
         cookies: About cookies
+        loading: Loading…
       image_collection:
         previous: Previous
         next: Next
@@ -84,6 +81,7 @@ en:
         no_date: No date specified.
       documents:
         title: Documents
+      document:
         download: Download
         no_file: No file uploaded.
         no_name: No name.
@@ -101,7 +99,7 @@ en:
         past: Past events
         no_events: No events.
       event:
-        time_and_place: "%{place}, %{time}"
+        time_and_place_html: "%{place}, %{time}"
         time_tbc: Time TBC
         location_tbc: Location TBC
         more_info: More information
@@ -115,18 +113,16 @@ en:
             search: Search
             no_matching_conferences: No matching conferences.
           show:
-            dates_html: "%{start_date}–%{finish_date}"
-            submit_by_html: Submit abstracts by %{date}
-            submit_abstract: Submit an abstract
             information: Information
             presentations: Presentations
             events: Events
             subscribe: Subscribe
-            locations: "%{institutions}, %{cities}"
             tabs:
               information: Information
               presentations: Presentations
               events: Events
+            no_tab: No tab.
+            tab_does_not_exist: "The tab '%{tab}' does not exist."
           presentations:
             all_presentation_types: All
             results: Results
@@ -146,6 +142,12 @@ en:
           sponsors:
             title: Sponsors
           conference:
+            dates_html: "%{start_date}–%{finish_date}"
+            locations: "%{institutions}, %{cities}"
+          submission_flash:
+            submit_by_html: Submit abstracts by %{date}
+            submit_abstract: Submit an abstract
+          header:
             dates_html: "%{start_date}–%{finish_date}"
             locations: "%{institutions}, %{cities}"
         presentations:

@@ -1,15 +1,17 @@
-.d-flex.flex-column-reverse.flex-sm-row
-  %filter-input.col-12.col-sm-8.mb-4.mb-sm-0.d-flex.flex-sm-justify-start{ aria: { owns: 'conference_list' } }
-    - if @conferences.any?
-      .subnav.subnav-flush
-        .subnav-search.m-0.width-full
-          = search_field_tag 'search', nil, class: %w[form-control subnav-search-input width-full], aria: { label: t(:'.search') }
-          = octicon 'search', class: 'subnav-search-icon'
-  .col-12.col-sm-4.mb-4.mb-sm-0.d-flex.flex-sm-justify-end
+= render Primer::FlexComponent.new(direction: [:column_reverse, nil, :row, nil]) do
+  = render Primer::FlexItemComponent.new(flex_auto: true, mb: [4, nil, 0, nil]) do
+    %filter-input{ aria: { owns: 'conference_list' } }
+      - if @conferences.any?
+        .subnav.subnav-flush
+          .subnav-search.float-left.ml-0
+            = search_field_tag 'search', nil, class: %w[form-control subnav-search-input], aria: { label: t(:'.search') }
+            = render Primer::OcticonComponent.new(icon: 'search', classes: 'subnav-search-icon')
+  = render Primer::FlexItemComponent.new(mb: [4, nil, 0, nil]) do
     = render Primer::ButtonComponent.new(tag: :a, href: frontend_conferences_url(protocol: :webcal, format: :ics), button_type: :primary,
-                                         ml: [0, 6, nil, nil]) do
+                                         ml: [0, nil, 6, nil]) do
       = render Primer::OcticonComponent.new(icon: 'calendar')
       = t(:'.subscribe')
+
 %div{ id: 'conference_list' }
   - if @conferences.any?
     %ul{ class: dom_class(@conferences), data: { filter: { list: true } } }

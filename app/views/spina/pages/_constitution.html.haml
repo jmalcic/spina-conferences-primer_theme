@@ -1,11 +1,12 @@
 = render Primer::SubheadComponent.new do |component|
-  = component.slot(:heading) { t :'.title' }
+  = component.heading { t :'.title' }
 
 - if constitution.present?
-  .py-1.d-flex.flex-items-center
-    .flex-auto.pr-1= t :'.uploaded', date: l(constitution.created_at.to_date, format: :long)
+  = render Primer::FlexComponent.new(align_items: :center, py: 1) do
+    = render Primer::FlexItemComponent.new(flex_auto: true, pr: 1) do
+      = t :'.uploaded', date: l(constitution.created_at.to_date, format: :long)
     = render Primer::ButtonComponent.new(tag: :a, href: main_app.rails_blob_path(constitution, disposition: :attachment), ml: 2) do
       = render Primer::OcticonComponent.new(icon: 'desktop-download')
-      = t(:'.download')
+      = t :'.download'
 - else
   = render Primer::BlankslateComponent.new(title: t(:'.no_constitution'), icon: 'law')

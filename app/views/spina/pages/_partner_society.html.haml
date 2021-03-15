@@ -1,24 +1,26 @@
 - cache [partner_society, partner_society.structure_parts.collect(&:structure_partable)] do
-  .d-flex.flex-column.flex-md-row-reverse.flex-items-start
-    .flex-auto
-      %h3.d-flex.flex-wrap.mb-1
-        - cache partable_for(:name, parent: partner_society) do
-          - if partner_society.has_content? :name
-            .flex-auto= partner_society.content(:name)
-        .BtnGroup.mt-1.mt-sm-0{ aria: { label: t(:'.contact_buttons') } }
-          - cache partable_for(:website, parent: partner_society) do
-            - if partner_society.has_content? :website
-              = render Primer::ButtonComponent.new(tag: :a, href: partner_society.content(:website), group_item: true) do
-                = render Primer::OcticonComponent.new(icon: 'browser')
-                = t(:'.website')
-          - cache partable_for(:email_address, parent: partner_society) do
-            - if partner_society.has_content? :email_address
-              = render Primer::ButtonComponent.new(tag: :a, href: "mailto:#{partner_society.content(:email_address)}", group_item: true) do
-                = render Primer::OcticonComponent.new(icon: 'mail')
-                = t(:'.email')
+  = render Primer::FlexComponent.new(direction: [:column, nil, :row_reverse, nil], align_items: :start) do
+    = render Primer::BaseComponent.new(tag: :div, flex: :auto) do
+      = render Primer::HeadingComponent.new(tag: :h3, mb: 1) do
+        = render Primer::FlexComponent.new(flex_wrap: true, justify_content: :space_between) do
+          - cache partable_for(:name, parent: partner_society) do
+            - if partner_society.has_content? :name
+              = render(Primer::TextComponent.new(tag: :div)) { partner_society.content(:name) }
+          = render Primer::ButtonGroupComponent.new(aria: { label: t(:'.contact_buttons') }) do |component|
+            - cache partable_for(:website, parent: partner_society) do
+              - if partner_society.has_content? :website
+                = component.button(tag: :a, href: partner_society.content(:website)) do
+                  = render Primer::OcticonComponent.new(icon: 'browser')
+                  = t(:'.website')
+            - cache partable_for(:email_address, parent: partner_society) do
+              - if partner_society.has_content? :email_address
+                = component.button(tag: :a, href: "mailto:#{partner_society.content(:email_address)}") do
+                  = render Primer::OcticonComponent.new(icon: 'mail')
+                  = t(:'.email')
       - cache partable_for(:description, parent: partner_society) do
         - if partner_society.has_content? :description
-          .text-gray= render partial: 'text', object: partner_society.content(:description)
+          = render Primer::MarkdownComponent.new(color: :gray) do
+            = partner_society.content(:description).try(:html_safe)
     - cache partable_for(:logo, parent: partner_society) do
       - if partner_society.has_content?(:logo) && partner_society.content(:logo).persisted? && partner_society.content(:logo).file.present?
         = image_tag(main_app.url_for(partner_society.content(:logo).file.variant(resize_to_limit: [200, 150])),

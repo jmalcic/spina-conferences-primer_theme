@@ -1,4 +1,5 @@
 - cache [attachments, attachments.collect(&:attachment)] do
   - if attachments.any?
-    .BtnGroup.mt-1
-      = render partial: 'attachment', collection: attachments, cached: -> attachment { [attachment, attachment.attachment] }
+    = render Primer::ButtonGroupComponent.new(mt: 1) do |component|
+      = render partial: 'attachment', collection: attachments, cached: -> attachment { [attachment, attachment.attachment] },
+               locals: { component: component }

@@ -1,6 +1,6 @@
 %div{ class: dom_class(events_list), id: dom_id(events_list) }
   = render Primer::SubheadComponent.new(mt: 4) do |component|
-    = component.slot(:heading) { t :'.upcoming' }
+    = component.heading { t :'.upcoming' }
   - events_list.structure_items.sorted_by_structure.filter { |item| item.has_content?(:start_time) && item.content(:start_time) >= Time.now }.then do |events|
     - if events.any?
       %ul
@@ -9,7 +9,7 @@
     - else
       = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
   = render Primer::SubheadComponent.new(mt: 4) do |component|
-    = component.slot(:heading) { t :'.past' }
+    = component.heading { t :'.past' }
   - events_list.structure_items.sorted_by_structure.filter { |item| item.has_content?(:start_time) && item.content(:start_time) < Time.now }.then do |events|
     - if events.any?
       %ul

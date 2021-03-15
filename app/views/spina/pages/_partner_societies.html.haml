@@ -1,5 +1,5 @@
 = render Primer::SubheadComponent.new do |component|
-  = component.slot(:heading) { t :'.title' }
+  = component.heading { t :'.title' }
 
 - if partner_societies.structure_items.any?
   %ul{ class: dom_class(partner_societies), id: dom_id(partner_societies) }

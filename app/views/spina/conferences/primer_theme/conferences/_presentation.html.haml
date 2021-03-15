@@ -1,13 +1,15 @@
-.d-flex.flex-column.flex-sm-row
-  .flex-shrink-0.mr-sm-3.mb-3.mb-sm-0.col-sm-3
-    %span.f3-light.mb-1
-      = octicon 'clock', class: 'v-align-baseline'
+= render Primer::FlexComponent.new(direction: [:column, nil, :row, nil]) do
+  = render Primer::BaseComponent.new(tag: :div, flex_shrink: 0, mr: [nil, nil, 3, nil], mb: [3, nil, 0, nil], col: [nil, nil, 3, nil]) do
+    = render Primer::TextComponent.new(tag: :div, font_size: 3, font_weight: :light, mb: 1) do
+      = render Primer::OcticonComponent.new(icon: 'clock', vertical_align: :baseline)
       = time_tag presentation.start_datetime, format: :short
-    .text-gray
-      = octicon 'location'
-      %address.d-inline= presentation.session.room_name
-  .flex-auto
-    %h3.mb-1= link_to presentation.title, frontend_conference_presentation_path(conference, presentation)
-    .text-gray
-      = octicon presentation.presenters.many? ? 'people' : 'person'
-      %address.d-inline= presentation.presenters.collect(&:full_name_and_institution).to_sentence
+    = render Primer::TextComponent.new(tag: :div, color: :gray) do
+      = render Primer::OcticonComponent.new(icon: 'location')
+      = render(Primer::BaseComponent.new(tag: :address, display: :inline)) { presentation.session.room_name }
+  = render Primer::BaseComponent.new(tag: :div, flex: :auto) do
+    = render Primer::HeadingComponent.new(tag: :h3, mb: 1) do
+      = render(Primer::LinkComponent.new(href: frontend_conference_presentation_path(conference, presentation))) { presentation.title }
+    = render Primer::TextComponent.new(tag: :div, color: :gray) do
+      = render Primer::OcticonComponent.new(icon: presentation.presenters.many? ? 'people' : 'person')
+      = render Primer::BaseComponent.new(tag: :address, display: :inline) do
+        = presentation.presenters.collect(&:full_name_and_institution).to_sentence

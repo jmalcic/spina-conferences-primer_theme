@@ -22,9 +22,9 @@ module Spina
           def render_element(component, element)
             url = compute_path(element)
             if @context.current_page? url
-              component.slot(:item, selected: true, **element.options) { compute_name(element) }
+              component.item(selected: true, **element.options) { compute_name(element) }
             else
-              component.slot(:item, href: compute_path(element), **element.options) { compute_name(element) }
+              component.item(href: compute_path(element), **element.options) { compute_name(element) }
             end
           end
         end
