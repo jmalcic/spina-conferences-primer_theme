@@ -6,7 +6,8 @@
     - cache partable_for(:attachment, parent: minutes_entry) do
       - if minutes_entry.has_content?(:attachment) && minutes_entry.content(:attachment).persisted?
         = render Primer::ButtonComponent.new(tag: :a, ml: 2,
-                                             href: main_app.rails_blob_path(minutes_entry.content(:attachment), disposition: :attachment)) do
+                                             href: main_app.rails_blob_path(minutes_entry.content(:attachment),
+                                                                            disposition: :attachment)) do
           = render Primer::OcticonComponent.new(icon: 'desktop-download')
           = t(:'.download')
       - else
