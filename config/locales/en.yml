@@ -113,14 +113,10 @@ en:
             search: Search
             no_matching_conferences: No matching conferences.
           show:
-            dates_html: "%{start_date}–%{finish_date}"
-            submit_by_html: Submit abstracts by %{date}
-            submit_abstract: Submit an abstract
             information: Information
             presentations: Presentations
             events: Events
             subscribe: Subscribe
-            locations: "%{institutions}, %{cities}"
             tabs:
               information: Information
               presentations: Presentations
@@ -144,6 +140,12 @@ en:
           sponsors:
             title: Sponsors
           conference:
+            dates_html: "%{start_date}–%{finish_date}"
+            locations: "%{institutions}, %{cities}"
+          submission_flash:
+            submit_by_html: Submit abstracts by %{date}
+            submit_abstract: Submit an abstract
+          header:
             dates_html: "%{start_date}–%{finish_date}"
             locations: "%{institutions}, %{cities}"
         presentations:
