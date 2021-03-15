@@ -153,7 +153,7 @@ module Spina
         test 'view a conference with presentations' do
           conference = spina_admin_conferences_conferences :conference_with_presentations
           in_locales :en, :'en-GB' do
-            get frontend_conference_path(conference)
+            get frontend_conference_path(conference, tab: 'presentations')
             assert_response :success
             assert_select 'main' do
               assert_presentations_for conference
@@ -175,7 +175,7 @@ module Spina
         test 'view a conference with events' do
           conference = spina_admin_conferences_conferences :conference_with_events
           in_locales :en, :'en-GB' do
-            get frontend_conference_path(conference)
+            get frontend_conference_path(conference, tab: 'events')
             assert_response :success
             assert_select 'main' do
               assert_events_for conference
@@ -205,10 +205,12 @@ module Spina
         end
 
         def assert_conference_nav_for(conference)
-          assert_select 'button', 'Information'
-          assert_select 'button', 'Presentations'
-          assert_select 'button', 'Events'
-          assert_button_link frontend_conference_url(conference, protocol: :webcal, format: :ics), 'Subscribe'
+          assert_select '#conference_tabs' do
+            assert_select 'a', 'Information'
+            assert_select 'a', 'Presentations'
+            assert_select 'a', 'Events'
+            assert_button_link frontend_conference_url(conference, protocol: :webcal, format: :ics), 'Subscribe'
+          end
         end
 
         def assert_conference_parts_for(conference, present: true)
@@ -221,12 +223,12 @@ module Spina
         end
 
         def assert_sponsors_for(conference, present: true)
-          assert_select 'ul.structure', present do
-            assert_select 'li img', count: conference.content(:sponsors).structure_items.joins(:structure_parts)
+          assert_select 'div.structure', present do
+            assert_select 'a img', count: conference.content(:sponsors).structure_items.joins(:structure_parts)
                                                      .where(spina_structure_parts: { name: 'logo', structure_partable_id: nil }).count
             conference.content(:sponsors).structure_items.joins(:structure_parts)
                       .where.not(spina_structure_parts: { name: 'logo', structure_partable_id: nil }).each do |sponsor|
-              assert_select 'li', sponsor.content(:name)
+              assert_select 'a', sponsor.content(:name)
             end
           end
         end
@@ -238,8 +240,8 @@ module Spina
         def assert_submission_info_for(conference, present: true)
           assert_select 'div.flash.flash-warn.admin_conferences_conference', present do
             assert_button_link conference.content(:submission_url), text: 'Submit an abstract'
-            assert_select 'p', "Submit abstracts by #{I18n.localize(conference.content(:submission_date), format: :full)}"
-            assert_select 'p', conference.content(:submission_text)
+            assert_select 'div', "Submit abstracts by #{I18n.localize(conference.content(:submission_date), format: :full)}"
+            assert_select 'div', conference.content(:submission_text)
           end
         end
 
@@ -277,7 +279,7 @@ module Spina
           assert_select 'ul.admin_conferences_presentation', present do
             assert_select 'li' do
               conference.presentations.each do |presentation|
-                assert_select 'span', I18n.localize(presentation.start_datetime, format: :short)
+                assert_select 'div', I18n.localize(presentation.start_datetime, format: :short)
                 assert_select 'address', presentation.session.room_name
                 assert_select 'h3', presentation.title
                 assert_select 'address', presentation.presenters.collect(&:full_name_and_institution).to_sentence
@@ -294,7 +296,7 @@ module Spina
           assert_select 'ul.admin_conferences_event', present do
             assert_select 'li' do
               conference.events.each do |event|
-                assert_select 'span', "#{I18n.localize(event.start_time, format: :short)}–#{I18n.localize(event.finish_time, format: :time)}"
+                assert_select 'div', "#{I18n.localize(event.start_time, format: :short)}–#{I18n.localize(event.finish_time, format: :time)}"
                 assert_select 'address', event.location
                 assert_select 'h3', event.name
                 assert_select 'div', event.description.try(:html_safe)
