@@ -7,7 +7,7 @@
                   srcset: srcset(image.file, variant: { resize_to_fill: [1680, 600] }), hidden: index != 0,
                   data: { 'slideshow-target': 'slide' }, class: %w[d-block mx-auto])
   .position-absolute.top-0.left-0.right-0.bottom-0.container-lg.p-responsive{ class: ('position-absolute top-0' if local_assigns[:controls]) }
-    - if local_assigns[:controls]
+    - if local_assigns[:controls] && image_collection.images.many?
       .d-none.d-sm-flex.flex-justify-between.flex-items-center.height-full
         = render Primer::ButtonComponent.new(data: { action: :'slideshow#previous' }) do
           = render Primer::OcticonComponent.new(icon: 'arrow-left')
