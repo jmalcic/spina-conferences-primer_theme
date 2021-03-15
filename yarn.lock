@@ -123,10 +123,10 @@
   resolved "https://registry.yarnpkg.com/@github/filter-input-element/-/filter-input-element-0.1.1.tgz#9b8caff8fa35e037b6f270795b5bae1d6d34a631"
   integrity sha512-YTAF9gmLfdYvK+BaVOYBwawtdchxgov9ZmLJ3HCyZ7ALyCKEbHhNRRX7GD3KsoPWUedxiH0X3v/loB2njLbjwg==
 
-"@github/include-fragment-element@^5.1.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@github/include-fragment-element/-/include-fragment-element-5.2.0.tgz#46397245ee779e010d6abe027cc44e9cffeefb40"
-  integrity sha512-a+tXHC4cZmRO15GsmslHvLQzq2xBEj7uOaP7Tqd9nVyQDipipfHjZ8rbazqymHrJr9M2oa7OrmyGEnvX2uf4Jg==
+"@github/include-fragment-element@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@github/include-fragment-element/-/include-fragment-element-5.3.1.tgz#eecaa03e3b939fdf5287354bc239768552229820"
+  integrity sha512-Dq7gpmrOuDqmelI6fCUGiAGwYjxsA5br6G9oXNqKfU473aobDB9NP4WYebkpNJpHZbpKaQ8aZOipHMBEnK+iGA==
 
 "@github/tab-container-element@^3.0.7":
   version "3.1.0"
