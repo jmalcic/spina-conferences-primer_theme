@@ -5,7 +5,7 @@ module Spina
     module PrimerTheme
       # User-facing controller for conferences, serving both html and ics
       class ConferencesController < ApplicationController
-        before_action :set_conference, :set_tab, :set_presentation_type, :set_breadcrumb, only: :show
+        before_action :set_conference, :set_tab, :set_presentation_type, :set_presentations, :set_breadcrumb, only: :show
         before_action :set_metadata
 
         def index
@@ -34,13 +34,15 @@ module Spina
         end
 
         def set_presentation_type
-          @presentation_type = if params[:presentation_type].present?
-                                 @conference.presentation_types
+          if params[:presentation_type].present?
+            @presentation_type = @conference.presentation_types
                                             .includes(presentations: [session: [:room], presenters: [:institution]])
                                             .find(params[:presentation_type])
-                               else
-                                 @conference
-                               end
+          end
+        end
+
+        def set_presentations
+          @presentations = @presentation_type.present? ? @presentation_type.presentations : @conference.presentations
         end
 
         def set_breadcrumb

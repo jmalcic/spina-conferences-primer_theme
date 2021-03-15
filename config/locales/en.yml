@@ -121,6 +121,8 @@ en:
               information: Information
               presentations: Presentations
               events: Events
+            no_tab: No tab.
+            tab_does_not_exist: "The tab '%{tab}' does not exist."
           presentations:
             all_presentation_types: All
             results: Results

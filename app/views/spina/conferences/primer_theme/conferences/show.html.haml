@@ -3,27 +3,36 @@
 
 - content_for(:header) { render 'header' }
 
-  %tab-container
-    %nav.UnderlineNav
-      .container-lg.p-responsive.d-flex.flex-justify-between.flex-auto
-        .UnderlineNav-body{ role: 'tablist' }
-          = button_tag t(:'.tabs.information'), aria: { selected: (@tab == 'information').to_s }, class: 'UnderlineNav-item', role: 'tab',
-                                                type: 'button'
-          = button_tag t(:'.tabs.presentations'), aria: { selected: (@tab == 'presentations').to_s }, class: 'UnderlineNav-item',
-                                                  role: 'tab', type: 'button'
-          = button_tag t(:'.tabs.events'), aria: { selected: (@tab == 'events').to_s }, class: 'UnderlineNav-item', role: 'tab',
-                                           type: 'button'
-        .UnderlineNav-actions
-          = render Primer::ButtonComponent.new(tag: :a, href: frontend_conference_url(@conference, protocol: :webcal, format: :ics),
-                                                            button_type: :primary, variant: :small) do
-            = render Primer::OcticonComponent.new(icon: 'calendar')
-            = t(:'.subscribe')
-    .container-lg.p-responsive
+= turbo_frame_tag 'conference_tabs' do
+  = render Primer::UnderlineNavComponent.new do |component|
+    - component.body(role: 'tablist') do
+      = render Primer::LinkComponent.new(href: frontend_conference_url(@conference, tab: 'information',
+                                                                                    presentation_type: @presentation_type&.id),
+                                         aria: { selected: (@tab == 'information').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
+        = t(:'.tabs.information')
+      = render Primer::LinkComponent.new(href: frontend_conference_url(@conference, tab: 'presentations',
+                                                                                    presentation_type: @presentation_type&.id),
+                                         aria: { selected: (@tab == 'presentations').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
+        = t(:'.tabs.presentations')
+      = render Primer::LinkComponent.new(href: frontend_conference_url(@conference, tab: 'events',
+                                                                                    presentation_type: @presentation_type&.id),
+                                         aria: { selected: (@tab == 'events').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
+        = t(:'.tabs.events')
+    - component.actions do
+      = render Primer::ButtonComponent.new(tag: :a, href: frontend_conference_url(@conference, protocol: :webcal, format: :ics),
+                                           button_type: :primary, variant: :small) do
+        = render Primer::OcticonComponent.new(icon: 'calendar')
+        = t(:'.subscribe')
+  - case @tab
+    - when 'information'
       - cache [partable_for(:text, parent: @conference), @tab] do
-        = render partial: 'information', layout: 'tab',
-                 locals: { text: (@conference.content(:text) if @conference.has_content? :text), hidden: @tab != 'information' }
-      - cache [@conference.presentations, @presentation_type, @presentation_type.presentations,
-               @presentation_type.presentations.collect(&:presenters), @tab] do
-        = render partial: 'presentations', layout: 'tab', locals: { hidden: @tab != 'presentations' }
+        = render partial: 'information', locals: { text: (@conference.content(:text) if @conference.has_content? :text) }
+    - when 'presentations'
+      - cache [@conference.presentations, @presentation_type, @presentations, @presentations.collect(&:presenters), @tab] do
+        = render partial: 'presentations'
+    - when 'events'
       - cache [@conference.events, @tab] do
-        = render partial: 'events', layout: 'tab', locals: { events: @conference.events, hidden: @tab != 'events' }
+        = render partial: 'events', locals: { events: @conference.events }
+    - else
+      = render Primer::BlankslateComponent.new(title: t('.no_tab'), description: t('.tab_does_not_exist', tab: @tab), icon: 'x-circle',
+                                               my: 4)
