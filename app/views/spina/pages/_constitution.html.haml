@@ -1,5 +1,5 @@
 = render Primer::SubheadComponent.new do |component|
-  = component.slot(:heading) { t :'.title' }
+  = component.heading { t :'.title' }
 
 - if constitution.present?
   .py-1.d-flex.flex-items-center
