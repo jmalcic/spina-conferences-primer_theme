@@ -1,6 +1,6 @@
 - if documents.present? && documents.structure_items.any?
   = render Primer::SubheadComponent.new do |component|
-    = component.slot(:heading) { t :'.title' }
+    = component.heading { t :'.title' }
 
   %ul{ class: dom_class(documents), id: dom_id(documents) }
     = render partial: 'document', collection: documents.structure_items.sorted_by_structure,
