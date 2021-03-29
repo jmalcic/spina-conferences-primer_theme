@@ -133,12 +133,13 @@
   resolved "https://registry.yarnpkg.com/@github/tab-container-element/-/tab-container-element-3.1.0.tgz#1725966b33d3ee7390cc7e7d313b50581fdbc6dd"
   integrity sha512-C/HmAxRieqQK1MR58cT3M+GuuuqGIZdCzWd8UiOayLixpnOMSkiWDrGVJe1LpFWWOHKAcwA0LGilcIb+SJ5ZWw==
 
-"@primer/css@^15.0.0":
-  version "15.2.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-15.2.0.tgz#ddf9651a9db2b9be03e7dfccfa612284ba1325ae"
-  integrity sha512-/vNDchWrxlXqd6E+SWQcChPHJVzGia9aCaTYoz8O9sJTnUSiTKOgSNCQuOXyUInPruTRSqj+z3MZxayKcTsWhA==
+"@primer/css@^16.0.2":
+  version "16.0.2"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-16.0.2.tgz#f59060f160bf284927c8452f1cc03374e5d89812"
+  integrity sha512-9QOrsWf31RiMnVWgkY7DA30pk6L6KKZJNoeU5CaxJQMPgf9IH48oTBpCAbFc1377x/DwA7pLxLIf+5tQbpdneQ==
   dependencies:
     "@primer/octicons" "^9.1.1"
+    "@primer/primitives" "^4.0.1"
 
 "@primer/octicons@^12.1.0":
   version "12.1.0"
@@ -153,6 +154,11 @@
   integrity sha512-B5Wzk5izRXXz0JqEXJkVUtqhCXSpUKgqYkVwegMkp5sziBW+ksd9LPbONlCWyyLODwf9GsI2sBXekR7m+JJDBw==
   dependencies:
     object-assign "^4.1.1"
+
+"@primer/primitives@^4.0.1":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-4.1.0.tgz#33d83b38e2021f294f446c41bca65f5d7ffd898a"
+  integrity sha512-bACUj3Xl2z5dnYKE/76BpNqN4/JXFngf26dbb7Goph2PU5wcf+Z2Kk3nXwtJPGG8JByO+FcU3gpZjLNoyuLMHQ==
 
 "@stimulus/core@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/core.tar.gz":
   version "1.1.1"
