@@ -8,7 +8,7 @@
       = render(Primer::BaseComponent.new(tag: :address, display: :inline)) { presentation.session.room_name }
   = render Primer::BaseComponent.new(tag: :div, flex: :auto) do
     = render Primer::HeadingComponent.new(tag: :h3, mb: 1) do
-      = render(Primer::LinkComponent.new(href: frontend_conference_presentation_path(conference, presentation))) { presentation.title }
+      = render(Primer::LinkComponent.new(href: frontend_conference_presentation_path(conference, presentation), data: { turbo_frame: '_top' })) { presentation.title }
     = render Primer::TextComponent.new(tag: :div, color: :gray) do
       = render Primer::OcticonComponent.new(icon: presentation.presenters.many? ? 'people' : 'person')
       = render Primer::BaseComponent.new(tag: :address, display: :inline) do
