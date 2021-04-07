@@ -128,10 +128,10 @@
   resolved "https://registry.yarnpkg.com/@github/include-fragment-element/-/include-fragment-element-5.3.1.tgz#eecaa03e3b939fdf5287354bc239768552229820"
   integrity sha512-Dq7gpmrOuDqmelI6fCUGiAGwYjxsA5br6G9oXNqKfU473aobDB9NP4WYebkpNJpHZbpKaQ8aZOipHMBEnK+iGA==
 
-"@github/tab-container-element@^3.0.7":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@github/tab-container-element/-/tab-container-element-3.1.0.tgz#1725966b33d3ee7390cc7e7d313b50581fdbc6dd"
-  integrity sha512-C/HmAxRieqQK1MR58cT3M+GuuuqGIZdCzWd8UiOayLixpnOMSkiWDrGVJe1LpFWWOHKAcwA0LGilcIb+SJ5ZWw==
+"@github/tab-container-element@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@github/tab-container-element/-/tab-container-element-3.1.2.tgz#fa5162acb1693f37c28b4a9c3dd8f09d7d20021d"
+  integrity sha512-tsM5fva0e+tdNRDCZ8Co2Z5MNzJQa/41rFYt4dMgabTU+ljTg58mY2Px9Zc9mC9UCXSC/cyrfcs1Vz51/Q14NQ==
 
 "@primer/css@^15.0.0":
   version "15.2.0"
