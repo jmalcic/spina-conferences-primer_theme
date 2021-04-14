@@ -94,12 +94,20 @@ module CustomAssertions
     assert_select 'div.markdown-body', *args, &blk
   end
 
+  def assert_no_markdown_component(*args, &blk)
+    assert_select 'div.markdown-body', false, *args, &blk
+  end
+
   def assert_slideshow(*args, &blk)
     assert_select '[data-controller="slideshow"]', *args, &blk
   end
 
+  def assert_no_slideshow(*args, &blk)
+    assert_select '[data-controller="slideshow"]', false, *args, &blk
+  end
+
   def assert_slide(*args, &blk)
-    assert_select 'img[data-slideshow-target="slide"]', *args, &blk
+    assert_select '[data-slideshow-target="slide"]', *args, &blk
   end
 
   def assert_button_link(href_or_arg, *args, &blk)
@@ -121,17 +129,6 @@ module CustomAssertions
       assert_select 'a', *args, &blk
     else
       assert_select 'a', href_or_arg, *args, &blk
-    end
-  end
-
-  def assert_structure(structure_or_arg, *args, &blk)
-    case structure_or_arg
-    when Spina::Structure
-      assert_select 'ul.structure:match(\'id\', ?)', ActionView::RecordIdentifier.dom_id(structure_or_arg), *args, &blk
-    when NilClass
-      assert_select 'ul.structure', *args, &blk
-    else
-      assert_select 'ul.structure', structure_or_arg, *args, &blk
     end
   end
 end

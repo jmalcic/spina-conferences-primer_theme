@@ -1,9 +1,0 @@
-= render Primer::SubheadComponent.new do |component|
-  = component.heading { t :'.title' }
-
-- if minutes.present? && minutes.structure_items.any?
-  %ul{ class: dom_class(minutes), id: dom_id(minutes) }
-    = render partial: 'minutes_entry', collection: minutes.structure_items.sorted_by_structure,
-             cached: ->(minutes_entry) { [minutes_entry, minutes_entry.structure_parts.collect(&:structure_partable)] }
-- else
-  = render Primer::BlankslateComponent.new(title: t(:'.no_minutes'), icon: 'file')

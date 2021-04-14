@@ -1,6 +1,5 @@
 - cache current_page do
-  %h1= current_page.title
-  
-  - cache partable_for(:text) do
-    - if has_content? :text
-      .mt-4= render partial: 'text', object: content(:text)
+  = render(Primer::HeadingComponent.new) { current_page.title }
+
+  - if content(:text).present?
+    = render(Primer::MarkdownComponent.new(mt: 4)) { content.html(:text) }

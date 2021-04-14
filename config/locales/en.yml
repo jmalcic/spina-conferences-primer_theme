@@ -37,6 +37,52 @@ en:
           application:
             title: "%{title} — %{suffix}"
 
+  conferences_primer_theme:
+    pages:
+      about:
+        contact:
+          title: Contact
+        constitution:
+          title: Constitution
+          uploaded: Uploaded %{date}
+          download: Download
+          no_constitution: No constitution uploaded.
+        minutes:
+          title: Minutes
+          no_minutes: No minutes added.
+          minutes_for_html: Minutes for %{date}
+          download: Download
+          no_file: No file uploaded.
+          no_date: No date specified.
+        documents:
+          title: Documents
+          download: Download
+          no_file: No file uploaded.
+          no_name: No name.
+        partner_societies:
+          title: Partner societies
+          no_societies: No societies added.
+          website: Website
+          email: Email
+          contact_buttons: Contact buttons
+      committee:
+        no_bios: No bios added.
+        twitter: Twitter
+        facebook: Facebook
+        name_and_role: "%{name}, %{role}"
+        contact_buttons: Contact buttons
+      events:
+        no_events: No events.
+        upcoming: Upcoming events
+        past: Past events
+        time_and_place_html: "%{place}, %{time}"
+        time_tbc: Time TBC
+        location_tbc: Location TBC
+        more_info: More information
+      homepage:
+        more_info: More info
+        dates_html: "%{start_date}–%{finish_date}"
+
   spina:
     show: Show
 
@@ -52,57 +98,6 @@ en:
       image_collection:
         previous: Previous
         next: Next
-
-    pages:
-      homepage_content:
-        more_info: More info
-        dates_html: "%{start_date}–%{finish_date}"
-      committee_bios:
-        no_bios: No bios added.
-      committee_bio:
-        twitter: Twitter
-        facebook: Facebook
-        name_and_role: "%{name}, %{role}"
-        contact_buttons: Contact buttons
-      constitution:
-        title: Constitution
-        uploaded: Uploaded %{date}
-        download: Download
-        no_constitution: No constitution uploaded.
-      contact:
-        title: Contact
-      minutes:
-        title: Minutes
-        no_minutes: No minutes added.
-      minutes_entry:
-        minutes_html: Minutes for %{date}
-        download: Download
-        no_file: No file uploaded.
-        no_date: No date specified.
-      documents:
-        title: Documents
-      document:
-        download: Download
-        no_file: No file uploaded.
-        no_name: No name.
-      partner_societies:
-        title: Partner societies
-        no_societies: No societies added.
-      partner_society:
-        website: Website
-        email: Email
-        contact_buttons: Contact buttons
-      events:
-        no_events: No events.
-      events_list:
-        upcoming: Upcoming events
-        past: Past events
-        no_events: No events.
-      event:
-        time_and_place_html: "%{place}, %{time}"
-        time_tbc: Time TBC
-        location_tbc: Location TBC
-        more_info: More information
 
     conferences:
       primer_theme:
