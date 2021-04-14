@@ -3,13 +3,13 @@
     = render Primer::TextComponent.new(tag: :div, font_size: 3, font_weight: :light, mb: 1) do
       = render Primer::OcticonComponent.new(icon: 'clock', vertical_align: :baseline)
       = time_tag presentation.start_datetime, format: :short
-    = render Primer::TextComponent.new(tag: :div, color: :gray) do
+    = render Primer::TextComponent.new(tag: :div, color: :text_secondary) do
       = render Primer::OcticonComponent.new(icon: 'location')
       = render(Primer::BaseComponent.new(tag: :address, display: :inline)) { presentation.session.room_name }
   = render Primer::BaseComponent.new(tag: :div, flex: :auto) do
     = render Primer::HeadingComponent.new(tag: :h3, mb: 1) do
       = render(Primer::LinkComponent.new(href: frontend_conference_presentation_path(conference, presentation), data: { turbo_frame: '_top' })) { presentation.title }
-    = render Primer::TextComponent.new(tag: :div, color: :gray) do
+    = render Primer::TextComponent.new(tag: :div, color: :text_secondary) do
       = render Primer::OcticonComponent.new(icon: presentation.presenters.many? ? 'people' : 'person')
       = render Primer::BaseComponent.new(tag: :address, display: :inline) do
         = presentation.presenters.collect(&:full_name_and_institution).to_sentence

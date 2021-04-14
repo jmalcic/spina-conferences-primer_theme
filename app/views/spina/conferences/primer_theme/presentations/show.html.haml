@@ -1,7 +1,7 @@
 - cache [@presentation, @presentation.presenters, @presentation.attachments.collect(&:attachment)] do
   - cache [@presentation, @presentation.presenters] do
     = render(Primer::HeadingComponent.new(mb: [1, nil, 2, nil])) { @presentation.title }
-    %ul.text-gray-dark.list-style-none.d-flex.flex-column.flex-sm-row.flex-wrap
+    %ul.text-secondary-dark.list-style-none.d-flex.flex-column.flex-sm-row.flex-wrap
       %li.mr-sm-3.mb-1
         = render Primer::OcticonComponent.new(icon: @presentation.presenters.many? ? 'people' : 'person')
         = render Primer::TextComponent.new(tag: :address, display: :inline) do

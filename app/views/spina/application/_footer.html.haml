@@ -11,5 +11,5 @@
                                            display: :inline_block) do
         = render Primer::OcticonComponent.new(icon: 'mark-github')
         = t :'.find_on_github'
-  = render(Primer::TextComponent.new(tag: :small, color: :gray, mr: [nil, 2, nil, nil], font_size: 6, flex_grow: 0)) do
+  = render(Primer::TextComponent.new(tag: :small, color: :text_secondary, mr: [nil, 2, nil, nil], font_size: 6, flex_grow: 0)) do
     = t :'.copyright', name: Spina::Account.first.name, year: Date.today.year

@@ -37,6 +37,6 @@
                       = render Primer::OcticonComponent.new(icon: 'link-external')
                       = t(:'.facebook')
               - if committee_bio.content(:bio).present?
-                = render(Primer::TextComponent.new(tag: :div, color: :gray_light)) { committee_bio.content.html(:bio) }
+                = render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) { committee_bio.content.html(:bio) }
   - else
     = render Primer::BlankslateComponent.new(title: t(:'.no_bios'), icon: 'file')

@@ -41,7 +41,7 @@
                   = render Primer::OcticonComponent.new(icon: 'desktop-download')
                   = t(:'.minutes.download')
               - else
-                = render(Primer::TextComponent.new(color: :gray, font_size: 6)) { t :'.minutes.no_file' }
+                = render(Primer::TextComponent.new(color: :text_secondary, font_size: 6)) { t :'.minutes.no_file' }
       - else
         = render Primer::BlankslateComponent.new(title: t(:'.minutes.no_minutes'), icon: 'file')
 
@@ -58,7 +58,7 @@
                   = render Primer::OcticonComponent.new(icon: 'desktop-download')
                   = t :'.documents.download'
               - else
-                = render(Primer::TextComponent.new(tag: :div, font_size: 6, color: :gray)) { t :'.documents.no_file' }
+                = render(Primer::TextComponent.new(tag: :div, font_size: 6, color: :text_secondary)) { t :'.documents.no_file' }
 
   = render Primer::SubheadComponent.new do |component|
     = component.heading { t :'.partner_societies.title' }
@@ -82,7 +82,7 @@
                         = render Primer::OcticonComponent.new(icon: 'mail')
                         = t(:'.partner_societies.email')
               - if partner_society.content(:description).present?
-                = render Primer::MarkdownComponent.new(color: :gray) do
+                = render Primer::MarkdownComponent.new(color: :text_secondary) do
                   = partner_society.content(:description).try(:html_safe)
             - if partner_society.content(:logo).present?
               = partner_society.content.image_tag(:logo, { resize_to_limit: [200, 150] }, size: nil, draggable: false,

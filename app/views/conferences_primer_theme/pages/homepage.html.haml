@@ -1,10 +1,11 @@
 - content_for :hero do
   - cache [current_page, latest_conference] do
     = render Primer::BoxComponent.new(position: :relative, style: 'height: 639px') do
-      = render Primer::BoxComponent.new(position: :absolute, top: false, left: false, right: false, bottom: false, bg: :blue)
+      = render Primer::BoxComponent.new(position: :absolute, top: false, left: false, right: false, bottom: false,
+                                        style: 'background-color: var(--color-bg-backdrop)')
       - if content(:gallery).present?
         = render Primer::FlexComponent.new(position: :absolute, top: false, left: false, right: false, bottom: false, style: 'z-index: 1',
-                                           flex_direction: :column, justify_content: :center, align_items: :center, bg: :gray_dark,
+                                           flex_direction: :column, justify_content: :center, align_items: :center,
                                            data: { controller: :slideshow, slideshow_incrementer: 0, slideshow_advance: true }) do
           - content(:gallery).each_with_index do |image, index|
             = content.image_tag(image, { resize_to_limit: [1680, 1680] }, draggable: false, hidden: index != 0,

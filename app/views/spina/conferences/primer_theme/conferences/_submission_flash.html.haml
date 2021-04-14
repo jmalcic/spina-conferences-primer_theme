@@ -2,7 +2,7 @@
   = render Primer::TextComponent.new(tag: :div, display: :inline) do
     = t :'.submit_by_html', date: time_tag(@conference.content(:submission_date), format: :full)
   - if @conference.content(:submission_text).present?
-    = render(Primer::TextComponent.new(tag: :div, color: :gray, display: :inline)) { @conference.content.html(:submission_text) }
+    = render(Primer::TextComponent.new(tag: :div, color: :text_secondary, display: :inline)) { @conference.content.html(:submission_text) }
   - if @conference.content(:submission_url).present?
     - component.action do
       = render Primer::ButtonComponent.new(tag: :a, href: @conference.content.html(:submission_url), button_type: :primary,
