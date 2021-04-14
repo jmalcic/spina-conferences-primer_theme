@@ -95,9 +95,6 @@ en:
       footer_content:
         cookies: About cookies
         loading: Loading…
-      image_collection:
-        previous: Previous
-        next: Next
 
     conferences:
       primer_theme:
