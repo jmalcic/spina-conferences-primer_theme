@@ -15,7 +15,3 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
-
-group 'test' do
-  gem 'rails', github: 'rails/rails', ref: 'c0f33b9'
-end
