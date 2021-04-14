@@ -23,10 +23,10 @@
                   - else
                     = t(:'.time_and_place_html', time: t('.time_tbc'), place: event.content(:location).presence || t('.location_tbc'))
                 - if event.content(:description).present?
-                  = render(Primer::TextComponent.new(mt: 1, color: :gray_light)) { event.content.html(:description) }
+                  = render(Primer::TextComponent.new(mt: 1, color: :text_secondary)) { event.content.html(:description) }
                 - if event.content(:url).present?
                   = render Primer::ButtonComponent.new(tag: :a, href: event.content(:url), mt: 2) do
-                    = render Primer::OcticonComponent.new(icon: 'link-external')
+                    = render Primer::OcticonComponent.new('link-external')
                     = t :'.more_info'
       - else
         = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
@@ -48,10 +48,10 @@
                   - else
                     = t(:'.time_and_place_html', time: t('.time_tbc'), place: event.content(:location).presence || t('.location_tbc'))
                 - if event.content(:description).present?
-                  = render(Primer::TextComponent.new(mt: 1, color: :gray_light)) { event.content.html(:description) }
+                  = render(Primer::TextComponent.new(mt: 1, color: :text_secondary)) { event.content.html(:description) }
                 - if event.content(:url).present?
                   = render Primer::ButtonComponent.new(tag: :a, href: event.content(:url), mt: 2) do
-                    = render Primer::OcticonComponent.new(icon: 'link-external')
+                    = render Primer::OcticonComponent.new('link-external')
                     = t :'.more_info'
       - else
         = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')

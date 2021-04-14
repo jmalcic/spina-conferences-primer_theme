@@ -4,24 +4,20 @@
 - content_for(:header) { render 'header' }
 
 = turbo_frame_tag 'conference_tabs' do
-  = render Primer::UnderlineNavComponent.new do |component|
-    - component.body(role: 'tablist') do
-      = render Primer::LinkComponent.new(href: frontend_conference_url(@conference, tab: 'information',
-                                                                                    presentation_type: @presentation_type&.id),
-                                         aria: { selected: (@tab == 'information').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
-        = t(:'.tabs.information')
-      = render Primer::LinkComponent.new(href: frontend_conference_url(@conference, tab: 'presentations',
-                                                                                    presentation_type: @presentation_type&.id),
-                                         aria: { selected: (@tab == 'presentations').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
-        = t(:'.tabs.presentations')
-      = render Primer::LinkComponent.new(href: frontend_conference_url(@conference, tab: 'events',
-                                                                                    presentation_type: @presentation_type&.id),
-                                         aria: { selected: (@tab == 'events').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
-        = t(:'.tabs.events')
+  = render Primer::UnderlineNavComponent.new(label: t(:'.conference_navigationcle')) do |component|
+    - component.tab(href: frontend_conference_url(@conference, tab: 'information', presentation_type: @presentation_type&.id),
+                    aria: { selected: (@tab == 'information').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
+      = t(:'.tabs.information')
+    - component.tab(href: frontend_conference_url(@conference, tab: 'presentations', presentation_type: @presentation_type&.id),
+                    saria: { selected: (@tab == 'presentations').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
+      = t(:'.tabs.presentations')
+    - component.tab(href: frontend_conference_url(@conference, tab: 'events', presentation_type: @presentation_type&.id),
+                    aria: { selected: (@tab == 'events').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
+      = t(:'.tabs.events')
     - component.actions do
       = render Primer::ButtonComponent.new(tag: :a, href: frontend_conference_url(@conference, protocol: :webcal, format: :ics),
                                            button_type: :primary, variant: :small) do
-        = render Primer::OcticonComponent.new(icon: 'calendar')
+        = render Primer::OcticonComponent.new('calendar')
         = t(:'.subscribe')
   - case @tab
     - when 'information'

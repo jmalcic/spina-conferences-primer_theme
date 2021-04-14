@@ -30,13 +30,13 @@
                                                           aria: { label: t(:'.contact_buttons') }) do |component|
                   - if committee_bio.content(:twitter_profile).present?
                     = component.button(tag: :a, href: committee_bio.content(:twitter_profile)) do
-                      = render Primer::OcticonComponent.new(icon: 'link-external')
+                      = render Primer::OcticonComponent.new('link-external')
                       = t(:'.twitter')
                   - if committee_bio.content(:facebook_profile).present?
                     = component.button(tag: :a, href: committee_bio.content(:facebook_profile)) do
-                      = render Primer::OcticonComponent.new(icon: 'link-external')
+                      = render Primer::OcticonComponent.new('link-external')
                       = t(:'.facebook')
               - if committee_bio.content(:bio).present?
-                = render(Primer::TextComponent.new(tag: :div, color: :gray_light)) { committee_bio.content.html(:bio) }
+                = render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) { committee_bio.content.html(:bio) }
   - else
     = render Primer::BlankslateComponent.new(title: t(:'.no_bios'), icon: 'file')

@@ -6,8 +6,20 @@ module Spina
   module Conferences
     module PrimerTheme
       class ApplicationHelperTest < ActionView::TestCase
-        test 'returns latest conference' do
-          assert_equal Spina::Admin::Conferences::Conference.sorted.first, latest_conference
+        test 'returns current conference' do
+          first_conference = Spina::Admin::Conferences::Conference.order(dates: :asc).first
+          travel_to 1.month.before(first_conference.start_date) do
+            assert_equal first_conference, current_conference
+          end
+          travel_to first_conference.finish_date do
+            assert_equal first_conference, current_conference
+          end
+          travel_to(first_conference.finish_date + 1.day) do
+            assert_equal first_conference, current_conference
+          end
+          travel_to(first_conference.finish_date + 2.days) do
+            assert_not_equal first_conference, current_conference
+          end
         end
 
         test 'renders ancestors' do

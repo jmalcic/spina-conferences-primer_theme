@@ -2,6 +2,6 @@
   - component.header do
     = button_tag(data: { 'close-dialog': true }, aria: { label: t(:'spina.close') }, type: 'button',
                  class: %w[Box-btn-octicon btn-octicon float-right]) do
-      = render Primer::OcticonComponent.new(icon: 'x')
+      = render Primer::OcticonComponent.new('x')
     .Box-title= t(:'.title')
   = component.body { }

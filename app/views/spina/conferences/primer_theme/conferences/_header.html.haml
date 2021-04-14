@@ -1,14 +1,14 @@
 - cache [@conference, @conference.institutions] do
   .container-lg.p-responsive.mb-4
     = render(Primer::HeadingComponent.new( mb: [1, nil, 2, nil])) { @conference.name }
-    %ul.text-gray-dark.list-style-none.d-flex.flex-column.flex-sm-row.flex-wrap
+    %ul.text-secondary.list-style-none.d-flex.flex-column.flex-sm-row.flex-wrap
       %li.mr-sm-3.mb-1
-        = render Primer::OcticonComponent.new(icon: 'calendar')
+        = render Primer::OcticonComponent.new('calendar')
         = t :'.dates_html', start_date: time_tag(@conference.start_date, format: :date), finish_date: time_tag(@conference.finish_date)
       - if @conference.institutions.any?
         - cache @conference.institutions do
           %li.mb-1
-            = render Primer::OcticonComponent.new(icon: 'location')
+            = render Primer::OcticonComponent.new('location')
             = render Primer::BaseComponent.new(tag: :address, display: :inline) do
               = t :'.locations', institutions: @conference.institutions.pluck(:name).to_sentence,
                                  cities: @conference.institutions.pluck(:city).uniq.to_sentence
@@ -39,8 +39,8 @@
         - if @conference.content(:gallery).many?
           .d-none.d-sm-flex.flex-justify-between.flex-items-center.height-full
             = render Primer::ButtonComponent.new(data: { action: :'slideshow#previous' }) do
-              = render Primer::OcticonComponent.new(icon: 'arrow-left')
+              = render Primer::OcticonComponent.new('arrow-left')
               = t(:'.gallery.previous')
             = render Primer::ButtonComponent.new(data: { action: :'slideshow#next' }) do
               = t(:'.gallery.next')
-              = render Primer::OcticonComponent.new(icon: 'arrow-right')
+              = render Primer::OcticonComponent.new('arrow-right')

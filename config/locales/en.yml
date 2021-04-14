@@ -116,6 +116,7 @@ en:
             no_tab: No tab.
             tab_does_not_exist: "The tab '%{tab}' does not exist."
             no_information: No information.
+            conference_navigation: Conference content
           presentations:
             all_presentation_types: All
             results: Results
