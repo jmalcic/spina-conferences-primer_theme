@@ -7,8 +7,9 @@ module Spina
       module ApplicationHelper
         include Spina::PagesHelper
 
-        def latest_conference
-          Spina::Admin::Conferences::Conference.sorted.first
+        # Because the upper bound is exclusive a conference is current the day after it ends
+        def current_conference
+          Spina::Admin::Conferences::Conference.order(dates: :asc).find_by('upper(dates) >= ?', Date.today)
         end
 
         def ancestors

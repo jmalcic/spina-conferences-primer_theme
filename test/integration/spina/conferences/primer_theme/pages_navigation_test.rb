@@ -24,22 +24,23 @@ module Spina
         end
 
         test 'visit homepage before conference' do
-          latest_conference = Spina::Admin::Conferences::Conference.sorted.first
-          travel_to 1.month.before(latest_conference.start_date)
+          current_conference = Spina::Admin::Conferences::Conference.order(dates: :asc).first
           page = spina_pages(:homepage)
-          in_locales :en, :'en-GB' do
-            get page.materialized_path
-            assert_response :success
-            assert_select 'main' do
-              assert_slideshow do
-                assert_slide 2
+          travel_to 1.month.before(current_conference.start_date) do
+            in_locales :en, :'en-GB' do
+              get page.materialized_path
+              assert_response :success
+              assert_select 'main' do
+                assert_slideshow do
+                  assert_slide 2
+                end
+                assert_select 'h1', current_conference.name
+                assert_select 'address', current_conference.institutions.pluck(:name).to_sentence
+                assert_select 'time', I18n.localize(current_conference.start_date, format: :day_and_month)
+                assert_select 'time', I18n.localize(current_conference.finish_date, format: :day_and_month)
+                assert_markdown_component
+                assert_link frontend_conference_path(current_conference), 'More info'
               end
-              assert_select 'h1', latest_conference.name
-              assert_select 'address', latest_conference.institutions.pluck(:name).to_sentence
-              assert_select 'time', I18n.localize(latest_conference.start_date, format: :day_and_month)
-              assert_select 'time', I18n.localize(latest_conference.finish_date, format: :day_and_month)
-              assert_markdown_component
-              assert_link frontend_conference_path(latest_conference), 'More info'
             end
           end
         end

@@ -1,5 +1,5 @@
 - content_for :hero do
-  - cache [current_page, latest_conference] do
+  - cache [current_page, current_conference] do
     = render Primer::BoxComponent.new(position: :relative, style: 'height: 639px') do
       = render Primer::BoxComponent.new(position: :absolute, top: false, left: false, right: false, bottom: false,
                                         style: 'background-color: var(--color-bg-backdrop)')
@@ -15,16 +15,16 @@
       .container-lg.p-responsive.position-relative.text-white.height-full{ style: 'z-index: 2' }
         = render Primer::BoxComponent.new(py: [3, nil, nil, 6]) do
           .text-shadow-dark
-            - if latest_conference.present? && latest_conference.finish_date >= Date.today
-              = render(Primer::HeadingComponent.new(tag: :h1, classes: 'h000-mktg lh-condensed-ultra')) { latest_conference.name }
+            - if current_conference.present?
+              = render(Primer::HeadingComponent.new(tag: :h1, classes: 'h000-mktg lh-condensed-ultra')) { current_conference.name }
               = render Primer::TextComponent.new(tag: :address, classes: 'f2-light') do
-                = latest_conference.institutions.collect(&:name).to_sentence
+                = current_conference.institutions.collect(&:name).to_sentence
               = render(Primer::TextComponent.new(tag: :time, classes: 'f2-light')) do
-                = t :'.dates_html', start_date: time_tag(latest_conference.start_date, format: :day_and_month),
-                                    finish_date: time_tag(latest_conference.finish_date, format: :day_and_month)
+                = t :'.dates_html', start_date: time_tag(current_conference.start_date, format: :day_and_month),
+                                    finish_date: time_tag(current_conference.finish_date, format: :day_and_month)
             - else
               = render(Primer::HeadingComponent.new(tag: :h1, classes: 'h000-mktg lh-condensed-ultra')) { Spina::Account.first.name }
-          - if latest_conference.present? && latest_conference.finish_date >= Date.today
-            = link_to t('.more_info'), frontend_conference_path(latest_conference),
+          - if current_conference.present? && current_conference.finish_date >= Date.today
+            = link_to t('.more_info'), frontend_conference_path(current_conference),
                       class: %w[btn-mktg btn-large-mktg btn-primary-mktg f3 mt-4]
           .text-shadow-dark= render(Primer::MarkdownComponent.new(my: 4)) { content(:text).try(:html_safe) }
