@@ -1,10 +1,10 @@
 = render Primer::FlexComponent.new(direction: [:column, nil, :row, nil]) do
   = render Primer::FlexItemComponent.new(mr: [nil, nil, 3, nil], mb: [3, nil, 0, nil], col: [nil, nil, 4, nil]) do
     = render Primer::TextComponent.new(tag: :div, font_size: 3, font_weight: :light, mb: 1) do
-      = render Primer::OcticonComponent.new(icon: 'clock', vertical_align: :baseline)
+      = render Primer::OcticonComponent.new('clock', vertical_align: :baseline)
       = t :'.times_html', start_time: time_tag(event.start_time, format: :short), finish_time: time_tag(event.finish_time, format: :time)
     = render Primer::TextComponent.new(tag: :div, color: :text_secondary) do
-      = render Primer::OcticonComponent.new(icon: 'location')
+      = render Primer::OcticonComponent.new('location')
       = render(Primer::BaseComponent.new(tag: :address, display: :inline)) { event.location }
   = render Primer::FlexItemComponent.new(flex_auto: true, col: [nil, nil, 8, nil]) do
     = render(Primer::HeadingComponent.new(tag: :h3, mb: 1)) { event.name }

@@ -5,11 +5,11 @@
         .subnav.subnav-flush
           .subnav-search.float-left.ml-0
             = search_field_tag 'search', nil, class: %w[form-control subnav-search-input], aria: { label: t(:'.search') }
-            = render Primer::OcticonComponent.new(icon: 'search', classes: 'subnav-search-icon')
+            = render Primer::OcticonComponent.new('search', classes: 'subnav-search-icon')
   = render Primer::FlexItemComponent.new(mb: [4, nil, 0, nil]) do
     = render Primer::ButtonComponent.new(tag: :a, href: frontend_conferences_url(protocol: :webcal, format: :ics), button_type: :primary,
                                          ml: [0, nil, 6, nil]) do
-      = render Primer::OcticonComponent.new(icon: 'calendar')
+      = render Primer::OcticonComponent.new('calendar')
       = t(:'.subscribe')
 
 %div{ id: 'conference_list' }

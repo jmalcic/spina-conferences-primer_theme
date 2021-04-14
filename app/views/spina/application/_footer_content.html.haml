@@ -1,6 +1,6 @@
 = render Primer::DetailsComponent.new(overlay: :dark, reset: true, mb: [2, 0, nil, nil], mr: [nil, 2, nil, nil]) do |component|
-  = component.summary(button: true, button_type: :outline, variant: :small, aria: { haspopup: 'dialog' }) do
-    = render Primer::OcticonComponent.new(icon: 'info')
+  = component.summary(button_type: :outline, variant: :small, aria: { haspopup: 'dialog' }) do
+    = render Primer::OcticonComponent.new('info')
     = t :'.cookies'
   = component.body(tag: :'details-dialog') do
     %include-fragment{ src: frontend_cookies_info_path, loading: :lazy }
@@ -8,6 +8,6 @@
         = box_component.body do
           = button_tag(data: { 'close-dialog': true }, aria: { label: t(:'spina.close') }, type: 'button',
                        class: %w[Box-btn-octicon btn-octicon m-0 position-absolute right-0 top-0]) do
-            = render Primer::OcticonComponent.new(icon: 'x')
+            = render Primer::OcticonComponent.new('x')
           = render Primer::BlankslateComponent.new(title: t('.loading')) do |blankslate_component|
             = blankslate_component.spinner(size: :large)

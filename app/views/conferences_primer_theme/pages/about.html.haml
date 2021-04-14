@@ -18,7 +18,7 @@
             = t :'.constitution.uploaded',
                 date: l(Spina::Attachment.find(content(:constitution).attachment_id).created_at.to_date, format: :long)
           = render Primer::ButtonComponent.new(tag: :a, href: content.attachment_url(:constitution), ml: 2, download: '') do
-            = render Primer::OcticonComponent.new(icon: 'desktop-download')
+            = render Primer::OcticonComponent.new('desktop-download')
             = t :'.constitution.download'
       - else
         = render Primer::BlankslateComponent.new(title: t(:'.constitution.no_constitution'), icon: 'law')
@@ -38,7 +38,7 @@
               - if minutes_entry.content(:attachment).present?
                 = render Primer::ButtonComponent.new(tag: :a, ml: 2, href: minutes_entry.content.attachment_url(:attachment),
                                                      download: '') do
-                  = render Primer::OcticonComponent.new(icon: 'desktop-download')
+                  = render Primer::OcticonComponent.new('desktop-download')
                   = t(:'.minutes.download')
               - else
                 = render(Primer::TextComponent.new(color: :text_secondary, font_size: 6)) { t :'.minutes.no_file' }
@@ -55,7 +55,7 @@
               = render(Primer::TextComponent.new(tag: :div, flex: :auto)) { document.content(:name).presence ||  t(:'.documents.no_name') }
               - if document.content(:attachment).present?
                 = render Primer::ButtonComponent.new(tag: :a, ml: 2, href: document.content.attachment_url(:attachment), download: '') do
-                  = render Primer::OcticonComponent.new(icon: 'desktop-download')
+                  = render Primer::OcticonComponent.new('desktop-download')
                   = t :'.documents.download'
               - else
                 = render(Primer::TextComponent.new(tag: :div, font_size: 6, color: :text_secondary)) { t :'.documents.no_file' }
@@ -75,11 +75,11 @@
                   = render Primer::ButtonGroupComponent.new(aria: { label: t(:'.partner_societies.contact_buttons') }) do |component|
                     - if partner_society.content(:website).present?
                       = component.button(tag: :a, href: partner_society.content(:website)) do
-                        = render Primer::OcticonComponent.new(icon: 'browser')
+                        = render Primer::OcticonComponent.new('browser')
                         = t(:'.partner_societies.website')
                     - if partner_society.content(:email_address).present?
                       = component.button(tag: :a, href: "mailto:#{partner_society.content(:email_address)}") do
-                        = render Primer::OcticonComponent.new(icon: 'mail')
+                        = render Primer::OcticonComponent.new('mail')
                         = t(:'.partner_societies.email')
               - if partner_society.content(:description).present?
                 = render Primer::MarkdownComponent.new(color: :text_secondary) do
