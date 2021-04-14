@@ -22,18 +22,6 @@ module Spina
           end
         end
 
-        def partable_for(*part_names, parent: current_page)
-          association = case parent
-                        when Spina::Page then :page_partable
-                        when Spina::StructureItem then :structure_partable
-                        when Spina::Account then :layout_partable
-                        else :partable
-                        end
-          parts = parent.parts.where(name: part_names)
-          partables = parts.collect { |part| part.try(association) }
-          [*parts, *partables]
-        end
-
         def calendar(name:, &block)
           # noinspection SpellCheckingInspection
           block ||= proc { '' }

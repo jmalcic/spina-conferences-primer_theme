@@ -1,8 +1,0 @@
-= render Primer::FlexItemComponent.new(m: 2, vertical_align: :middle) do
-  - if sponsor.has_content?(:logo) && sponsor.content(:logo).file.present?
-    = link_to sponsor.content(:website) do
-      = image_tag(main_app.url_for(sponsor.content(:logo).file.variant(resize_to_limit: [200, 60])),
-                  srcset: srcset(sponsor.content(:logo).file, variant: { resize_to_limit: [200, 60] }),
-                  alt_description: sponsor.content(:name), draggable: false)
-  - else
-    = render(Primer::LinkComponent.new(href: sponsor.content(:website) || '')) { sponsor.content(:name) }

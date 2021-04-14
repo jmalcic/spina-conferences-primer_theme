@@ -1,4 +1,4 @@
 - content_for :flash do
-  - cache partable_for(:current_conference_alert, parent: current_account) do
+  - cache current_account do
     - if current_account.has_content? :current_conference_alert
       = render(Primer::FlashComponent.new(full: true, variant: :warning)) { current_account.content(:current_conference_alert).html_safe }

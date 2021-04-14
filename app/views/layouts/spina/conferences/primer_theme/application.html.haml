@@ -1,5 +1,5 @@
 !!!
-%html.height-full{ lang: I18n.locale }
+%html{ lang: I18n.locale }
   %head
     %meta{ charset: 'utf-8' }
     %meta{ name: 'author', content: author }
@@ -18,21 +18,22 @@
     = javascript_include_tag 'turbo', type: 'module'
     %script{ type: 'module', src: asset_path('@github/details-dialog-element/dist/index.js') }
     %script{ type: 'module', src: asset_path('@github/include-fragment-element/dist/index.js') }
-    %script{ type: 'module', src: asset_path('@github/tab-container-element/dist/index.js') }
     %script{ type: 'module', src: asset_path('@github/filter-input-element/dist/index.js') }
     %script{ type: 'module', src: asset_path('@github/details-menu-element/dist/index.js') }
     = yield :head
   %body
-    .admin= render 'spina/shared/admin_bar'
+    - if current_spina_user.present?
+      .admin= render 'spina/shared/admin_bar'
     %header= render 'navigation'
     = render 'current_conference_alert'
+    - if content_for? :flash
+      .flash-messages= yield :flash
     %main
-      - if content_for? :flash
-        .flash-messages= yield :flash
       = yield :hero
       - if content_for? :breadcrumbs
         .container-lg.p-responsive.mt-4= yield :breadcrumbs
       = yield :header
       .container-lg.p-responsive.mt-4= yield
-    %footer.container-lg.p-responsive.py-4= render 'footer'
+    %footer
+      .container-lg.p-responsive.py-4= render 'footer'
     = render 'spina/shared/social'

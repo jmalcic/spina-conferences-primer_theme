@@ -24,8 +24,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'image_processing', '~> 1.9'
   spec.add_dependency 'primer_view_components', '0.0.31'
   spec.add_dependency 'rails', '~> 6.0'
-  spec.add_dependency 'spina', '~> 1.1'
-  spec.add_dependency 'spina-admin-conferences', '~> 1.3.3'
+  spec.add_dependency 'spina', '~> 2.0'
+  spec.add_dependency 'spina-admin-conferences', '~> 2.0.0'
 
   spec.add_development_dependency 'capybara', '~> 3.33'
   spec.add_development_dependency 'dotenv-rails', '~> 2.7'

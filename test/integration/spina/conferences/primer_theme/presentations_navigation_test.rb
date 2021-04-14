@@ -10,17 +10,26 @@ module Spina
 
         test 'view a presentation' do
           presentation = spina_admin_conferences_presentations(:asymmetry_and_antisymmetry)
-          in_locales :en, :'en-GB' do
+          in_locales :en do
             get frontend_presentation_path(presentation)
             assert_response :success
             assert_select 'main' do
-              assert_select 'h1', presentation.title
-              assert_select 'ul' do
-                assert_select 'li > address', presentation.presenters.collect(&:full_name_and_institution).to_sentence
-                assert_select 'li > time', I18n.localize(presentation.start_datetime, format: :short)
-                assert_select 'li > address', "#{presentation.session.room_name}, #{presentation.room.institution.name}"
-              end
-              assert_markdown_component presentation.abstract
+              assert_select 'h1', 'The Asymmetry and Antisymmetry of Syntax'
+              assert_select 'address', 'Joe Bloggs, University of Atlantis'
+              assert_select 'time', '07 Apr 10:00'
+              assert_select 'address', 'Lecture block 2, University of Atlantis'
+              assert_markdown_component 'Lorem ipsum'
+            end
+          end
+          in_locales :'en-GB' do
+            get frontend_presentation_path(presentation)
+            assert_response :success
+            assert_select 'main' do
+              assert_select 'h1', 'The Asymmetry and Antisymmetry of Syntax'
+              assert_select 'address', 'Joe Bloggs, University of Atlantis'
+              assert_select 'time', '07 Apr 10:00'
+              assert_select 'address', 'Lecture block 2, University of Atlantis'
+              assert_markdown_component 'Lorem ipsum'
             end
           end
         end
@@ -32,7 +41,7 @@ module Spina
             assert_response :success
             assert_select 'main' do
               presentation.attachments.each do |attachment|
-                assert_button_link text: attachment.name
+                assert_button_link main_app.rails_blob_path(attachment.attachment.file), text: attachment.name
               end
             end
           end
@@ -44,7 +53,7 @@ module Spina
             get frontend_presentation_path(presentation)
             assert_response :success
             assert_select 'main' do
-              assert_button_link false
+              assert_button_link(/\/rails\/active_storage\/blobs\//, false)
             end
           end
         end

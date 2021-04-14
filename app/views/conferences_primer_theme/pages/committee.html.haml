@@ -1,10 +1,42 @@
 - cache current_page do
-  %h1= current_page.title
-  
-  - cache partable_for(:text) do
-    - if has_content? :text
-      .mt-4= render partial: 'text', object: content(:text)
-  - cache [partable_for(:committee_bios), content(:committee_bios)&.structure_items,
-           content(:committee_bios)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
-    - if has_content?(:committee_bios) && content(:committee_bios).structure_items.any?
-      .mt-4= render partial: 'committee_bios', object: content(:committee_bios)
+  = render(Primer::HeadingComponent.new) { current_page.title }
+
+  - if content(:text).present?
+    = render(Primer::MarkdownComponent.new(mt: 4)) { content.html(:text) }
+
+  - if content(:committee_bios).present?
+    %ul.mt-4
+      - repeater(:committee_bios) do |committee_bio|
+        %li.list-style-none.py-4.border-bottom
+          = render Primer::FlexComponent.new(direction: [:column, nil, :row, nil], align_items: :start) do
+            - if committee_bio.content(:profile_picture).present?
+              = render Primer::AvatarComponent.new(src: committee_bio.content.image_url(:profile_picture, resize_to_fill: [150, 150]),
+                                                   srcset: srcset_string(committee_bio.content(:profile_picture),
+                                                                         variant: { resize_to_fill: [150, 150] }),
+                                                   draggable: false, alt: committee_bio.content(:profile_picture).alt, size: 150,
+                                                   mr: [nil, nil, 3, nil], mb: [3, nil, 0, nil], flex_shrink: 0)
+            = render Primer::FlexItemComponent.new(flex_auto: true) do
+              = render Primer::FlexComponent.new(direction: [:column, nil, :row, nil], mb: 1) do
+                = render Primer::BoxComponent.new do
+                  - if committee_bio.content(:name).present?
+                    = render(Primer::HeadingComponent.new(tag: :h3)) do
+                      - if committee_bio.content(:role).present?
+                        = t :'.name_and_role', name: committee_bio.content(:name), role: committee_bio.content(:role)
+                      - else
+                        = committee_bio.content(:name)
+                  - if committee_bio.content(:institution).present?
+                    = render(Primer::HeadingComponent.new(tag: :h4)) { committee_bio.content(:institution) }
+                = render Primer::ButtonGroupComponent.new(mt: [1, nil, 0, nil], ml: [nil, nil, 1, nil],
+                                                          aria: { label: t(:'.contact_buttons') }) do |component|
+                  - if committee_bio.content(:twitter_profile).present?
+                    = component.button(tag: :a, href: committee_bio.content(:twitter_profile)) do
+                      = render Primer::OcticonComponent.new(icon: 'link-external')
+                      = t(:'.twitter')
+                  - if committee_bio.content(:facebook_profile).present?
+                    = component.button(tag: :a, href: committee_bio.content(:facebook_profile)) do
+                      = render Primer::OcticonComponent.new(icon: 'link-external')
+                      = t(:'.facebook')
+              - if committee_bio.content(:bio).present?
+                = render(Primer::TextComponent.new(tag: :div, color: :gray_light)) { committee_bio.content.html(:bio) }
+  - else
+    = render Primer::BlankslateComponent.new(title: t(:'.no_bios'), icon: 'file')

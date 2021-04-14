@@ -1,7 +1,5 @@
-- cache [@conference, @conference.institutions, @conference.parts.collect(&:partable), @conference.content(:gallery)&.images,
-         @conference.content(:sponsors)&.structure_items,
-         @conference.content(:sponsors)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
-  .container-lg.p-responsive.mb-4{ class: dom_class(@conference), id: dom_id(@conference) }
+- cache [@conference, @conference.institutions] do
+  .container-lg.p-responsive.mb-4
     = render(Primer::HeadingComponent.new( mb: [1, nil, 2, nil])) { @conference.name }
     %ul.text-gray-dark.list-style-none.d-flex.flex-column.flex-sm-row.flex-wrap
       %li.mr-sm-3.mb-1
@@ -15,13 +13,34 @@
               = t :'.locations', institutions: @conference.institutions.pluck(:name).to_sentence,
                                  cities: @conference.institutions.pluck(:city).uniq.to_sentence
     - if @conference.institutions.any?
-      %ul.list-style-none.d-flex.flex-wrap.mt-4{ class: dom_class(@conference.institutions) }
+      %ul.list-style-none.d-flex.flex-wrap.mt-4
         = render partial: 'institution', collection: @conference.institutions,
                  cached: -> institution { [institution, institution.logo] }
-    - cache [partable_for(:sponsors, parent: @conference), @conference.content(:sponsors)&.structure_items,
-               @conference.content(:sponsors)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
-      - if @conference.has_content?(:sponsors) && @conference.content(:sponsors).structure_items.any?
-        = render partial: 'sponsors', object: @conference.content(:sponsors)
-  - cache [partable_for(:gallery, parent: @conference), @conference.content(:gallery)&.images] do
-    - if @conference.has_content? :gallery
-      .mb-4= render partial: 'image_collection', object: @conference.content(:gallery), locals: { controls: true }
+    - if @conference.content(:sponsors).present?
+      = render Primer::SubheadComponent.new(spacious: true) do |component|
+        = component.heading(tag: :h2) { t :'.sponsors.title' }
+      = render Primer::FlexComponent.new(flex_wrap: true, ml: -2, mr: -2, mt: -2, mb: -2) do
+        - repeater @conference.content(:sponsors) do |sponsor|
+          = render Primer::FlexItemComponent.new(m: 2, vertical_align: :middle) do
+            - if sponsor.content(:logo).present?
+              = link_to sponsor.content(:website) do
+                = sponsor.content.image_tag(:logo, { resize_to_limit: [200, 60] }, draggable: false,
+                                            srcset: srcset(sponsor.content(:logo), variant: { resize_to_limit: [200, 60] }))
+            - else
+              = render(Primer::LinkComponent.new(href: sponsor.content(:website) || '')) { sponsor.content(:name) }
+
+  - if @conference.content(:gallery).present?
+    .mb-4.position-relative{ data: { controller: :slideshow, slideshow: { incrementer: 0, advance: true } } }
+      - @conference.content(:gallery).each_with_index do |image, index|
+        = @conference.content.image_tag(image, { resize_to_fill: [1680, 600] }, draggable: false, data: { 'slideshow-target': 'slide' },
+                                        srcset: srcset(image, variant: { resize_to_fill: [1680, 600] }), hidden: index != 0,
+                                        class: %w[d-block mx-auto])
+      .position-absolute.top-0.left-0.right-0.bottom-0.container-lg.p-responsive
+        - if @conference.content(:gallery).many?
+          .d-none.d-sm-flex.flex-justify-between.flex-items-center.height-full
+            = render Primer::ButtonComponent.new(data: { action: :'slideshow#previous' }) do
+              = render Primer::OcticonComponent.new(icon: 'arrow-left')
+              = t(:'.gallery.previous')
+            = render Primer::ButtonComponent.new(data: { action: :'slideshow#next' }) do
+              = t(:'.gallery.next')
+              = render Primer::OcticonComponent.new(icon: 'arrow-right')
