@@ -27,3 +27,20 @@ class ChangeCurrentConferenceAlertToText < ActiveRecord::Migration[6.0]
     end
   end
 end
+
+module Spina
+  class LayoutPart < ::Spina::ApplicationRecord
+    belongs_to :account
+    belongs_to :layout_partable, polymorphic: true
+  end
+
+  class Line < ApplicationRecord
+    extend Mobility
+    translates :content, fallbacks: true
+  end
+
+  class Text < ApplicationRecord
+    extend Mobility
+    translates :content, fallbacks: true
+  end
+end
