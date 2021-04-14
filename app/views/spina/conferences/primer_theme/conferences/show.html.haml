@@ -1,4 +1,4 @@
-- if @conference.has_content?(:submission_date) && @conference.content(:submission_date) >= Date.today
+- if @conference.content(:submission_date).present? && @conference.content(:submission_date) >= Date.today
   - content_for(:flash) { render 'submission_flash' }
 
 - content_for(:header) { render 'header' }
@@ -25,8 +25,11 @@
         = t(:'.subscribe')
   - case @tab
     - when 'information'
-      - cache [partable_for(:text, parent: @conference), @tab] do
-        = render partial: 'information', locals: { text: (@conference.content(:text) if @conference.has_content? :text) }
+      - cache [@conference, @tab] do
+        - if @conference.content(:text).present?
+          = render(Primer::MarkdownComponent.new(my: 4)) { @conference.content.html(:text) }
+        - else
+          = render Primer::BlankslateComponent.new(title: t(:'.no_information'), icon: 'info', my: 4)
     - when 'presentations'
       - cache [@conference.presentations, @presentation_type, @presentations, @presentations.collect(&:presenters), @tab] do
         = render partial: 'presentations'

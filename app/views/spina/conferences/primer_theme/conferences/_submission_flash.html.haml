@@ -1,14 +1,10 @@
-- cache partable_for(:submission_url, :submission_date, :submission_text, parent: @conference) do
-  = render Primer::FlashComponent.new(variant: :warning, full: true, icon: 'clock', classes: dom_class(@conference)) do |component|
-    - cache partable_for(:submission_date, parent: @conference) do
-      = render Primer::TextComponent.new(tag: :div, display: :inline) do
-        = t :'.submit_by_html', date: time_tag(@conference.content(:submission_date), format: :full)
-    - cache partable_for(:submission_text, parent: @conference) do
-      - if @conference.content(:submission_text).present?
-        = render(Primer::TextComponent.new(tag: :div, color: :gray, display: :inline)) { @conference.content(:submission_text).html_safe }
-    - cache partable_for(:submission_url, parent: @conference) do
-      - if @conference.content(:submission_url).present?
-        - component.action do
-          = render Primer::ButtonComponent.new(tag: :a, href: @conference.content(:submission_url), button_type: :primary,
-                                               variant: :small) do
-            = t :'.submit_abstract'
+= render Primer::FlashComponent.new(variant: :warning, full: true, icon: 'clock') do |component|
+  = render Primer::TextComponent.new(tag: :div, display: :inline) do
+    = t :'.submit_by_html', date: time_tag(@conference.content(:submission_date), format: :full)
+  - if @conference.content(:submission_text).present?
+    = render(Primer::TextComponent.new(tag: :div, color: :gray, display: :inline)) { @conference.content.html(:submission_text) }
+  - if @conference.content(:submission_url).present?
+    - component.action do
+      = render Primer::ButtonComponent.new(tag: :a, href: @conference.content.html(:submission_url), button_type: :primary,
+                                           variant: :small) do
+        = t :'.submit_abstract'

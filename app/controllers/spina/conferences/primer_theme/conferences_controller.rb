@@ -25,6 +25,7 @@ module Spina
                                                                 presentation_types: [:translations],
                                                                 presentations: [session: [:room], presenters: [:institution]])
                                                       .find(params[:id])
+          @conference.view_context = view_context
         rescue ActiveRecord::RecordNotFound
           send_file Rails.root.join('public/404.html'), type: 'text/html; charset=utf-8', status: 404
         end
@@ -42,7 +43,11 @@ module Spina
         end
 
         def set_presentations
-          @presentations = @presentation_type.present? ? @presentation_type.presentations : @conference.presentations
+          @presentations = if @presentation_type.present?
+                             @presentation_type.presentations.page(params[:page])
+                           else
+                             @conference.presentations.page(params[:page])
+                           end
         end
 
         def set_breadcrumb

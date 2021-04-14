@@ -118,6 +118,7 @@ en:
               events: Events
             no_tab: No tab.
             tab_does_not_exist: "The tab '%{tab}' does not exist."
+            no_information: No information.
           presentations:
             all_presentation_types: All
             results: Results
@@ -132,10 +133,6 @@ en:
             no_events: No events.
           event:
             times_html: "%{start_time}–%{finish_time}"
-          information:
-            no_information: No information.
-          sponsors:
-            title: Sponsors
           conference:
             dates_html: "%{start_date}–%{finish_date}"
             locations: "%{institutions}, %{cities}"
@@ -145,6 +142,12 @@ en:
           header:
             dates_html: "%{start_date}–%{finish_date}"
             locations: "%{institutions}, %{cities}"
+            gallery:
+              previous: Previous
+              next: Next
+            sponsors:
+              title: Sponsors
+
         presentations:
           show:
             room_and_institution: "%{room}, %{institution}"
