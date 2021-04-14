@@ -1,6 +1,0 @@
-= render Primer::SubheadComponent.new(spacious: true) do |component|
-  = component.heading(tag: :h2) { t :'.title' }
-
-= render Primer::FlexComponent.new(flex_wrap: true, classes: dom_class(sponsors), ml: -2, mr: -2, mt: -2, mb: -2) do
-  = render partial: 'sponsor', collection: sponsors.structure_items.sorted_by_structure,
-           cached: -> sponsor { [sponsor, sponsor.structure_parts.collect(&:structure_partable)] }

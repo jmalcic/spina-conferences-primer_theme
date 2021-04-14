@@ -8,7 +8,7 @@
             = octicon 'search', class: 'subnav-search-icon'
     %div{ id: 'event_list' }
       - if events.any?
-        %ul{ class: dom_class(events), data: { filter: { list: true } } }
+        %ul{ data: { filter: { list: true } } }
           = render partial: 'event', collection: events.sorted, layout: 'list_item', cached: true
       - else
         = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')

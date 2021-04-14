@@ -6,8 +6,20 @@ module Spina
   module Conferences
     module PrimerTheme
       class ApplicationHelperTest < ActionView::TestCase
-        test 'returns latest conference' do
-          assert_equal Spina::Admin::Conferences::Conference.sorted.first, latest_conference
+        test 'returns current conference' do
+          first_conference = Spina::Admin::Conferences::Conference.order(dates: :asc).first
+          travel_to 1.month.before(first_conference.start_date) do
+            assert_equal first_conference, current_conference
+          end
+          travel_to first_conference.finish_date do
+            assert_equal first_conference, current_conference
+          end
+          travel_to(first_conference.finish_date + 1.day) do
+            assert_equal first_conference, current_conference
+          end
+          travel_to(first_conference.finish_date + 2.days) do
+            assert_not_equal first_conference, current_conference
+          end
         end
 
         test 'renders ancestors' do
@@ -30,20 +42,6 @@ module Spina
               </ol>
             </nav>
           HTML
-        end
-
-        test 'returns partable for parent' do
-          assert_equal [spina_page_parts(:about_page_text), spina_texts(:lipsum)], partable_for('text', parent: spina_pages(:about))
-          assert_equal [spina_structure_parts(:agm_name), spina_lines(:lipsum)], partable_for('name', parent: spina_structure_items(:agm))
-          assert_equal [spina_layout_parts(:alert), spina_lines(:lipsum)],
-                       partable_for('current_conference_alert', parent: spina_accounts(:dummy))
-          assert_equal [spina_admin_conferences_parts(:text), spina_texts(:lipsum)],
-                       partable_for('text', parent: spina_admin_conferences_conferences(:university_of_atlantis_2017))
-          Current.page = spina_pages(:about)
-          assert_equal [spina_page_parts(:about_page_text), spina_texts(:lipsum)], partable_for('text')
-          assert_raises do
-            partable_for('text', parent: 1)
-          end
         end
 
         test 'returns new calendar' do

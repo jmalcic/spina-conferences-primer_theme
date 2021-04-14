@@ -9,3 +9,15 @@ dummy:
   name: My Website
   preferences:
     :theme: conferences_primer_theme
+  json_attributes:
+    en_content:
+      - name: current_conference_alert
+        title: Alert
+        type: Spina::Parts::Text
+        content:
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a ex ac leo interdum dictum eu sed risus.
+          Curabitur eros mauris, malesuada in turpis in, rutrum laoreet velit. Quisque vel consequat arcu, vel hendrerit nisl.
+          Vivamus eu turpis luctus, facilisis quam ut, aliquet ipsum. Etiam accumsan tellus turpis, vel placerat felis
+          ultricies et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+          Proin placerat, elit aliquam mattis laoreet, enim risus mollis nunc, at dapibus elit dolor in tortor. Sed sed nunc
+          augue.</div>

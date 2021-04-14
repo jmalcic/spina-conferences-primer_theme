@@ -1,5 +1,30 @@
 - content_for :hero do
-  - cache [current_page, partable_for(:gallery), latest_conference] do
-    = render partial: 'homepage_content',
-             layout: has_content?(:gallery) && content(:gallery).images.any? ? 'image_collection' : 'jumbotron',
-             locals: { conference: latest_conference, advance: true, image_collection: content(:gallery) }
+  - cache [current_page, current_conference] do
+    = render Primer::BoxComponent.new(position: :relative, style: 'height: 639px') do
+      = render Primer::BoxComponent.new(position: :absolute, top: false, left: false, right: false, bottom: false,
+                                        style: 'background-color: var(--color-bg-backdrop)')
+      - if content(:gallery).present?
+        = render Primer::FlexComponent.new(position: :absolute, top: false, left: false, right: false, bottom: false, style: 'z-index: 1',
+                                           flex_direction: :column, justify_content: :center, align_items: :center,
+                                           data: { controller: :slideshow, slideshow_incrementer: 0, slideshow_advance: true }) do
+          - content(:gallery).each_with_index do |image, index|
+            = content.image_tag(image, { resize_to_limit: [1680, 1680] }, draggable: false, hidden: index != 0,
+                                srcset: srcset(image, variant: { resize_to_limit: [1680, 1680] }),
+                                style: 'object-fit: cover; max-width: max-content; max-height: max-content',
+                                data: { slideshow_target: 'slide' }, class: %w[width-full height-full])
+      .container-lg.p-responsive.position-relative.text-white.height-full{ style: 'z-index: 2' }
+        = render Primer::BoxComponent.new(py: [3, nil, nil, 6]) do
+          .text-shadow-dark
+            - if current_conference.present?
+              = render(Primer::HeadingComponent.new(tag: :h1, classes: 'h000-mktg lh-condensed-ultra')) { current_conference.name }
+              = render Primer::TextComponent.new(tag: :address, classes: 'f2-light') do
+                = current_conference.institutions.collect(&:name).to_sentence
+              = render(Primer::TextComponent.new(tag: :time, classes: 'f2-light')) do
+                = t :'.dates_html', start_date: time_tag(current_conference.start_date, format: :day_and_month),
+                                    finish_date: time_tag(current_conference.finish_date, format: :day_and_month)
+            - else
+              = render(Primer::HeadingComponent.new(tag: :h1, classes: 'h000-mktg lh-condensed-ultra')) { Spina::Account.first.name }
+          - if current_conference.present? && current_conference.finish_date >= Date.today
+            = link_to t('.more_info'), frontend_conference_path(current_conference),
+                      class: %w[btn-mktg btn-large-mktg btn-primary-mktg f3 mt-4]
+          .text-shadow-dark= render(Primer::MarkdownComponent.new(my: 4)) { content(:text).try(:html_safe) }

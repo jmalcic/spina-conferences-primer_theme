@@ -1,12 +1,59 @@
 - cache current_page do
-  %h1= current_page.title
+  = render(Primer::HeadingComponent.new) { current_page.title }
 
-  - cache partable_for(:text) do
-    - if has_content? :text
-      .mt-4= render partial: 'text', object: content(:text)
-  - cache [partable_for(:events_list), content(:events_list)&.structure_items, 
-           content(:events_list)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
-    - if has_content?(:events_list) && content(:events_list).structure_items.any?
-      .mt-2= render partial: 'events_list', object: content(:events_list)
-    - else
-      = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
+  - if content(:text).present?
+    = render(Primer::MarkdownComponent.new(mt: 4)) { content.html(:text) }
+
+  - if content(:events_list).present?
+    = render Primer::SubheadComponent.new(mt: 4) do |component|
+      = component.heading { t :'.upcoming' }
+    - content(:events_list).filter { |event| event.content(:start_time).blank? || event.content(:start_time) >= Time.now }.then do |events|
+      - if events.any?
+        %ul
+          - repeater(events) do |event|
+            %li.list-style-none.py-4.border-bottom
+              = render Primer::FlexComponent.new(direction: :column, align_items: :start) do
+                - if event.content(:name).present?
+                  = render(Primer::HeadingComponent.new(tag: :h3, flex: :auto)) { event.content(:name) }
+                = render Primer::HeadingComponent.new(tag: :h4, flex: :auto) do
+                  - if event.content(:start_time).present?
+                    = t(:'.time_and_place_html',
+                        time: time_tag(event.content(:start_time), format: :ordinal_datetime_with_year),
+                        place: event.content(:location).presence || t('.location_tbc'))
+                  - else
+                    = t(:'.time_and_place_html', time: t('.time_tbc'), place: event.content(:location).presence || t('.location_tbc'))
+                - if event.content(:description).present?
+                  = render(Primer::TextComponent.new(mt: 1, color: :text_secondary)) { event.content.html(:description) }
+                - if event.content(:url).present?
+                  = render Primer::ButtonComponent.new(tag: :a, href: event.content(:url), mt: 2) do
+                    = render Primer::OcticonComponent.new('link-external')
+                    = t :'.more_info'
+      - else
+        = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
+    = render Primer::SubheadComponent.new(mt: 4) do |component|
+      = component.heading { t :'.past' }
+    - content(:events_list).filter { |event| event.content(:start_time).present? && event.content(:start_time) < Time.now }.then do |events|
+      - if events.any?
+        %ul
+          - repeater(events) do |event|
+            %li.list-style-none.py-4.border-bottom
+              = render Primer::FlexComponent.new(direction: :column, align_items: :start) do
+                - if event.content(:name).present?
+                  = render(Primer::HeadingComponent.new(tag: :h3, flex: :auto)) { event.content(:name) }
+                = render Primer::HeadingComponent.new(tag: :h4, flex: :auto) do
+                  - if event.content(:start_time).present?
+                    = t(:'.time_and_place_html',
+                        time: time_tag(event.content(:start_time), format: :ordinal_datetime_with_year),
+                        place: event.content(:location).presence || t('.location_tbc'))
+                  - else
+                    = t(:'.time_and_place_html', time: t('.time_tbc'), place: event.content(:location).presence || t('.location_tbc'))
+                - if event.content(:description).present?
+                  = render(Primer::TextComponent.new(mt: 1, color: :text_secondary)) { event.content.html(:description) }
+                - if event.content(:url).present?
+                  = render Primer::ButtonComponent.new(tag: :a, href: event.content(:url), mt: 2) do
+                    = render Primer::OcticonComponent.new('link-external')
+                    = t :'.more_info'
+      - else
+        = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
+  - else
+    = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')

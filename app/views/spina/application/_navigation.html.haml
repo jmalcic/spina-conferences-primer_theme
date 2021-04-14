@@ -1,11 +1,10 @@
-.Header.bg-blue.px-3.px-md-4.px-lg-5
+.Header.px-3.px-md-4.px-lg-5.flex-wrap.flex-lg-nowrap
   .Header-item.mt-n1.mb-n1= link_to render('logo'), root_path, class: 'Header-link'
-  .Header-item.Header-item--full.d-flex.d-lg-none{ aria: { hidden: true } }
-    %details.details-reset
-      %summary.btn-link.Header-link= octicon 'three-bars', height: 24
-      .px-3.px-md-4.px-lg-5.bg-blue.Popover.left-0.right-0.mt-3
-        = render partial: 'mobile_navigation_item', collection: main_navigation_items, cached: true
-        = link_to 'Conferences', frontend_conferences_url, class: %w[d-block py-2 border-top border-white-fade text-white]
-  = render partial: 'navigation_item', collection: main_navigation_items, cached: true
-  .Header-item.d-none.d-lg-flex
-    = link_to Spina::Admin::Conferences::Conference.model_name.human(count: 0), frontend_conferences_path, class: 'Header-link'
+  %details.details-reset.d-lg-none{ style: 'display: contents' }
+    %summary.Header-item
+      %button.Header-link.btn-link{ type: 'button' }
+        = render Primer::OcticonComponent.new('three-bars', height: 24)
+    .Header-item.Header-item--full.flex-column.width-full.flex-order-1.mr-0.mt-3
+      = render partial: 'navigation_items'
+  .Header-item.Header-item--full.flex-row.width-full.d-none.d-lg-flex
+    = render partial: 'navigation_items'

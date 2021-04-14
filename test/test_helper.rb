@@ -53,6 +53,32 @@ module ActiveSupport
   end
 end
 
+module StorageHelpers
+  module ::ActiveStorage
+    class FixtureSet
+      include ActiveSupport::Testing::FileFixtures
+      include ActiveRecord::SecureToken
+
+      def self.blob(filename:, **attributes)
+        new.prepare ActiveStorage::Blob.new(filename: filename, key: generate_unique_secure_token), **attributes
+      end
+
+      def prepare(instance, **attributes)
+        io = file_fixture(instance.filename.to_s).open
+        instance.unfurl(io)
+        instance.assign_attributes(attributes)
+        instance.upload_without_unfurling(io)
+
+        instance.attributes.transform_values { |value| value.is_a?(Hash) ? value.to_json : value }.compact.to_json
+      end
+    end
+
+    ::ActiveStorage::FixtureSet.file_fixture_path = "#{ActiveSupport::TestCase.fixture_path}/files"
+  end
+end
+
+ActiveRecord::FixtureSet.context_class.include StorageHelpers
+
 module CustomAssertions
   protected
 
@@ -68,12 +94,20 @@ module CustomAssertions
     assert_select 'div.markdown-body', *args, &blk
   end
 
+  def assert_no_markdown_component(*args, &blk)
+    assert_select 'div.markdown-body', false, *args, &blk
+  end
+
   def assert_slideshow(*args, &blk)
     assert_select '[data-controller="slideshow"]', *args, &blk
   end
 
+  def assert_no_slideshow(*args, &blk)
+    assert_select '[data-controller="slideshow"]', false, *args, &blk
+  end
+
   def assert_slide(*args, &blk)
-    assert_select 'img[data-slideshow-target="slide"]', *args, &blk
+    assert_select '[data-slideshow-target="slide"]', *args, &blk
   end
 
   def assert_button_link(href_or_arg, *args, &blk)
@@ -95,17 +129,6 @@ module CustomAssertions
       assert_select 'a', *args, &blk
     else
       assert_select 'a', href_or_arg, *args, &blk
-    end
-  end
-
-  def assert_structure(structure_or_arg, *args, &blk)
-    case structure_or_arg
-    when Spina::Structure
-      assert_select 'ul.structure:match(\'id\', ?)', ActionView::RecordIdentifier.dom_id(structure_or_arg), *args, &blk
-    when NilClass
-      assert_select 'ul.structure', *args, &blk
-    else
-      assert_select 'ul.structure', structure_or_arg, *args, &blk
     end
   end
 end

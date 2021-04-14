@@ -31,9 +31,15 @@ module Spina
                                     institution: university_of_atlantis,
                                     dietary_requirements: [DietaryRequirement.new(name: 'Pescetarian')],
                                     conferences: [uoa_conference, uos_conference]
-      Presentation.create! title: 'The Asymmetry and Antisymmetry of Syntax', date: '2017-04-07', start_time: '10:00',
-                           abstract: 'Lorem ipsum', presenters: [joe_bloggs],
-                           session: session
+      Presentation.create! [{ title: 'The Asymmetry and Antisymmetry of Syntax', start_datetime: '2017-04-07T10:00',
+                              abstract: 'Lorem ipsum', presenters: [joe_bloggs],
+                              session: session },
+                            { title: 'The Wonders of Language', start_datetime: '2017-04-07T15:00',
+                              abstract: 'Dolor sit amet', presenters: [joe_bloggs],
+                              session: session },
+                            { title: 'The Language of Wonders', start_datetime: '2017-04-08T08:00',
+                              abstract: 'Dolor sit amet', presenters: [joe_bloggs],
+                              session: session }]
     end
   end
 end

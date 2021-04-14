@@ -4,6 +4,5 @@
 
 //= link @github/details-dialog-element/dist/index.js
 //= link @github/include-fragment-element/dist/index.js
-//= link @github/tab-container-element/dist/index.js
 //= link @github/filter-input-element/dist/index.js
 //= link @github/details-menu-element/dist/index.js

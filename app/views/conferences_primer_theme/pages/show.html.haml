@@ -1,2 +1,2 @@
 - cache current_page do
-  %h1= current_page.title
+  = render(Primer::HeadingComponent.new) { current_page.title }

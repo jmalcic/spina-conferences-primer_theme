@@ -7,34 +7,44 @@
 dubrovnik:
   name: file
   record: dubrovnik (Spina::Image)
-  blob: dubrovnik_photo
+  blob: dubrovnik
 
 rovinj:
   name: file
   record: rovinj (Spina::Image)
-  blob: rovinj_photo
+  blob: rovinj
 
-constitution:
+logo:
   name: file
-  record: constitution (Spina::Attachment)
-  blob: blank_pdf
+  record: logo (Spina::Image)
+  blob: logo
 
-slides:
+profile_picture:
   name: file
-  record: slides (Spina::Attachment)
-  blob: blank_pdf
+  record: profile_picture (Spina::Image)
+  blob: profile_picture
 
 handout:
   name: file
   record: handout (Spina::Attachment)
-  blob: blank_pdf
+  blob: handout
+
+slides:
+  name: file
+  record: slides (Spina::Attachment)
+  blob: slides
+
+minutes:
+  name: file
+  record: minutes (Spina::Attachment)
+  blob: minutes
+
+constitution:
+  name: file
+  record: constitution (Spina::Attachment)
+  blob: constitution
 
 poster:
   name: file
   record: poster (Spina::Attachment)
-  blob: blank_pdf
-
-agm_2019_minutes:
-  name: file
-  record: agm_2019_minutes (Spina::Attachment)
-  blob: blank_pdf
+  blob: poster

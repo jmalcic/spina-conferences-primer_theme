@@ -1,22 +1,92 @@
 - cache current_page do
-  %h1= current_page.title
+  = render(Primer::HeadingComponent.new) { current_page.title }
 
-  - cache partable_for(:text) do
-    - if has_content? :text
-      .mt-4= render partial: 'text', object: content(:text)
-  - cache partable_for(:contact) do
-    - if has_content? :contact
-      .mt-4= render partial: 'contact', object: content(:contact)
+  - if content(:text).present?
+    = render(Primer::MarkdownComponent.new(mt: 4)) { content.html(:text) }
+  - if content(:contact).present?
+    = render Primer::SubheadComponent.new(mt: 4) do |component|
+      = component.heading { t :'.contact.title' }
+    = render(Primer::MarkdownComponent.new) { content.html(:contact) }
+
   .clearfix.gutter
-    - cache partable_for(:constitution) do
-      .mt-4.col-12.col-md-6.float-md-left= render partial: 'constitution', object: content(:constitution)
-    - cache [partable_for(:minutes), content(:minutes)&.structure_items,
-             content(:minutes)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
-      .mt-4.col-12.col-md-6.float-md-left= render partial: 'minutes', object: content(:minutes)
-    - cache [partable_for(:documents), content(:documents)&.structure_items,
-             content(:documents)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
-      .mt-4.col-12.col-md-12.float-md-left= render partial: 'documents', object: content(:documents)
-  - cache [partable_for(:partner_societies), content(:partner_societies)&.structure_items,
-           content(:partner_societies)&.structure_items&.collect_concat(&:structure_parts)&.collect(&:structure_partable)] do
-    - if has_content?(:partner_societies) && content(:partner_societies).structure_items.any?
-      .mt-4= render partial: 'partner_societies', object: content(:partner_societies)
+    = render Primer::BoxComponent.new(mt: 4, col: [12, nil, 6, nil], float: [nil, nil, :left, nil]) do
+      = render Primer::SubheadComponent.new do |component|
+        = component.heading { t :'.constitution.title' }
+      - if content(:constitution).present?
+        = render Primer::FlexComponent.new(align_items: :center, py: 1) do
+          = render Primer::FlexItemComponent.new(flex_auto: true, pr: 1) do
+            = t :'.constitution.uploaded',
+                date: l(Spina::Attachment.find(content(:constitution).attachment_id).created_at.to_date, format: :long)
+          = render Primer::ButtonComponent.new(tag: :a, href: content.attachment_url(:constitution), ml: 2, download: '') do
+            = render Primer::OcticonComponent.new('desktop-download')
+            = t :'.constitution.download'
+      - else
+        = render Primer::BlankslateComponent.new(title: t(:'.constitution.no_constitution'), icon: 'law')
+
+    = render Primer::BoxComponent.new(mt: 4, col: [12, nil, 6, nil], float: [nil, nil, :left, nil]) do
+      = render Primer::SubheadComponent.new do |component|
+        = component.heading { t :'.minutes.title' }
+      - if content(:minutes).present?
+        %ul
+          - repeater :minutes do |minutes_entry|
+            %li.list-style-none.py-1.d-flex.flex-items-center
+              = render Primer::FlexItemComponent.new(flex_auto: true) do
+                - if minutes_entry.content(:date).present?
+                  = t(:'.minutes.minutes_for_html', date: time_tag(minutes_entry.content(:date)))
+                - else
+                  = t(:'.minutes.no_date')
+              - if minutes_entry.content(:attachment).present?
+                = render Primer::ButtonComponent.new(tag: :a, ml: 2, href: minutes_entry.content.attachment_url(:attachment),
+                                                     download: '') do
+                  = render Primer::OcticonComponent.new('desktop-download')
+                  = t(:'.minutes.download')
+              - else
+                = render(Primer::TextComponent.new(color: :text_secondary, font_size: 6)) { t :'.minutes.no_file' }
+      - else
+        = render Primer::BlankslateComponent.new(title: t(:'.minutes.no_minutes'), icon: 'file')
+
+    = render Primer::BoxComponent.new(mt: 4, col: [12, nil, 6, nil], float: [nil, nil, :left, nil]) do
+      - if content(:documents).present?
+        = render Primer::SubheadComponent.new do |component|
+          = component.heading { t :'.documents.title' }
+        %ul
+          - repeater :documents do |document|
+            %li.list-style-none.py-1.d-flex.flex-items-center
+              = render(Primer::TextComponent.new(tag: :div, flex: :auto)) { document.content(:name).presence ||  t(:'.documents.no_name') }
+              - if document.content(:attachment).present?
+                = render Primer::ButtonComponent.new(tag: :a, ml: 2, href: document.content.attachment_url(:attachment), download: '') do
+                  = render Primer::OcticonComponent.new('desktop-download')
+                  = t :'.documents.download'
+              - else
+                = render(Primer::TextComponent.new(tag: :div, font_size: 6, color: :text_secondary)) { t :'.documents.no_file' }
+
+  = render Primer::SubheadComponent.new do |component|
+    = component.heading { t :'.partner_societies.title' }
+  - if content(:partner_societies).present?
+    %ul
+      - repeater :partner_societies do |partner_society|
+        %li.list-style-none.py-4.border-bottom
+          = render Primer::FlexComponent.new(direction: [:column, nil, :row_reverse, nil], align_items: :start) do
+            = render Primer::BaseComponent.new(tag: :div, flex: :auto) do
+              = render Primer::HeadingComponent.new(tag: :h3, mb: 1) do
+                = render Primer::FlexComponent.new(flex_wrap: true, justify_content: :space_between) do
+                  - if partner_society.content(:name).present?
+                    = render(Primer::TextComponent.new(tag: :div)) { partner_society.content(:name) }
+                  = render Primer::ButtonGroupComponent.new(aria: { label: t(:'.partner_societies.contact_buttons') }) do |component|
+                    - if partner_society.content(:website).present?
+                      = component.button(tag: :a, href: partner_society.content(:website)) do
+                        = render Primer::OcticonComponent.new('browser')
+                        = t(:'.partner_societies.website')
+                    - if partner_society.content(:email_address).present?
+                      = component.button(tag: :a, href: "mailto:#{partner_society.content(:email_address)}") do
+                        = render Primer::OcticonComponent.new('mail')
+                        = t(:'.partner_societies.email')
+              - if partner_society.content(:description).present?
+                = render Primer::MarkdownComponent.new(color: :text_secondary) do
+                  = partner_society.content(:description).try(:html_safe)
+            - if partner_society.content(:logo).present?
+              = partner_society.content.image_tag(:logo, { resize_to_limit: [200, 150] }, size: nil, draggable: false,
+                                                  srcset: srcset(partner_society.content(:logo), variant: { resize_to_limit: [200, 150] }),
+                                                  class: %w[mt-4 mt-md-0 mr-md-4])
+  - else
+    = render Primer::BlankslateComponent.new(title: t(:'.partner_societies.no_societies'), icon: 'organization')

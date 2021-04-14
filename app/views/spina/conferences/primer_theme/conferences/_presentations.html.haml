@@ -19,9 +19,10 @@
               = octicon 'search', class: 'subnav-search-icon'
       %div{ id: 'presentation_list' }
         - if @presentations.any?
-          %ul{ class: dom_class(@presentations), data: { filter: { list: true } } }
-            = render partial: 'presentation', collection: @presentations.sorted, layout: 'list_item',
+          %ul{ data: { filter: { list: true } } }
+            = render partial: 'presentation', collection: @presentations.sorted.reverse_order, layout: 'list_item',
                      locals: { conference: @conference }, cached: -> presentation { [presentation, presentation.presenters] }
+          = paginate @presentations.sorted, views_prefix: 'spina/conferences/primer_theme'
         - else
           = render Primer::BlankslateComponent.new(title: t(:'.no_presentations'), icon: 'mortar-board')
         = render Primer::BlankslateComponent.new(title: t(:'.no_matching_presentations'), icon: 'mortar-board', hidden: true,

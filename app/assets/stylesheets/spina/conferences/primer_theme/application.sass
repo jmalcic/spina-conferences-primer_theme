@@ -1,13 +1,16 @@
+@import "@github/details-dialog-element/dist"
+
 @import spina/conferences/primer_theme/custom
+@import "@primer/css"
+@import "@primer/octicons"
 
-@import primer
-@import github
-@import turbolinks
-@import admin
+.admin
+  @import "spina/admin_editing"
+  #admin_bar
+    font-family: 'Metropolis', sans-serif
 
-img
-  max-width: 100%
-  object-fit: cover
-  object-position: center
+.turbo-progress-bar
+  background-color: white
+
 address
   font-style: normal

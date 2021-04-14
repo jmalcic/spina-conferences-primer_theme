@@ -1,4 +1,0 @@
-- if text.present?
-  = render(Primer::MarkdownComponent.new(my: 4)) { text.try(:html_safe) }
-- else
-  = render Primer::BlankslateComponent.new(title: t(:'.no_information'), icon: 'info', my: 4)
