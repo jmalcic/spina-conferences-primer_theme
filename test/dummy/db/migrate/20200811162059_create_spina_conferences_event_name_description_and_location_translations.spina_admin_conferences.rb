@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # This migration comes from spina_admin_conferences_engine (originally 20200802184921)
 
-class CreateSpinaConferencesEventNameAndDescriptionAndLocationTranslationsForMobilityTableBackend < ActiveRecord::Migration[6.0] # rubocop:disable Style/Documentation
+class CreateSpinaConferencesEventNameDescriptionAndLocationTranslations < ActiveRecord::Migration[6.0] # rubocop:disable Style/Documentation
   def change # rubocop:disable Metrics/MethodLength
     create_table :spina_conferences_event_translations do |t|
       # Translated attribute(s)

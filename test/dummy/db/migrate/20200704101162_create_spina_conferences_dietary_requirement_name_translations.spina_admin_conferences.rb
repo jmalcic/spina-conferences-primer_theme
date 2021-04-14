@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # This migration comes from spina_admin_conferences_engine (originally 20200420104603)
 
-class CreateSpinaConferencesDietaryRequirementNameTranslationsForMobilityTableBackend < ActiveRecord::Migration[6.0] # :nodoc:
+class CreateSpinaConferencesDietaryRequirementNameTranslations < ActiveRecord::Migration[6.0] # :nodoc:
   def change
     create_table :spina_conferences_dietary_requirement_translations do |t|
       # Translated attribute(s)

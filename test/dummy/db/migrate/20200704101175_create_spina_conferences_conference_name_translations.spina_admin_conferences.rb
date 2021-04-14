@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # This migration comes from spina_admin_conferences_engine (originally 20200502133408)
 
-class CreateSpinaConferencesConferenceNameTranslationsForMobilityTableBackend < ActiveRecord::Migration[6.0] # :nodoc:
+class CreateSpinaConferencesConferenceNameTranslations < ActiveRecord::Migration[6.0] # :nodoc:
   def change
     create_table :spina_conferences_conference_translations do |t|
       # Translated attribute(s)
