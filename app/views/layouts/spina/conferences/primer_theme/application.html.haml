@@ -1,5 +1,5 @@
 !!!
-%html.height-full{ lang: I18n.locale }
+%html{ lang: I18n.locale }
   %head
     %meta{ charset: 'utf-8' }
     %meta{ name: 'author', content: author }
@@ -23,16 +23,18 @@
     %script{ type: 'module', src: asset_path('@github/details-menu-element/dist/index.js') }
     = yield :head
   %body
+    - if current_spina_user.present?
     .admin= render 'spina/shared/admin_bar'
     %header= render 'navigation'
     = render 'current_conference_alert'
-    %main
       - if content_for? :flash
         .flash-messages= yield :flash
+    %main
       = yield :hero
       - if content_for? :breadcrumbs
         .container-lg.p-responsive.mt-4= yield :breadcrumbs
       = yield :header
       .container-lg.p-responsive.mt-4= yield
-    %footer.container-lg.p-responsive.py-4= render 'footer'
+    %footer
+      .container-lg.p-responsive.py-4= render 'footer'
     = render 'spina/shared/social'
