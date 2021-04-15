@@ -150,6 +150,16 @@ en:
           show:
             room_and_institution: "%{room}, %{institution}"
 
+        kaminari:
+          next_page:
+            next: Next
+            next_page: Next page
+          prev_page:
+            previous: Previous
+            previous_page: Previous page
+          page:
+            page: Page %{number}
+
   languages:
     en-GB: British English
 

@@ -9,7 +9,7 @@
                     aria: { selected: (@tab == 'information').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
       = t(:'.tabs.information')
     - component.tab(href: frontend_conference_url(@conference, tab: 'presentations', presentation_type: @presentation_type&.id),
-                    saria: { selected: (@tab == 'presentations').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
+                    aria: { selected: (@tab == 'presentations').to_s }, classes: 'UnderlineNav-item', role: 'tab') do
       = t(:'.tabs.presentations')
     - component.tab(href: frontend_conference_url(@conference, tab: 'events', presentation_type: @presentation_type&.id),
                     aria: { selected: (@tab == 'events').to_s }, classes: 'UnderlineNav-item', role: 'tab') do

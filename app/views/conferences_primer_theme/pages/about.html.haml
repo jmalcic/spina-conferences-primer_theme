@@ -60,7 +60,7 @@
               - else
                 = render(Primer::TextComponent.new(tag: :div, font_size: 6, color: :text_secondary)) { t :'.documents.no_file' }
 
-  = render Primer::SubheadComponent.new do |component|
+  = render Primer::SubheadComponent.new(mt: 4) do |component|
     = component.heading { t :'.partner_societies.title' }
   - if content(:partner_societies).present?
     %ul
