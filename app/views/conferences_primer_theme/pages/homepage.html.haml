@@ -2,7 +2,7 @@
   - cache [current_page, current_conference] do
     = render Primer::BoxComponent.new(position: :relative, style: 'height: 639px') do
       = render Primer::BoxComponent.new(position: :absolute, top: false, left: false, right: false, bottom: false,
-                                        style: 'background-color: var(--color-bg-backdrop)')
+                                        style: 'background-color: var(--color-scale-blue-9)')
       - if content(:gallery).present?
         = render Primer::FlexComponent.new(position: :absolute, top: false, left: false, right: false, bottom: false, style: 'z-index: 1',
                                            flex_direction: :column, justify_content: :center, align_items: :center,
@@ -12,9 +12,9 @@
                                 srcset: srcset(image, variant: { resize_to_limit: [1680, 1680] }),
                                 style: 'object-fit: cover; max-width: max-content; max-height: max-content',
                                 data: { slideshow_target: 'slide' }, class: %w[width-full height-full])
-      .container-lg.p-responsive.position-relative.text-white.height-full{ style: 'z-index: 2' }
+      .container-lg.p-responsive.position-relative.color-text-white.height-full{ style: 'z-index: 2' }
         = render Primer::BoxComponent.new(py: [3, nil, nil, 6]) do
-          .text-shadow-dark
+          %div{ style: 'text-shadow: 0 1px 1px #01040940, 0 1px 25px #010409bf;' }
             - if current_conference.present?
               = render(Primer::HeadingComponent.new(tag: :h1, classes: 'h000-mktg lh-condensed-ultra')) { current_conference.name }
               = render Primer::TextComponent.new(tag: :address, classes: 'f2-light') do
@@ -27,4 +27,5 @@
           - if current_conference.present? && current_conference.finish_date >= Date.today
             = link_to t('.more_info'), frontend_conference_path(current_conference),
                       class: %w[btn-mktg btn-large-mktg btn-primary-mktg f3 mt-4]
-          .text-shadow-dark= render(Primer::MarkdownComponent.new(my: 4)) { content(:text).try(:html_safe) }
+          %div{ style: 'text-shadow: 0 1px 1px rgba(var(--color-scale-black), 0.25), 0 1px 25px rgba(var(--color-scale-black), 0.75);' }
+            = render(Primer::MarkdownComponent.new(my: 4)) { content(:text).try(:html_safe) }
