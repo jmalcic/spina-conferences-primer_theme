@@ -44,9 +44,9 @@ module Spina
 
         def set_presentations
           @presentations = if @presentation_type.present?
-                             @presentation_type.presentations.page(params[:page])
+                             @presentation_type.presentations.page(params[:page]).per(15)
                            else
-                             @conference.presentations.page(params[:page])
+                             @conference.presentations.page(params[:page]).per(15)
                            end
         end
 
