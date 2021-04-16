@@ -6,7 +6,7 @@
         = render Primer::OcticonComponent.new('chevron-down')
       %ul.list-style-none
         - navigation_item.children.each do |child|
-          %li= link_to child.menu_title, child.materialized_path, class: %w[d-block py-2 pl-3 border-top border-white-fade text-white]
+          %li= link_to child.menu_title, child.materialized_path, class: %w[d-block py-2 pl-3 border-top border-white-fade color-text-white]
   - elsif navigation_item.is_root?
     = link_to navigation_item.menu_title, navigation_item.materialized_path,
               class: %w[Header-link py-2]
