@@ -30,7 +30,7 @@
               = render(Primer::LinkComponent.new(href: sponsor.content(:website) || '')) { sponsor.content(:name) }
 
   - if @conference.content(:gallery).present?
-    = render Primer::FlexComponent.new(flex_direction: :column, justify_content: :center, align_items: :center, mb: 4,
+    = render Primer::FlexComponent.new(flex_direction: :column, justify_content: :center, align_items: :center, mb: 4, position: :relative,
                                        data: { controller: :slideshow, slideshow_incrementer: 0, slideshow_advance: true }) do
       - @conference.content(:gallery).each_with_index do |image, index|
         = @conference.content.image_tag(image, { resize_to_fill: [1680, 600] }, draggable: false, data: { 'slideshow-target': 'slide' },
