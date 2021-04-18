@@ -1,0 +1,57 @@
+# one:
+#   record: name_of_fixture (ClassOfFixture)
+#   name: content
+#   body: <p>In a <i>million</i> stars!</p>
+agm_description:
+  record: agm (Spina::Admin::Conferences::Event)
+  name: description
+  body: Annual general meeting.
+  locale: en-GB
+
+drinks_description:
+  record: drinks (Spina::Admin::Conferences::Event)
+  name: description
+  body: Pub trip.
+  locale: en-GB
+
+pub_crawl_description:
+  record: pub_crawl (Spina::Admin::Conferences::Event)
+  name: description
+  body: Pub trip 2.
+  locale: en-GB
+
+picnic_description:
+  record: picnic (Spina::Admin::Conferences::Event)
+  name: description
+  body: Bring sandwiches.
+  locale: en-GB
+
+asymmetry_and_antisymmetry_abstract:
+  record: asymmetry_and_antisymmetry (Spina::Admin::Conferences::Presentation)
+  name: abstract
+  body: Lorem ipsum
+  locale: en-GB
+
+no_island_abstract:
+  record: no_island (Spina::Admin::Conferences::Presentation)
+  name: abstract
+  body: Dolor sit amen
+  locale: en-GB
+
+presentation_with_attachments_abstract:
+  record: presentation_with_attachments (Spina::Admin::Conferences::Presentation)
+  name: abstract
+  body: Lorem ipsum
+  locale: en-GB
+
+presentation_without_attachments_abstract:
+  record: presentation_without_attachments (Spina::Admin::Conferences::Presentation)
+  name: abstract
+  body: Lorem ipsum
+  locale: en-GB
+
+presentation_for_conference_with_presentations_abstract:
+  record: presentation_for_conference_with_presentations (Spina::Admin::Conferences::Presentation)
+  name: abstract
+  body: Lorem ipsum
+  locale: en-GB
