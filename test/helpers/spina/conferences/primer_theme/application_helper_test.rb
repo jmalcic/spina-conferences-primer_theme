@@ -43,29 +43,6 @@ module Spina
             </nav>
           HTML
         end
-
-        test 'returns new calendar' do
-          assert_equal <<~ICS, calendar(name: 'Name') { concat("Lorem ipsum\r\n") }
-            BEGIN:VCALENDAR\r
-            VERSION:2.0\r
-            PRODID:icalendar-ruby\r
-            CALSCALE:GREGORIAN\r
-            X-WR-CALNAME:Name\r
-            Lorem ipsum\r
-            END:VCALENDAR\r
-          ICS
-          assert_equal <<~ICS, calendar(name: 'Name')
-            BEGIN:VCALENDAR\r
-            VERSION:2.0\r
-            PRODID:icalendar-ruby\r
-            CALSCALE:GREGORIAN\r
-            X-WR-CALNAME:Name\r
-            END:VCALENDAR\r
-          ICS
-          assert_raises do
-            calendar(name: nil) { concat("Lorem ipsum\r\n") }
-          end
-        end
       end
     end
   end

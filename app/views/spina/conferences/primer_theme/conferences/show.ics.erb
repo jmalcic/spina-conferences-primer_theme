@@ -1,5 +1,0 @@
-<%= calendar name: @conference.name do -%>
-<%= render partial: 'conference', object: @conference, cached: true -%>
-<%= render partial: 'presentation', collection: @conference.presentations, cached: true -%>
-<%= render partial: 'event', collection: @conference.events, cached: true -%>
-<% end %>
