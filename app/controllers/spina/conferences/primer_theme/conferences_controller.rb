@@ -10,12 +10,18 @@ module Spina
 
         def index
           @conferences = Admin::Conferences::Conference.sorted.includes(institutions: [:logo])
-          respond_to :html, :ics
+          respond_to do |format|
+            format.html
+            format.ics { render body: @conferences.to_ics }
+          end
         end
 
         def show
           add_breadcrumb @conference.name
-          respond_to :html, :ics
+          respond_to do |format|
+            format.html
+            format.ics { render body: @conference.to_ics }
+          end
         end
 
         private
