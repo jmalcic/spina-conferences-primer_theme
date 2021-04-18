@@ -8,4 +8,4 @@
       = render(Primer::BaseComponent.new(tag: :address, display: :inline)) { event.location }
   = render Primer::FlexItemComponent.new(flex_auto: true, col: [nil, nil, 8, nil]) do
     = render(Primer::HeadingComponent.new(tag: :h3, mb: 1)) { event.name }
-    = render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) { event.description.try(:html_safe) }
+    = render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) { event.description.to_s }

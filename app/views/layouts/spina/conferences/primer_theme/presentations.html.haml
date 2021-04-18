@@ -2,5 +2,5 @@
   = render_breadcrumbs(builder: Spina::Conferences::PrimerTheme::Breadcrumbs::Builder)
 
 = render template: 'layouts/spina/conferences/primer_theme/application',
-         locals: { author: current_account.name, description: strip_tags(@presentation.abstract), title: @presentation.name,
+         locals: { author: current_account.name, description: @presentation.abstract.to_plain_text, title: @presentation.name,
                    seo_title: @presentation.name }

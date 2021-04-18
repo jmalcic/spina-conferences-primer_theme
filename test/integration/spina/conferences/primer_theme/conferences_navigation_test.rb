@@ -310,7 +310,7 @@ module Spina
                                 "#{I18n.localize(event.start_time, format: :short)}–#{I18n.localize(event.finish_time, format: :time)}"
                   assert_select 'address', event.location
                   assert_select 'h3', event.name
-                  assert_select 'div', event.description.try(:html_safe)
+                  assert_select 'div', event.description.to_s
                 end
               end
             end

@@ -23,11 +23,12 @@ module Spina
           end
         end
 
-        def calendar(name:, &block)
-          # noinspection SpellCheckingInspection
-          block ||= proc { '' }
-          Icalendar::Calendar.new.tap { |calendar| calendar.x_wr_calname = name }
-                             .then(&:to_ical).then { |calendar| calendar.insert(calendar.index('END:VCALENDAR'), capture(&block)) }
+        def calendar(name:)
+          Icalendar::Calendar.new
+                             .tap { |calendar| calendar.x_wr_calname = name }
+                             .tap { |calendar| yield(calendar) }
+                             .tap(&:publish)
+                             .then(&:to_ical)
         end
       end
     end
