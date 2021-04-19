@@ -1,5 +1,5 @@
 .Header-item.position-relative.d-none.d-lg-flex
-  - if navigation_item.has_children? && navigation_item.children.regular_pages.in_menu.live.sorted.count.positive?
+  - if navigation_item.has_children? && navigation_item.children.regular_pages.in_menu.live.sorted.any?
     %details.details-reset.details-overlay
       %summary.Header-link{ role: 'button', aria: { haspopup: 'menu' } }
         = navigation_item.menu_title
