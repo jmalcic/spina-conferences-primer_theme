@@ -1,11 +1,11 @@
 .Header-item.position-relative.d-none.d-lg-flex
-  - if navigation_item.has_children?
+  - if navigation_item.has_children? && navigation_item.children.regular_pages.in_menu.live.sorted.count.positive?
     %details.details-reset.details-overlay
       %summary.Header-link{ role: 'button', aria: { haspopup: 'menu' } }
         = navigation_item.menu_title
         = render Primer::OcticonComponent.new('chevron-down')
       %ul.dropdown-menu.dropdown-menu-sw
-        - navigation_item.children.each do |child|
+        - navigation_item.children.regular_pages.in_menu.live.sorted.each do |child|
           %li= link_to child.menu_title, child.materialized_path, class: 'dropdown-item'
   - elsif navigation_item.is_root?
     = link_to navigation_item.menu_title, navigation_item.materialized_path, class: %w[Header-link]
