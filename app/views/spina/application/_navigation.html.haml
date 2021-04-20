@@ -1,7 +1,7 @@
 .Header.px-3.px-md-4.px-lg-5.flex-wrap.flex-lg-nowrap
   .Header-item.mt-n1.mb-n1= link_to render('logo'), root_path, class: 'Header-link'
   %details.details-reset.d-lg-none{ style: 'display: contents' }
-    %summary.Header-item.Header-link.btn-link{ type: 'button' }
+    %summary.Header-item.Header-link.btn-link
       = render Primer::OcticonComponent.new('three-bars', height: 24)
     .Header-item.Header-item--full.flex-column.width-full.flex-order-1.mr-0.mt-3
       = render partial: 'mobile_navigation_items'
