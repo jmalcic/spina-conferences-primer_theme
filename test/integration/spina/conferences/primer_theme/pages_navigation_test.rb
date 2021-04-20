@@ -222,6 +222,8 @@ module Spina
                         else
                           assert_select 'h3', text: committee_bio.content(:name), count: committee_bio.content(:name).present? ? 1 : 0
                         end
+                        assert_select 'h4',
+                                      text: committee_bio.content(:institution), count: committee_bio.content(:institution).present? ? 1 : 0
                         assert_link committee_bio.content(:facebook_profile),
                                     text: 'Facebook', count: committee_bio.content(:facebook_profile).present? ? 1 : 0
                         assert_link committee_bio.content(:twitter_profile),

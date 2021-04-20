@@ -315,6 +315,10 @@ committee:
                 title: Name
                 type: Spina::Parts::Line
                 content: Joe Bloggs
+              - name: institution
+                title: Institution
+                type: Spina::Parts::Line
+                content: University of California
               - name: role
                 title: Role
                 type: Spina::Parts::Line
@@ -350,6 +354,9 @@ committee:
             parts:
               - name: name
                 title: Name
+                type: Spina::Parts::Line
+              - name: institution
+                title: Institution
                 type: Spina::Parts::Line
               - name: role
                 title: Role
@@ -390,6 +397,10 @@ committee:
                 title: Name
                 type: Spina::Parts::Line
                 content: Joe Bloggs
+              - name: institution
+                title: Institution
+                type: Spina::Parts::Line
+                content: University of California
               - name: role
                 title: Role
                 type: Spina::Parts::Line
@@ -426,6 +437,9 @@ committee:
               - name: name
                 title: Name
                 type: Spina::Parts::Line
+              - name: institution
+                title: Institution
+                type: Spina::Parts::Line
               - name: role
                 title: Role
                 type: Spina::Parts::Line
@@ -446,31 +460,31 @@ committee:
 
 blank:
   name: blank
-  json_attributes:  
+  json_attributes:
 
 empty_homepage:
   name: homepage
   view_template: homepage
-  json_attributes:  
+  json_attributes:
 
 empty_information:
   name: information
   view_template: information
-  json_attributes:  
+  json_attributes:
 
 empty_about:
   name: about
   view_template: about
-  json_attributes:  
+  json_attributes:
 
 empty_committee:
   name: committee
   view_template: committee
-  json_attributes:  
+  json_attributes:
 
 empty_blank:
   name: blank
-  json_attributes:  
+  json_attributes:
 
 homepage_without_partables:
   name: homepage
@@ -564,14 +578,14 @@ page_with_ancestor:
   name: page_with_ancestor
   ancestry: <%= ActiveRecord::FixtureSet.identify(:blank) %>
   view_template: information
-  json_attributes:  
+  json_attributes:
 
 page_with_description:
   name: page_with_description
   view_template: blank
-  json_attributes:  
+  json_attributes:
 
 page_without_description:
   name: page_without_description
   view_template: blank
-  json_attributes:  
+  json_attributes:
