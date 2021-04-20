@@ -16,14 +16,6 @@ port ENV.fetch("PORT") { 3000 }
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
-# Binds Puma to a URL
-#
-if ENV['SSL']
-  clear_binds!
-  ssl_bind ENV.fetch('SSL_HOST') { '127.0.0.1' }, ENV.fetch('SSL_PORT') { '9292' }, cert: ENV.fetch('SSL_CERT'),
-           key: ENV.fetch('SSL_KEY')
-end
-
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
