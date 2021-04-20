@@ -27,7 +27,7 @@
           - if current_conference.present? && current_conference.finish_date >= Date.today
             = link_to t('.more_info'), frontend_conference_path(current_conference),
                       class: %w[btn-mktg btn-large-mktg btn-primary-mktg f3 mt-4]
-          - elsif ::Spina::Page.where(view_template: 'about').any?
+          - else
             = link_to t('.more_info'), ::Spina::Page.where(view_template: 'about').first.materialized_path,
                       class: %w[btn-mktg btn-large-mktg btn-primary-mktg f3 mt-4]
           %div{ style: 'text-shadow: 0 1px 1px rgba(var(--color-scale-black), 0.25), 0 1px 25px rgba(var(--color-scale-black), 0.75);' }
