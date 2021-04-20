@@ -75,7 +75,7 @@
     name: 'committee_bios',
     title: 'Committee bios',
     part_type: 'Spina::Parts::Repeater',
-    parts: %w[name role bio profile_picture]
+    parts: %w[name institution role bio profile_picture]
   }, {
     name: 'sponsors',
     title: 'Sponsors',
