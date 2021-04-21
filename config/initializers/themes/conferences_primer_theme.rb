@@ -158,6 +158,10 @@
     name: 'url',
     title: 'Link',
     part_type: 'Spina::Parts::Admin::Conferences::Url'
+  }, {
+    name: 'embed_url',
+    title: 'Form embedding URL',
+    part_type: 'Spina::Parts::Admin::Conferences::Url'
   }]
 
   theme.view_templates = [{
@@ -184,6 +188,11 @@
     title: 'Events',
     description: 'Contains details of past and upcoming events',
     parts: %w[text events_list]
+  }, {
+    name: 'embedded_form',
+    title: 'Embedded Form',
+    description: 'Contains an embedded form',
+    parts: %w[text embed_url]
   }, {
     name: 'show',
     title: 'Blank',
