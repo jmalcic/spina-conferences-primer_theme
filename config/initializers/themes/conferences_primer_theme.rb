@@ -160,7 +160,7 @@
     part_type: 'Spina::Parts::Admin::Conferences::Url'
   }, {
     name: 'embed_url',
-    title: 'Form embedding URL',
+    title: 'Form embed URL',
     part_type: 'Spina::Parts::Admin::Conferences::Url'
   }]
 
@@ -190,7 +190,7 @@
     parts: %w[text events_list]
   }, {
     name: 'embedded_form',
-    title: 'Embedded Form',
+    title: 'Embedded form',
     description: 'Contains an embedded form',
     parts: %w[text embed_url]
   }, {
