@@ -28,6 +28,12 @@ committee:
   translated_model: committee
   materialized_path: /committee
 
+embedded_form:
+  title: Embedded Form
+  locale: en-GB
+  translated_model: embedded_form
+  materialized_path: /embedded_form
+
 blank:
   title: Blank
   locale: en-GB
@@ -57,6 +63,12 @@ empty_committee:
   locale: en-GB
   translated_model: empty_committee
   materialized_path: /empty-committee
+
+empty_embedded_form:
+  title: Embedded Form
+  locale: en-GB
+  translated_model: empty_embedded_form
+  materialized_path: /empty-embedded_form
 
 empty_blank:
   title: Blank
@@ -88,6 +100,12 @@ committee_us:
   translated_model: committee
   materialized_path: /committee
 
+embedded_form_us:
+  title: Embedded Form
+  locale: en
+  translated_model: embedded_form
+  materialized_path: /en/embedded_form
+
 blank_us:
   title: Blank
   locale: en
@@ -117,6 +135,12 @@ empty_committee_us:
   locale: en
   translated_model: empty_committee
   materialized_path: /en/empty-committee
+
+empty_embedded_form_us:
+  title: Embedded Form
+  locale: en
+  translated_model: empty_embedded_form
+  materialized_path: /en/empty-embedded_form
 
 empty_blank_us:
   title: Blank
@@ -148,6 +172,12 @@ committee_without_partables_us:
   translated_model: committee_without_partables
   materialized_path: /en/commitee-without-partables
 
+embedded_form_without_partables_us:
+  title: Embedded Form
+  locale: en
+  translated_model: embedded_form_without_partables
+  materialized_path: /en/embedded_form-without-partables
+
 homepage_without_partables:
   title: Homepage without partables
   locale: en-GB
@@ -171,6 +201,12 @@ committee_without_partables:
   locale: en-GB
   translated_model: committee_without_partables
   materialized_path: /commitee-without-partables
+
+embedded_form_without_partables:
+  title: Embedded Form
+  locale: en-GB
+  translated_model: embedded_form_without_partables
+  materialized_path: /embedded_form-without-partables
 
 page_with_ancestor:
   title: Page with ancestor

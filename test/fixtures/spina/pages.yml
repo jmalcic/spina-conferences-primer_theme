@@ -458,6 +458,41 @@ committee:
           - name: committee_bios
             title: Committee bios
 
+embedded_form:
+  name: embedded_form
+  view_template: embedded_form
+  json_attributes:
+    en_content:
+      - name: text
+        title: Text
+        type: Spina::Parts::Text
+        content:
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a ex ac leo interdum dictum eu sed risus.
+          Curabitur eros mauris, malesuada in turpis in, rutrum laoreet velit. Quisque vel consequat arcu, vel hendrerit nisl.
+          Vivamus eu turpis luctus, facilisis quam ut, aliquet ipsum. Etiam accumsan tellus turpis, vel placerat felis
+          ultricies et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+          Proin placerat, elit aliquam mattis laoreet, enim risus mollis nunc, at dapibus elit dolor in tortor. Sed sed nunc
+          augue.</div>
+      - name: embed_url
+        title: Form embedding URL
+        type: Spina::Parts::Admin::Conferences::Url
+        content: https://philarion.mml.cam.ac.uk/CamLingSoc/
+    en-GB_content:
+      - name: text
+        title: Text
+        type: Spina::Parts::Text
+        content:
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a ex ac leo interdum dictum eu sed risus.
+          Curabitur eros mauris, malesuada in turpis in, rutrum laoreet velit. Quisque vel consequat arcu, vel hendrerit nisl.
+          Vivamus eu turpis luctus, facilisis quam ut, aliquet ipsum. Etiam accumsan tellus turpis, vel placerat felis
+          ultricies et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+          Proin placerat, elit aliquam mattis laoreet, enim risus mollis nunc, at dapibus elit dolor in tortor. Sed sed nunc
+          augue.</div>
+      - name: embed_url
+        title: Form embedding URL
+        type: Spina::Parts::Admin::Conferences::Url
+        content: https://philarion.mml.cam.ac.uk/CamLingSoc/
+
 blank:
   name: blank
   json_attributes:
@@ -480,6 +515,11 @@ empty_about:
 empty_committee:
   name: committee
   view_template: committee
+  json_attributes:
+
+empty_embedded_form:
+  name: embedded_form
+  view_template: embedded_form
   json_attributes:
 
 empty_blank:
@@ -573,6 +613,25 @@ committee_without_partables:
       - name: committee_bios
         title: Committee bios
         type: Spina::Parts::Repeater
+
+embedded_form_without_partables:
+  name: embedded_form
+  view_template: embedded_form
+  json_attributes:
+    en_content:
+      - name: text
+        title: Text
+        type: Spina::Parts::Text
+      - name: embed_url
+        title: Form embedding URL
+        type: Spina::Parts::Admin::Conferences::Url
+    en-GB_content:
+      - name: text
+        title: Text
+        type: Spina::Parts::Text
+      - name: embed_url
+        title: Form embedding URL
+        type: Spina::Parts::Admin::Conferences::Url
 
 page_with_ancestor:
   name: page_with_ancestor

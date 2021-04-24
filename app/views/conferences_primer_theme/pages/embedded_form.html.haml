@@ -1,0 +1,9 @@
+- cache current_page do
+  = render(Primer::HeadingComponent.new) { current_page.title }
+
+  - if content(:text).present?
+    = render(Primer::MarkdownComponent.new(mt: 4)) { content.html(:text) }
+
+  - if content(:embed_url).present?
+    = render Primer::BoxComponent.new(mt: 4, col: 12) do
+      %iframe#form_frame{ src: content(:embed_url), allowfullscreen: true }

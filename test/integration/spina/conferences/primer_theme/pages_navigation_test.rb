@@ -263,6 +263,44 @@ module Spina
           end
         end
 
+        test 'visit embedded form page' do
+          page = spina_pages(:embedded_form)
+          in_locales :en, :'en-GB' do
+            get page.materialized_path
+            assert_response :success
+            assert_select 'main' do
+              assert_markdown_component html: page.content.html(:text)
+              assert_select 'div' do
+                assert_select 'iframe[src=?]', page.content(:embed_url)
+              end
+            end
+          end
+        end
+
+        test 'visit empty embedded form page' do
+          page = spina_pages(:empty_embedded_form)
+          in_locales :en, :'en-GB' do
+            get page.materialized_path
+            assert_response :success
+            assert_select 'main' do
+              assert_markdown_component false
+              assert_select 'iframe', false
+            end
+          end
+        end
+
+        test 'visit embedded form page without partables' do
+          page = spina_pages(:embedded_form_without_partables)
+          in_locales :en, :'en-GB' do
+            get page.materialized_path
+            assert_response :success
+            assert_select 'main' do
+              assert_markdown_component false
+              assert_select 'iframe', false
+            end
+          end
+        end
+
         test 'visit blank page' do
           in_locales :en, :'en-GB' do
             get spina_pages(:blank).materialized_path
