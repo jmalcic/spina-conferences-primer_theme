@@ -1,0 +1,16 @@
+= render(Primer::HeadingComponent.new) { @article.title }
+
+= render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) do
+  = render(Primer::OcticonComponent.new(@article.affiliations.many? ? 'people' : 'person'))
+  = render(Primer::BaseComponent.new(tag: :address, display: :inline)) do
+    = @article.affiliations.collect(&:name).to_sentence
+
+- unless @article.doi.blank?
+  = render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) do
+    = link_to @article.doi
+- if @article.has_content?(:attachment)
+  = render(Primer::ButtonComponent.new(tag: :a, href: main_app.url_for(@article.content(:attachment)), mt: 2, download: '', scheme: :primary)) do
+    = render Primer::OcticonComponent.new('download')
+    = t '.download'
+- if @article.has_content?(:abstract)
+  = render(Primer::MarkdownComponent.new) { @article.content.html(:abstract) }

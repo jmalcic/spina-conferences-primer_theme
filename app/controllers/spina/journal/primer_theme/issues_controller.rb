@@ -28,6 +28,7 @@ module Spina
 
         def set_issue
           @issue = Admin::Journal::Issue.find(params[:id])
+          @issue.view_context = view_context
         rescue ActiveRecord::RecordNotFound
           send_file Rails.root.join('public/404.html'), type: 'text/html; charset=utf-8', status: 404
         end
@@ -39,7 +40,7 @@ module Spina
 
         def set_metadata
           @title = @journal.name
-          @description = @journal.content(:description).try(:to_plain_text)
+          @description = ActionView::Base.full_sanitizer.sanitize(@journal.content(:description))
         end
       end
     end

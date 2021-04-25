@@ -8,13 +8,14 @@ module Spina
         before_action :set_article, :set_issue, :set_breadcrumb, :set_metadata
 
         def show
-          add_breadcrumb @article.name
+          add_breadcrumb @article.title
         end
 
         private
 
         def set_article
           @article = Admin::Journal::Article.find(params[:id])
+          @article.view_context = view_context
         rescue ActiveRecord::RecordNotFound
           send_file Rails.root.join('public/404.html'), type: 'text/html; charset=utf-8', status: 404
         end
@@ -34,7 +35,7 @@ module Spina
         end
 
         def set_metadata
-          @title = @article.name
+          @title = @article.title
           @description = @article.content(:abstract).try(:to_plain_text)
         end
       end

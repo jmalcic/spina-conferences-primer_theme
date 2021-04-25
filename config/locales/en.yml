@@ -166,7 +166,17 @@ en:
 
     journal:
       primer_theme:
-        volume_issue: "Volume %{volume_number} Issue %{issue_number}"
+        volume_issue: "Volume %{volume_number} (Issue %{issue_number})"
+        issues:
+          index:
+            no_issues: This journal has no issues.
+          show:
+            no_articles: This issue has no articles.
+          article:
+            download: PDF
+        articles:
+          show:
+            download: PDF
 
   languages:
     en-GB: British English

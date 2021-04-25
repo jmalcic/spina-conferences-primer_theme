@@ -1,0 +1,10 @@
+= render(Primer::HeadingComponent.new) { @journal.name }
+
+- if @journal.content(:description).present?
+  = render(Primer::MarkdownComponent.new(mt: 4)) { @journal.content.html(:description) }
+
+%div#journal-issues-list.border-top
+  - if @issues.any?
+    %ul= render partial: 'issue', collection: @issues, layout: 'list_item'
+  - else
+    = render Primer::BlankslateComponent.new(title: t(:'.no_issues'), icon: 'mortar-board')
