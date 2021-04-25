@@ -162,6 +162,14 @@
     name: 'embed_url',
     title: 'Form embed URL',
     part_type: 'Spina::Parts::Admin::Conferences::Url'
+  }, {
+    name: 'abstract',
+    title: 'Abstract',
+    part_type: 'Spina::Parts::Text'
+  }, {
+    name: 'cover_img',
+    title: 'Cover Image',
+    part_type: 'Spina::Parts::Image'
   }]
 
   theme.view_templates = [{
@@ -221,5 +229,5 @@
     label: 'Footer'
   }]
 
-  theme.plugins = ['conferences']
+  theme.plugins = ['conferences', 'journal']
 end
