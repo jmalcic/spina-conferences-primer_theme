@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_085428) do
+ActiveRecord::Schema.define(version: 2021_04_25_231540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,11 +94,9 @@ ActiveRecord::Schema.define(version: 2021_04_25_085428) do
     t.string "url", default: "", null: false
     t.string "doi", default: "", null: false
     t.bigint "issue_id", null: false
-    t.bigint "file_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "json_attributes"
-    t.index ["file_id"], name: "index_spina_admin_journal_articles_on_file_id"
     t.index ["issue_id"], name: "index_spina_admin_journal_articles_on_issue_id"
   end
 
@@ -129,22 +127,18 @@ ActiveRecord::Schema.define(version: 2021_04_25_085428) do
     t.string "title", default: "", null: false
     t.date "date", null: false
     t.bigint "volume_id", null: false
-    t.bigint "cover_img_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "json_attributes"
-    t.index ["cover_img_id"], name: "index_spina_admin_journal_issues_on_cover_img_id"
     t.index ["volume_id"], name: "index_spina_admin_journal_issues_on_volume_id"
   end
 
   create_table "spina_admin_journal_journals", force: :cascade do |t|
     t.string "name", default: "Unnamed Journal", null: false
-    t.bigint "logo_id"
     t.integer "singleton_guard", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "json_attributes"
-    t.index ["logo_id"], name: "index_spina_admin_journal_journals_on_logo_id"
     t.index ["singleton_guard"], name: "index_spina_admin_journal_journals_on_singleton_guard", unique: true
   end
 
@@ -617,12 +611,9 @@ ActiveRecord::Schema.define(version: 2021_04_25_085428) do
   add_foreign_key "spina_admin_journal_affiliations", "spina_admin_journal_authors", column: "author_id"
   add_foreign_key "spina_admin_journal_affiliations", "spina_admin_journal_institutions", column: "institution_id"
   add_foreign_key "spina_admin_journal_articles", "spina_admin_journal_issues", column: "issue_id"
-  add_foreign_key "spina_admin_journal_articles", "spina_attachments", column: "file_id", on_delete: :nullify
   add_foreign_key "spina_admin_journal_authorships", "spina_admin_journal_affiliations", column: "affiliation_id"
   add_foreign_key "spina_admin_journal_authorships", "spina_admin_journal_articles", column: "article_id"
   add_foreign_key "spina_admin_journal_issues", "spina_admin_journal_volumes", column: "volume_id"
-  add_foreign_key "spina_admin_journal_issues", "spina_images", column: "cover_img_id"
-  add_foreign_key "spina_admin_journal_journals", "spina_images", column: "logo_id"
   add_foreign_key "spina_admin_journal_volumes", "spina_admin_journal_journals", column: "journal_id"
   add_foreign_key "spina_conferences_conference_translations", "spina_conferences_conferences"
   add_foreign_key "spina_conferences_delegates", "spina_conferences_institutions", column: "institution_id", on_delete: :cascade
