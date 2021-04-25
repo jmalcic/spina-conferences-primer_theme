@@ -36,6 +36,10 @@ en:
         primer_theme:
           application:
             title: "%{title} — %{suffix}"
+      journal:
+        primer_theme:
+          application:
+            title: "%{title} — %{suffix}"
 
   conferences_primer_theme:
     pages:

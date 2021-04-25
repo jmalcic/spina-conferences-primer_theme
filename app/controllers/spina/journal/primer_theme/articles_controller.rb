@@ -32,6 +32,11 @@ module Spina
           add_breadcrumb t('spina.journal.primer_theme.volume_issue', volume_number: @issue.volume.number, issue_number: @issue.number),
                          frontend_issue_path(@issue.id)
         end
+
+        def set_metadata
+          @title = @article.name
+          @description = @article.content(:abstract).try(:to_plain_text)
+        end
       end
     end
   end

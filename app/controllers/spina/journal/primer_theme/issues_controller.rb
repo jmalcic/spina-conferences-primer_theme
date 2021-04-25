@@ -5,11 +5,13 @@ module Spina
     module PrimerTheme
       # User-facing controller for journal issues
       class IssuesController < ApplicationController
-        before_action :set_issue, only: :show
-        before_action :set_journal, :set_breadcrumb
+        before_action :set_journal
+        before_action :set_issue, :set_breadcrumb, only: :show
+        before_action :set_metadata
 
         def index
-          @issues = @journal.issues.sorted_desc
+          # having multiple journals is not currently allowed anyway
+          @issues = Admin::Journal::Issue.sorted_desc
         end
 
         def show
@@ -31,8 +33,13 @@ module Spina
         end
 
         def set_breadcrumb
-          add_breadcrumb @journal.name
+          add_breadcrumb @journal.name, frontend_issues_path
           add_breadcrumb Admin::Journal::Issue.model_name.human.pluralize, frontend_issues_path
+        end
+
+        def set_metadata
+          @title = @journal.name
+          @description = @journal.content(:description).try(:to_plain_text)
         end
       end
     end
