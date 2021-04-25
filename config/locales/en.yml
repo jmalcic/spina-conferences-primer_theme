@@ -160,6 +160,10 @@ en:
           page:
             page: Page %{number}
 
+    journal:
+      primer_theme:
+        volume_issue: "Volume %{volume_number} Issue %{issue_number}"
+
   languages:
     en-GB: British English
 
