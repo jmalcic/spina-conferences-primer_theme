@@ -8,4 +8,12 @@ Spina::Engine.routes.draw do
     resources :presentations, only: [:show]
     get 'cookies-info', controller: 'application'
   end
+
+  namespace :frontend, path: 'journal', module: 'journal/primer_theme' do
+    resources :issues, only: %i[index show] do
+      resources :articles, only: %i[show]
+    end
+    resources :articles, only: %i[show]
+    get 'cookies-info', controller: 'application'
+  end
 end
