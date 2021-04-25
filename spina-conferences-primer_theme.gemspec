@@ -6,7 +6,7 @@ $LOAD_PATH.push File.expand_path('lib', __dir__)
 require 'spina/conferences/primer_theme/version'
 
 # Describe your gem and declare its dependencies:
-Gem::Specification.new do |spec|
+Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.name = 'spina-conferences-primer_theme'
   spec.version = Spina::Conferences::PrimerTheme::VERSION
   spec.required_ruby_version = '~> 2.7'
@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rails', '~> 6.0'
   spec.add_dependency 'spina', '~> 2.0'
   spec.add_dependency 'spina-admin-conferences', '~> 2.1.0'
+  spec.add_dependency 'spina-admin-journal', '~> 0.1'
 
   spec.add_development_dependency 'capybara', '~> 3.33'
   spec.add_development_dependency 'dotenv-rails', '~> 2.7'
