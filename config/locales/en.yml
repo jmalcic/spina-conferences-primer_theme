@@ -177,6 +177,11 @@ en:
         articles:
           show:
             download: PDF
+            doi: DOI
+            url: URL
+            abstract: Abstract
+            published: Published
+            issue: Issue
 
   languages:
     en-GB: British English

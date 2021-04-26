@@ -8,7 +8,7 @@
         = article.affiliations.collect(&:name).to_sentence
     - unless article.doi.blank?
       = render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) do
-        = link_to article.doi
+        = link_to nil, article.doi
     - if article.has_content?(:attachment)
       = render(Primer::ButtonComponent.new(tag: :a, href: main_app.url_for(article.content(:attachment)), mt: 2, download: '')) do
         = render Primer::OcticonComponent.new('download')
