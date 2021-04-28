@@ -14,6 +14,5 @@ Spina::Engine.routes.draw do
       resources :articles, only: %i[show]
     end
     resources :articles, only: %i[show]
-    get 'cookies-info', controller: 'application'
   end
 end
