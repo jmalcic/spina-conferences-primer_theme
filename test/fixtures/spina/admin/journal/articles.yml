@@ -1,0 +1,49 @@
+new_wave:
+  number: 1
+  title: "A new wave: how the tides change"
+  url: https://this-page-intentionally-left-blank.org/
+  doi: link
+  issue: vol1_issue1
+  json_attributes:
+    en-GB_content:
+      - name: abstract
+        title: Abstract
+        type: Spina::Parts::Text
+        content: <div>Lorem ipsum<\/div>
+
+article_two:
+  number: 2
+  title: The second article
+  url: https://this-page-intentionally-left-blank.org/
+  doi: link
+  issue: vol1_issue1
+  json_attributes:
+    en-GB_content:
+      - name: abstract
+        title: Abstract
+        type: Spina::Parts::Text
+        content:
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a ex ac leo interdum
+          dictum eu sed risus. Proin placerat, elit aliquam mattis laoreet, enim risus mollis nunc,
+          at dapibus elit dolor in tortor. Sed sed nunc augue.<\/div>
+
+article_three:
+  number: 3
+  title: The third article
+  url: https://this-page-intentionally-left-blank.org/
+  doi: link
+  issue: vol1_issue1
+  json_attributes:
+    en-GB_content:
+      - name: abstract
+        title: Abstract
+        type: Spina::Parts::Text
+        content:
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a ex ac leo interdum
+          dictum eu sed risus. Proin placerat, elit aliquam mattis laoreet, enim risus mollis nunc,
+          at dapibus elit dolor in tortor. Sed sed nunc augue.<\/div>
+
+empty_article:
+  number: 1
+  title: Empty
+  issue: vol2_issue1

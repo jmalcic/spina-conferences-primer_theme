@@ -1,0 +1,15 @@
+one:
+  article: new_wave
+  affiliation: marcus
+
+two:
+  article: article_two
+  affiliation: marcus
+
+three:
+  article: article_two
+  affiliation: henry
+
+four:
+  article: empty_article
+  affiliation: toope

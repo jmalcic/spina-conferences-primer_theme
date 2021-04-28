@@ -1,0 +1,62 @@
+vol1_issue1:
+  number: 1
+  title: An interesting title
+  date: 2012-04-20
+  volume: vol1
+  json_attributes:
+    en-GB_content:
+      - name: description
+        title: Description
+        type: Spina::Parts::Text
+        content:
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a ex ac leo interdum
+          dictum eu sed risus. Proin placerat, elit aliquam mattis laoreet, enim risus mollis nunc,
+          at dapibus elit dolor in tortor. Sed sed nunc augue.<\/div>
+      - name: cover_img
+        title: Cover Image
+        type: Spina::Parts::Image
+        image: cover_img
+
+vol1_issue2_empty:
+  number: 2
+  title: An empty issue
+  date: 2012-11-10
+  volume: vol1
+
+vol1_issue3:
+  number: 3
+  title: The big one
+  date: 2012-12-10
+  volume: vol1
+  json_attributes:
+    en-GB_content:
+      - name: description
+        title: Description
+        type: Spina::Parts::Text
+        content:
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a ex ac leo interdum
+          dictum eu sed risus. Proin placerat, elit aliquam mattis laoreet, enim risus mollis nunc,
+          at dapibus elit dolor in tortor. Sed sed nunc augue.<\/div>
+      - name: cover_img
+        title: Cover Image
+        type: Spina::Parts::Image
+        image: cover_img
+
+vol2_issue1:
+  number: 1
+  title: An interesting title
+  date: 2013-01-01
+  volume: vol2
+  json_attributes:
+    en-GB_content:
+      - name: description
+        title: Description
+        type: Spina::Parts::Text
+        content:
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a ex ac leo interdum
+          dictum eu sed risus. Proin placerat, elit aliquam mattis laoreet, enim risus mollis nunc,
+          at dapibus elit dolor in tortor. Sed sed nunc augue.<\/div>
+      - name: cover_img
+        title: Cover Image
+        type: Spina::Parts::Image
+        image: cover_img

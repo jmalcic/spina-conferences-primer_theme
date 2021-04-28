@@ -1,0 +1,16 @@
+journal:
+  name: My Journal
+  singleton_guard: 0
+  json_attributes:
+    en-GB_content:
+      - name: description
+        title: Description
+        type: Spina::Parts::Text
+        content:
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a ex ac leo interdum
+          dictum eu sed risus. Proin placerat, elit aliquam mattis laoreet, enim risus mollis nunc,
+          at dapibus elit dolor in tortor. Sed sed nunc augue.<\/div>
+      - name: logo
+        title: Logo
+        type: Spina::Parts::Image
+        image: logo
