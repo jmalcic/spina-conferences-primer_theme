@@ -13,6 +13,5 @@ Spina::Engine.routes.draw do
     resources :issues, only: %i[index show] do
       resources :articles, only: %i[show]
     end
-    resources :articles, only: %i[show]
   end
 end
