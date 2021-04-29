@@ -13,12 +13,17 @@ module Spina
         end
 
         test 'should get show' do
-          get frontend_article_url(@article)
+          get frontend_issue_article_url(@article.issue, @article)
           assert_response :success
         end
 
-        test 'should handle missing article' do
-          get frontend_article_url(Spina::Admin::Journal::Article.last.id + 1)
+        test 'should handle nonexistent article' do
+          get frontend_issue_article_url(@article.issue, Spina::Admin::Journal::Article.last.id + 1)
+          assert_response :missing
+        end
+
+        test 'should handle nonexistent issue' do
+          get frontend_issue_article_url(Spina::Admin::Journal::Issue.last.id + 1, @article)
           assert_response :missing
         end
       end
