@@ -15,6 +15,6 @@
 
 %div#journal-articles-list.border-top
   - if @issue.articles.any?
-    %ul= render partial: 'article', collection: @issue.articles, layout: 'list_item'
+    %ul= render partial: 'article', collection: @issue.articles.sorted_asc, layout: 'list_item'
   - else
     = render Primer::BlankslateComponent.new(title: t(:'.no_articles'), icon: 'mortar-board')
