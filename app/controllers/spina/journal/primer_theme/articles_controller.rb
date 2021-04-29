@@ -14,14 +14,14 @@ module Spina
         private
 
         def set_article
-          @article = Admin::Journal::Article.find(params[:id])
+          @article = Admin::Journal::Article.includes(affiliations: [:institution]).find(params[:id])
           @article.view_context = view_context
         rescue ActiveRecord::RecordNotFound
           send_file Rails.root.join('public/404.html'), type: 'text/html; charset=utf-8', status: 404
         end
 
         def set_issue
-          @issue = Admin::Journal::Issue.find(params[:issue_id]) if params[:issue_id].present?
+          @issue = Admin::Journal::Issue.includes(:volume, :articles).find(params[:issue_id]) if params[:issue_id].present?
         rescue ActiveRecord::RecordNotFound
           send_file Rails.root.join('public/404.html'), type: 'text/html; charset=utf-8', status: 404
         end
