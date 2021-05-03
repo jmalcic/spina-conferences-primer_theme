@@ -168,7 +168,7 @@
     part_type: 'Spina::Parts::Text'
   }, {
     name: 'cover_img',
-    title: 'Cover Image',
+    title: 'Cover image',
     part_type: 'Spina::Parts::Image'
   }]
 
@@ -229,5 +229,5 @@
     label: 'Footer'
   }]
 
-  theme.plugins = ['conferences', 'journal']
+  theme.plugins = %w[conferences journal]
 end
