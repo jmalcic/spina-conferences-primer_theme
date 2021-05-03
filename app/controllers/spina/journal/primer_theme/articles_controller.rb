@@ -15,7 +15,6 @@ module Spina
 
         def set_article
           @article = Admin::Journal::Article.includes(affiliations: [:institution]).find(params[:id])
-          @article.view_context = view_context
         rescue ActiveRecord::RecordNotFound
           send_file Rails.root.join('public/404.html'), type: 'text/html; charset=utf-8', status: 404
         end

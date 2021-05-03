@@ -26,7 +26,6 @@ module Spina
 
         def set_issue
           @issue = Admin::Journal::Issue.includes(:volume, :articles).find(params[:id])
-          @issue.view_context = view_context
         rescue ActiveRecord::RecordNotFound
           send_file Rails.root.join('public/404.html'), type: 'text/html; charset=utf-8', status: 404
         end
