@@ -1,5 +1,5 @@
 %li
-  = link_to frontend_conference_url(presentation_type.conference, presentation_type: presentation_type.id, tab: 'presentations'),
+  = link_to frontend_conference_path(presentation_type.conference, presentation_type: presentation_type.id, tab: 'presentations'),
             class: 'filter-item', aria: { current: @presentation_type == presentation_type ? 'page' : nil } do
     = presentation_type.name.pluralize
     %span.count{ title: t(:'.results') }= presentation_type.presentations.count
