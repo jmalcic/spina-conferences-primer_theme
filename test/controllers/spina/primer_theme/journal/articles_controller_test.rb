@@ -3,8 +3,8 @@
 require 'test_helper'
 
 module Spina
-  module Journal
-    module PrimerTheme
+  module PrimerTheme
+    module Journal
       class ArticlesControllerTest < ActionDispatch::IntegrationTest
         include ::Spina::Engine.routes.url_helpers
 

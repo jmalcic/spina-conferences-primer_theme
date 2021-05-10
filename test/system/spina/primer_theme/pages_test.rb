@@ -3,7 +3,7 @@
 require 'application_system_test_case'
 
 module Spina
-  module Conferences
+  module PrimerTheme
     class PagesTest < ApplicationSystemTestCase
       test 'visiting the homepage' do
         visit spina_pages(:homepage).materialized_path

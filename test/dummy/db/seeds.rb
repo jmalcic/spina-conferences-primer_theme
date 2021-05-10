@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spina
-  Account.first_or_create name: 'Conferences', theme: 'conferences_primer_theme'
+  Account.first_or_create name: 'Primer', theme: 'primer_theme'
   User.first_or_create name: 'Joe', email: 'someone@someaddress.com', password: 'password', admin: true
   module Admin
     module Conferences

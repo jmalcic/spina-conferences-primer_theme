@@ -3,8 +3,8 @@
 require 'test_helper'
 
 module Spina
-  module Conferences
-    module PrimerTheme
+  module PrimerTheme
+    module Conferences
       class PresentationsControllerTest < ActionDispatch::IntegrationTest
         include ::Spina::Engine.routes.url_helpers
 
