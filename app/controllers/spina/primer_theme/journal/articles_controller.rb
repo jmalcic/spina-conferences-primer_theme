@@ -29,7 +29,7 @@ module Spina
           return if @issue.blank?
 
           add_breadcrumb Admin::Journal::Issue.model_name.human.pluralize, frontend_issues_path
-          add_breadcrumb t('spina.journal.primer_theme.volume_issue', volume_number: @issue.volume.number, issue_number: @issue.number),
+          add_breadcrumb t('spina.primer_theme.journal.volume_issue', volume_number: @issue.volume.number, issue_number: @issue.number),
                          frontend_issue_path(@issue.id)
         end
 

@@ -32,16 +32,15 @@
 en:
   layouts:
     spina:
-      conferences:
-        primer_theme:
+      primer_theme:
+        conferences:
           application:
             title: "%{title} — %{suffix}"
-      journal:
-        primer_theme:
+        journal:
           application:
             title: "%{title} — %{suffix}"
 
-  conferences_primer_theme:
+  primer_theme:
     pages:
       about:
         contact:
@@ -100,8 +99,8 @@ en:
         cookies: About cookies
         loading: Loading…
 
-    conferences:
-      primer_theme:
+    primer_theme:
+      conferences:
         conferences:
           index:
             subscribe: Subscribe
@@ -164,8 +163,7 @@ en:
           page:
             page: Page %{number}
 
-    journal:
-      primer_theme:
+      journal:
         volume_issue: "Volume %{volume_number} (Issue %{issue_number})"
         issues:
           index:

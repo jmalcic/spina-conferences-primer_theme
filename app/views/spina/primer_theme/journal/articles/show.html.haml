@@ -32,7 +32,7 @@
         - component.row do
           = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.issue' }
           = render(Primer::TextComponent.new) do
-            = link_to t('spina.journal.primer_theme.volume_issue',
+            = link_to t('spina.primer_theme.journal.volume_issue',
                         volume_number: @article.issue.volume.number,
                         issue_number: @article.issue.number), frontend_issue_path(@article.issue)
         - unless @article.doi.blank?

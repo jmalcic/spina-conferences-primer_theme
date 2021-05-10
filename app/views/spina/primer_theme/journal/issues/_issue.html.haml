@@ -4,7 +4,7 @@
       = render partial: 'issue_cover', locals: { issue: issue, cover_img: issue.content(:cover_img), size: [150, 300] }
   = render(Primer::FlexItemComponent.new(flex_auto: true)) do
     = render(Primer::HeadingComponent.new(tag: :h2, mb: 1)) do
-      = link_to t('spina.journal.primer_theme.volume_issue',
+      = link_to t('spina.primer_theme.journal.volume_issue',
                   volume_number: issue.volume.number,
                   issue_number: issue.number), frontend_issue_path(issue)
     - unless issue.title.blank?

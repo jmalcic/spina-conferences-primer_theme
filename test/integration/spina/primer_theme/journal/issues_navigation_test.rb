@@ -15,7 +15,7 @@ module Spina
             assert_select 'ul' do
               Spina::Admin::Journal::Issue.sorted_desc.each do |issue|
                 assert_select 'li' do
-                  assert_select 'h2', text: I18n.t('spina.journal.primer_theme.volume_issue',
+                  assert_select 'h2', text: I18n.t('spina.primer_theme.journal.volume_issue',
                                                    volume_number: issue.volume.number,
                                                    issue_number: issue.number)
                   assert_select('h3', text: issue.title) if issue.title.present?
@@ -31,7 +31,7 @@ module Spina
           get frontend_issue_path(issue)
           assert_response :success
           assert_select 'main' do
-            assert_select 'h1', text: I18n.t('spina.journal.primer_theme.volume_issue',
+            assert_select 'h1', text: I18n.t('spina.primer_theme.journal.volume_issue',
                                              volume_number: issue.volume.number,
                                              issue_number: issue.number)
             assert_select 'h2', text: issue.title

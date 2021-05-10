@@ -2,6 +2,6 @@
 - cache cover_img do
   = image_tag main_app.url_for(cover_img.variant(resize_to_limit: size)),
               srcset: srcset(cover_img, variant: { resize_to_limit: size }),
-              alt_description: t('spina.journal.primer_theme.volume_issue', volume_number: issue.volume.number, issue_number: issue.number),
+              alt_description: t('spina.primer_theme.journal.volume_issue', volume_number: issue.volume.number, issue_number: issue.number),
               draggable: false,
               class: 'p-1'
