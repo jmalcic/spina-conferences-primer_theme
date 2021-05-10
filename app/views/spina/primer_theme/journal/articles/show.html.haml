@@ -18,7 +18,7 @@
   = render(Primer::BorderBoxComponent.new(ml: [nil, nil, 4, nil])) do |sidebar|
     - sidebar.body do
       - if @article.issue.has_content?(:cover_img)
-        = render partial: 'spina/journal/primer_theme/issues/issue_cover', locals: { issue: @article.issue, cover_img: @article.issue.content(:cover_img), size: [200, 400] }
+        = render partial: 'spina/primer_theme/journal/issues/issue_cover', locals: { issue: @article.issue, cover_img: @article.issue.content(:cover_img), size: [200, 400] }
       = render(Primer::BorderBoxComponent.new) do |component|
         - if @article.has_content?(:attachment)
           - component.row do
