@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spina-conferences-primer_theme (0.4.2)
+    spina-primer_theme (0.4.2)
       babel-transpiler (~> 0.7)
       icalendar (~> 2.5)
       image_processing (~> 1.9)
@@ -374,7 +374,7 @@ DEPENDENCIES
   selenium-webdriver (~> 3.142)
   simplecov (~> 0.19)
   simplecov-lcov (~> 0.8)
-  spina-conferences-primer_theme!
+  spina-primer_theme!
   web-console (~> 4.0)
   webdrivers (~> 4.4)
 

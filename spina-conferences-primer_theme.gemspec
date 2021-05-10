@@ -3,12 +3,12 @@
 $LOAD_PATH.push File.expand_path('lib', __dir__)
 
 # Maintain your gem's version:
-require 'spina/conferences/primer_theme/version'
+require 'spina/primer_theme/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.name = 'spina-conferences-primer_theme'
-  spec.version = Spina::Conferences::PrimerTheme::VERSION
+  spec.name = 'spina-primer_theme'
+  spec.version = Spina::PrimerTheme::VERSION
   spec.required_ruby_version = '~> 2.7'
   spec.authors = ['Justin Malčić']
   spec.email = ['j.malcic@me.com']
