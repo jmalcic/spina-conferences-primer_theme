@@ -1,5 +1,5 @@
 - content_for :breadcrumbs do
-  = render_breadcrumbs(builder: Spina::Conferences::PrimerTheme::Breadcrumbs::Builder)
+  = render_breadcrumbs(builder: Spina::PrimerTheme::Breadcrumbs::Builder)
 
-= render template: 'layouts/spina/journal/primer_theme/application',
+= render template: 'layouts/spina/journal/primer_theme/journal/application',
          locals: { author: current_account.name, description: @description, title: @title, seo_title: @title }
