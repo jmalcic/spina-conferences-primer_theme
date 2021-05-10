@@ -4,7 +4,7 @@
       %ul.filter-list
         - cache [@conference.presentations, @presentation_type] do
           %li
-            = link_to frontend_conference_url(@conference, tab: 'presentations'),
+            = link_to frontend_conference_path(@conference, tab: 'presentations'),
                       class: 'filter-item', aria: { current: ('page' if @presentation_type.blank?) } do
               = t('.all_presentation_types')
               %span.count{ title: t(:'.results') }= @conference.presentations.count
