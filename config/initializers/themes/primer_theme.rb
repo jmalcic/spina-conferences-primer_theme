@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 ::Spina::Theme.register do |theme| # rubocop:disable Metrics/BlockLength
-  theme.name = 'conferences_primer_theme'
-  theme.title = 'Conferences Primer theme'
+  theme.name = 'primer_theme'
+  theme.title = 'Primer theme'
 
   theme.layout_parts = %w[current_conference_alert]
 

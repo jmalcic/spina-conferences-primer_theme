@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Spina
-  module Conferences
-    module PrimerTheme
+  module PrimerTheme
+    module Conferences
       # Helper for accessing navigation items
       module NavigationsHelper
         def main_navigation_items

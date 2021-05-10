@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Spina
-  module Journal
-    module PrimerTheme
+  module PrimerTheme
+    module Journal
       # User-facing controller for journal issues
       class IssuesController < ApplicationController
         before_action :set_journal

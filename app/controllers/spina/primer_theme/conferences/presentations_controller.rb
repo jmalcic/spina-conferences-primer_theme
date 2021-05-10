@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Spina
-  module Conferences
-    module PrimerTheme
+  module PrimerTheme
+    module Conferences
       # User-facing controller for presentations, serving both html and ics
       class PresentationsController < ApplicationController
         before_action :set_presentation, :set_conference, :set_breadcrumb

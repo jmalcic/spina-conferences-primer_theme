@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Spina
-  module Journal
-    module PrimerTheme
+  module PrimerTheme
+    module Journal
       # User-facing controller for journal articles
       class ArticlesController < ApplicationController
         before_action :set_article, :set_issue, :set_breadcrumb, :set_metadata

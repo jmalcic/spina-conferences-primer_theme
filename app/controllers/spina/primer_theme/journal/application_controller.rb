@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Spina
-  module Journal
-    module PrimerTheme
+  module PrimerTheme
+    module Journal
       # Base class from which controllers related to the journal plugin inherit
       class ApplicationController < Spina::ApplicationController
       end

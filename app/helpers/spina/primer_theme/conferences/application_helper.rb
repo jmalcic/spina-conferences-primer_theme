@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Spina
-  module Conferences
-    module PrimerTheme
+  module PrimerTheme
+    module Conferences
       # Base helper
       module ApplicationHelper
         include Spina::PagesHelper
