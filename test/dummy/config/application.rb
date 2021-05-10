@@ -5,7 +5,7 @@ require_relative 'boot'
 require 'rails/all'
 
 Bundler.require(*Rails.groups)
-require 'spina/primer_theme'
+require 'spina/conferences/primer_theme'
 require 'dotenv-rails'
 
 Dotenv::Railtie.load

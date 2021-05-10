@@ -1,0 +1,29 @@
+- cache [@conference.presentations, @presentation_type, @presentations, @presentations.collect(&:presenters), @tab] do
+  = render Primer::FlexComponent.new(direction: [:column, nil, nil, :row], my: 4) do
+    = render Primer::FlexItemComponent.new(pr: [nil, nil, nil, 4], mb: [4, nil, nil, 0], col: [12, nil, nil, 3]) do
+      %ul.filter-list
+        - cache [@conference.presentations, @presentation_type] do
+          %li
+            = link_to frontend_conference_path(@conference, tab: 'presentations'),
+                      class: 'filter-item', aria: { current: ('page' if @presentation_type.blank?) } do
+              = t('.all_presentation_types')
+              %span.count{ title: t(:'.results') }= @conference.presentations.count
+        = render partial: 'presentation_type', collection: @conference.presentation_types.sorted,
+                 cached: -> presentation_type { [presentation_type, @presentation_type] }
+    = render Primer::FlexItemComponent.new(col: [12, nil, nil, 9]) do
+      - if @presentations.any?
+        %filter-input{ aria: { owns: 'presentation_list' } }
+          .subnav.subnav-flush
+            .subnav-search.float-left.ml-0
+              = search_field_tag 'search', nil, class: %w[form-control subnav-search-input], aria: { label: t(:'.search') }
+              = octicon 'search', class: 'subnav-search-icon'
+      %div{ id: 'presentation_list' }
+        - if @presentations.any?
+          %ul{ data: { filter: { list: true } } }
+            = render partial: 'presentation', collection: @presentations.sorted.reverse_order, layout: 'list_item',
+                     locals: { conference: @conference }, cached: -> presentation { [presentation, presentation.presenters] }
+          = paginate @presentations.sorted, views_prefix: 'spina/conferences/primer_theme/conferences'
+        - else
+          = render Primer::BlankslateComponent.new(title: t(:'.no_presentations'), icon: 'mortar-board')
+        = render Primer::BlankslateComponent.new(title: t(:'.no_matching_presentations'), icon: 'mortar-board', hidden: true,
+                                                 data: { 'filter-empty-state': true })

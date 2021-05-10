@@ -8,7 +8,7 @@
 dummy:
   name: My Website
   preferences:
-    :theme: primer_theme
+    :theme: conferences_primer_theme
   json_attributes:
     en_content:
       - name: current_conference_alert

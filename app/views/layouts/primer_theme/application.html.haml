@@ -1,7 +1,0 @@
-- content_for :breadcrumbs do
-  - if current_page.ancestors.any?
-    = ancestors
-
-= render template: 'layouts/spina/primer_theme/conferences/application',
-         locals: { author: current_account.name, description: current_page.description,
-                   seo_title: current_page.seo_title, title: current_page.title }

@@ -1,0 +1,6 @@
+- content_for :breadcrumbs do
+  = render_breadcrumbs(builder: Spina::Conferences::PrimerTheme::Breadcrumbs::Builder)
+
+= render template: 'layouts/spina/conferences/primer_theme/conferences/application',
+         locals: { author: current_account.name, description: @presentation.abstract.try(:to_plain_text), title: @presentation.name,
+                   seo_title: @presentation.name }
