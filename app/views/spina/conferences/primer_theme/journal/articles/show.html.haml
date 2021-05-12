@@ -1,10 +1,10 @@
-- cache [@article, @article.affiliations, @article.content(:abstract), @article.issue, @article.issue.volume, @article.issue.content(:cover_img)] do
+- cache [@article, @article.authorships, @article.affiliations, @article.content(:abstract), @article.issue, @article.issue.volume, @article.issue.content(:cover_img)] do
   = render(Primer::HeadingComponent.new) { @article.title }
 
   = render(Primer::FlexComponent.new(direction: [:column, nil, :row, nil])) do
     = render(Primer::FlexItemComponent.new(flex_auto: true, mr: [nil, nil, 4, nil])) do
       %ul.list-style-none.d-flex.flex-column.flex-sm-row.my-2
-        = render partial: 'affiliation', collection: @article.affiliations, cached: true
+        = render partial: 'authorship', collection: @article.authorships.sorted_within_article, cached: true
       - if @article.has_content?(:abstract)
         = render(Primer::HeadingComponent.new(tag: :h2, mt: 4, font_size: 3)) { t '.abstract' }
         = render(Primer::MarkdownComponent.new) { @article.content.html(:abstract) }
