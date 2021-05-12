@@ -1,15 +1,19 @@
 one:
   article: new_wave
   affiliation: marcus
+  position: 1
 
 two:
   article: article_two
   affiliation: marcus
+  position: 1
 
 three:
   article: article_two
   affiliation: henry
+  position: 2
 
 four:
   article: empty_article
   affiliation: toope
+  position: 1

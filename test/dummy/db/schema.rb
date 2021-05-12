@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_231540) do
+ActiveRecord::Schema.define(version: 2021_05_12_142133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2021_04_25_231540) do
     t.bigint "affiliation_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position", default: 0, null: false
     t.index ["affiliation_id", "article_id"], name: "index_authorships_on_affiliation_id_and_article_id", unique: true
     t.index ["affiliation_id"], name: "index_spina_admin_journal_authorships_on_affiliation_id"
     t.index ["article_id", "affiliation_id"], name: "index_authorships_on_article_id_and_affiliation_id", unique: true

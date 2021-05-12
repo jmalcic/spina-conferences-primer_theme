@@ -66,15 +66,15 @@ module Spina
       author_ernold, author_dan = Author.create! [{ affiliations_attributes: affiliation_attrs_ernold },
                                                   { affiliations_attributes: affiliation_attrs_dan }]
 
-      Authorship.create! [{ article: vol1_issue1_article1, affiliation: author_ernold.primary_affiliation },
-                          { article: vol1_issue1_article1, affiliation: author_dan.primary_affiliation },
-                          { article: vol1_issue1_article2, affiliation: author_dan.primary_affiliation },
-                          { article: vol1_issue2_article1, affiliation: author_dan.primary_affiliation },
-                          { article: vol1_issue2_article2, affiliation: author_dan.primary_affiliation },
-                          { article: vol2_issue1_article1, affiliation: author_dan.primary_affiliation },
-                          { article: vol2_issue1_article2, affiliation: author_dan.primary_affiliation },
-                          { article: vol2_issue2_article1, affiliation: author_dan.primary_affiliation },
-                          { article: vol2_issue2_article2, affiliation: author_dan.primary_affiliation }]
+      Authorship.create! [{ article: vol1_issue1_article1, affiliation: author_ernold.primary_affiliation, position: 1 }, # rubocop:disable Layout/LineLength
+                          { article: vol1_issue1_article1, affiliation: author_dan.primary_affiliation, position: 2 },
+                          { article: vol1_issue1_article2, affiliation: author_dan.primary_affiliation, position: 1 },
+                          { article: vol1_issue2_article1, affiliation: author_dan.primary_affiliation, position: 1 },
+                          { article: vol1_issue2_article2, affiliation: author_dan.primary_affiliation, position: 1 },
+                          { article: vol2_issue1_article1, affiliation: author_dan.primary_affiliation, position: 1 },
+                          { article: vol2_issue1_article2, affiliation: author_dan.primary_affiliation, position: 1 },
+                          { article: vol2_issue2_article1, affiliation: author_dan.primary_affiliation, position: 1 },
+                          { article: vol2_issue2_article2, affiliation: author_dan.primary_affiliation, position: 1 }]
     end
   end
 end
