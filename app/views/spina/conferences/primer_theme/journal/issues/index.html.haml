@@ -5,14 +5,15 @@
       = render(Primer::MarkdownComponent.new(my: 4)) { @journal.content.html(:description) }
   - if @journal.has_content? :logo
     = render(Primer::FlexItemComponent.new(mb: 4)) do
-      = image_tag main_app.url_for(@journal.content(:logo).variant(resize_to_limit: [300, 150])),
-                  srcset: srcset(@journal.content(:logo), variant: { resize_to_limit: [300, 150] }),
-                  alt_description: t('.logo'),
-                  draggable: false,
-                  class: 'p-1'
+      - cache @journal.content(:logo) do
+        = image_tag main_app.url_for(@journal.content(:logo).variant(resize_to_limit: [300, 150])),
+                    srcset: srcset(@journal.content(:logo), variant: { resize_to_limit: [300, 150] }),
+                    alt_description: t('.logo'),
+                    draggable: false,
+                    class: 'p-1'
 
 %div#journal-issues-list.border-top
   - if @issues.any?
-    %ul= render partial: 'issue', collection: @issues, layout: 'list_item'
+    %ul= render partial: 'issue', collection: @issues, layout: 'list_item', cached: true
   - else
     = render Primer::BlankslateComponent.new(title: t(:'.no_issues'), icon: 'mortar-board')

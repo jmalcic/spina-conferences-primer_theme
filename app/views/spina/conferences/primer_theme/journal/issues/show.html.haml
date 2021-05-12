@@ -1,20 +1,22 @@
-= render(Primer::HeadingComponent.new) do
-  = t('spina.conferences.primer_theme.journal.volume_issue',
-      volume_number: @issue.volume.number,
-      issue_number: @issue.number)
+- cache [@issue, @issue.volume, @issue.articles, @issue.content(:cover_img), @issue.content(:description)] do
+  - cache [@issue, @issue.volume] do
+    = render(Primer::HeadingComponent.new) do
+      = t('spina.conferences.primer_theme.journal.volume_issue',
+          volume_number: @issue.volume.number,
+          issue_number: @issue.number)
 
-- unless @issue.title.blank?
-  = render(Primer::HeadingComponent.new(tag: :h2, color: :text_secondary, mb: 2)) { @issue.title }
+    - unless @issue.title.blank?
+      = render(Primer::HeadingComponent.new(tag: :h2, color: :text_secondary, mb: 2)) { @issue.title }
 
-- if @issue.has_content?(:cover_img)
-  = render partial: 'issue_cover', locals: { issue: @issue, cover_img: @issue.content(:cover_img), size: [300, 600] }
+  - if @issue.has_content?(:cover_img)
+    = render partial: 'issue_cover', locals: { issue: @issue, cover_img: @issue.content(:cover_img), size: [300, 600] }
 
-- if @issue.has_content?(:description)
-  = render(Primer::MarkdownComponent.new(my: 4)) do
-    = @issue.content.html(:description)
+  - if @issue.has_content?(:description)
+    = render(Primer::MarkdownComponent.new(my: 4)) do
+      = @issue.content.html(:description)
 
-%div#journal-articles-list.border-top
-  - if @issue.articles.any?
-    %ul= render partial: 'article', collection: @issue.articles.sorted_asc, layout: 'list_item'
-  - else
-    = render Primer::BlankslateComponent.new(title: t(:'.no_articles'), icon: 'mortar-board')
+  %div#journal-articles-list.border-top
+    - if @issue.articles.any?
+      %ul= render partial: 'article', collection: @issue.articles.sorted_asc, layout: 'list_item', cached: true
+    - else
+      = render Primer::BlankslateComponent.new(title: t(:'.no_articles'), icon: 'mortar-board')
