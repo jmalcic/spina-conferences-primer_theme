@@ -170,6 +170,7 @@ en:
           issues:
             index:
               no_issues: This journal has no issues.
+              logo: Journal logo
             show:
               no_articles: This issue has no articles.
             article:
