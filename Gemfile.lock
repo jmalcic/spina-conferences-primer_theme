@@ -183,7 +183,7 @@ GEM
       mobility (~> 1.1)
       rails (~> 6.0)
     nio4r (2.5.7)
-    nokogiri (1.11.3)
+    nokogiri (1.11.5)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     octicons (13.0.0)
