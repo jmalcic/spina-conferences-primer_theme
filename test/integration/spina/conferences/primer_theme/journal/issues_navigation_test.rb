@@ -38,7 +38,7 @@ module Spina
               assert_select 'h2', text: issue.title
               assert_select 'div#journal-articles-list' do
                 assert_select 'ul' do
-                  issue.articles.sorted_asc.each do |article|
+                  issue.articles.visible.sorted_asc.each do |article|
                     assert_select 'li', text: Regexp.new(article.title)
                   end
                 end

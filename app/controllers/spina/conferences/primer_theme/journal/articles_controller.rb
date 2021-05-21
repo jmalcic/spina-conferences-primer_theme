@@ -6,7 +6,7 @@ module Spina
       module Journal
         # User-facing controller for journal articles
         class ArticlesController < ApplicationController
-          before_action :set_article, :set_issue, :set_breadcrumb, :set_metadata
+          before_action :set_article, :set_issue, :set_breadcrumb, :set_metadata, :require_admin_for_invisible_article
 
           def show
             add_breadcrumb @article.title
@@ -37,6 +37,12 @@ module Spina
           def set_metadata
             @title = @article.title
             @description = @article.content(:abstract).try(:to_plain_text)
+          end
+
+          def require_admin_for_invisible_article
+            raise ActiveRecord::RecordNotFound unless current_spina_user.present? || @article.visible?
+          rescue ActiveRecord::RecordNotFound # TODO: proper 404 handler
+            send_file Rails.root.join('public/404.html'), type: 'text/html; charset=utf-8', status: 404
           end
         end
       end
