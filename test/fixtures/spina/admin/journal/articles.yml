@@ -4,6 +4,7 @@ new_wave:
   url: https://this-page-intentionally-left-blank.org/
   doi: link
   issue: vol1_issue1
+  status: 0
   json_attributes:
     en-GB_content:
       - name: abstract
@@ -17,6 +18,7 @@ article_two:
   url: https://this-page-intentionally-left-blank.org/
   doi: link
   issue: vol1_issue1
+  status: 0
   json_attributes:
     en-GB_content:
       - name: abstract
@@ -33,6 +35,7 @@ article_three:
   url: https://this-page-intentionally-left-blank.org/
   doi: link
   issue: vol1_issue1
+  status: 0
   json_attributes:
     en-GB_content:
       - name: abstract
@@ -47,3 +50,4 @@ empty_article:
   number: 1
   title: Empty
   issue: vol2_issue1
+  status: 1
