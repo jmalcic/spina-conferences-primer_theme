@@ -7,10 +7,11 @@ Spina::Engine.routes.draw do
     end
     resources :presentations, only: [:show]
     get 'cookies-info', controller: 'application'
-    scope path: 'journal', module: 'journal' do
-      resources :issues, only: %i[index show] do
-        resources :articles, only: %i[show]
-      end
+  end
+
+  namespace :frontend, path: 'journal', module: 'conferences/primer_theme/journal' do
+    resources :issues, only: %i[index show] do
+      resources :articles, only: %i[show]
     end
   end
 end
