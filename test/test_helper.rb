@@ -17,10 +17,6 @@ SimpleCov.start 'rails' do
   add_group 'Validators', 'app/validators'
 end
 
-require 'minitest/reporters'
-
-Minitest::Reporters.use!
-
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
 
