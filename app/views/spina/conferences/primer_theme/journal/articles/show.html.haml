@@ -45,3 +45,6 @@
             = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.url' }
             = render(Primer::TextComponent.new(tag: :div, color: :text_secondary, mt: 1)) do
               = link_to nil, @article.url
+        - if @article.draft?
+          = component.row do
+            = render(Primer::TextComponent.new(tag: :div, color: :text_danger, font_weight: :bold)) { t '.draft' }

@@ -179,6 +179,7 @@ en:
               abstract: Abstract
               published: Published
               issue: Issue
+              draft: THIS ARTICLE IS A DRAFT
 
   languages:
     en-GB: British English

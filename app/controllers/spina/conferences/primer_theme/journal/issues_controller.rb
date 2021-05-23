@@ -16,7 +16,7 @@ module Spina
           end
 
           def show
-            @articles = @issue.articles.visible
+            @articles = current_spina_user.present? ? @issue.articles : @issue.articles.visible
             add_breadcrumb t('spina.conferences.primer_theme.journal.volume_issue', volume_number: @issue.volume.number, issue_number: @issue.number)
           end
 
