@@ -34,12 +34,8 @@ en:
     spina:
       conferences:
         primer_theme:
-          conferences:
-            application:
-              title: "%{title} — %{suffix}"
-          journal:
-            application:
-              title: "%{title} — %{suffix}"
+          application:
+            title: "%{title} — %{suffix}"
 
   conferences_primer_theme:
     pages:
