@@ -25,7 +25,8 @@
     - if current_spina_user.present?
       .admin= render 'spina/shared/admin_bar'
     %header= render 'navigation'
-    = render 'current_conference_alert'
+    - unless local_assigns[:hide_alert]
+      = render 'current_conference_alert'
     - if content_for? :flash
       .flash-messages= yield :flash
     %main
