@@ -1,4 +1,4 @@
-- cache navigation_item do
+- cache [navigation_item, navigation_item.children] do
   .Header-item.position-relative.d-none.d-lg-flex
     - if navigation_item.has_children? && navigation_item.children.regular_pages.in_menu.live.sorted.any?
       %details.details-reset.details-overlay
