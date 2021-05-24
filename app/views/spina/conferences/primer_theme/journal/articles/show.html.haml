@@ -1,50 +1,51 @@
-= render(Primer::HeadingComponent.new) { @article.title }
+- cache [@article, @article.authorships, @article.affiliations, @article.content(:abstract), @article.issue, @article.issue.volume, @article.issue.content(:cover_img)] do
+  = render(Primer::HeadingComponent.new) { @article.title }
 
-= render(Primer::FlexComponent.new(direction: [:column, nil, :row, nil])) do
-  = render(Primer::FlexItemComponent.new(flex_auto: true, mr: [nil, nil, 4, nil])) do
-    %ul.list-style-none.d-flex.flex-column.flex-sm-row.my-2
-      - @article.affiliations.each do |affiliation|
-        = render(Primer::FlexComponent.new(tag: :li, mr: 4, align_items: :center)) do
-          = render(Primer::FlexItemComponent.new(mr: 2)) do
-            = render(Primer::OcticonComponent.new('person'))
-          = render(Primer::FlexComponent.new(tag: :address, direction: :column)) do
-            = render(Primer::TextComponent.new(tag: :div, font_weight: :bold)) { affiliation.name }
-            = render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) { affiliation.institution.name }
+  = render(Primer::FlexComponent.new(direction: [:column, nil, :row, nil])) do
+    = render(Primer::FlexItemComponent.new(flex_auto: true, mr: [nil, nil, 4, nil])) do
+      %ul.list-style-none.d-flex.flex-column.flex-sm-row.my-2
+        - @article.affiliations.each do |affiliation|
+          = render(Primer::FlexComponent.new(tag: :li, mr: 4, align_items: :center)) do
+            = render(Primer::FlexItemComponent.new(mr: 2)) do
+              = render(Primer::OcticonComponent.new('person'))
+            = render(Primer::FlexComponent.new(tag: :address, direction: :column)) do
+              = render(Primer::TextComponent.new(tag: :div, font_weight: :bold)) { affiliation.name }
+              = render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) { affiliation.institution.name }
 
-    - if @article.has_content?(:abstract)
-      = render(Primer::HeadingComponent.new(tag: :h2, mt: 4, font_size: 3)) { t '.abstract' }
-      = render(Primer::MarkdownComponent.new) { @article.content.html(:abstract) }
+      - if @article.has_content?(:abstract)
+        = render(Primer::HeadingComponent.new(tag: :h2, mt: 4, font_size: 3)) { t '.abstract' }
+        = render(Primer::MarkdownComponent.new) { @article.content.html(:abstract) }
 
-  = render(Primer::BorderBoxComponent.new(ml: [nil, nil, 4, nil])) do |sidebar|
-    - sidebar.body do
-      - if @article.issue.has_content?(:cover_img)
-        = render partial: 'spina/journal/primer_theme/issues/issue_cover', locals: { issue: @article.issue, cover_img: @article.issue.content(:cover_img), size: [200, 400] }
-      = render(Primer::BorderBoxComponent.new) do |component|
-        - if @article.has_content?(:attachment)
+    = render(Primer::BorderBoxComponent.new(ml: [nil, nil, 4, nil], style: 'min-width: 20vw')) do |sidebar|
+      - sidebar.body do
+        - if @article.issue.has_content?(:cover_img)
+          = render partial: 'spina/conferences/primer_theme/journal/issues/issue_cover', locals: { issue: @article.issue, cover_img: @article.issue.content(:cover_img), size: [200, 400] }
+        = render(Primer::BorderBoxComponent.new) do |component|
+          - if @article.has_content?(:attachment)
+            - component.row do
+              = render(Primer::ButtonComponent.new(tag: :a, href: main_app.url_for(@article.content(:attachment)), download: '', scheme: :primary)) do
+                = render Primer::OcticonComponent.new('download')
+                = t '.download'
           - component.row do
-            = render(Primer::ButtonComponent.new(tag: :a, href: main_app.url_for(@article.content(:attachment)), download: '', scheme: :primary)) do
-              = render Primer::OcticonComponent.new('download')
-              = t '.download'
-        - component.row do
-          = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.published' }
-          = render(Primer::TextComponent.new) do
-            = time_tag @article.issue.date, format: :long
-        - component.row do
-          = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.issue' }
-          = render(Primer::TextComponent.new) do
-            = link_to t('spina.journal.primer_theme.volume_issue',
-                        volume_number: @article.issue.volume.number,
-                        issue_number: @article.issue.number), frontend_issue_path(@article.issue)
-        - unless @article.doi.blank?
-          = component.row do
-            = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.doi' }
-            = render(Primer::TextComponent.new(tag: :div, color: :text_secondary, mt: 1)) do
-              = link_to nil, @article.doi
-        - unless @article.url.blank?
-          = component.row do
-            = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.url' }
-            = render(Primer::TextComponent.new(tag: :div, color: :text_secondary, mt: 1)) do
-              = link_to nil, @article.url
-        - if @article.draft?
-          = component.row do
-            = render(Primer::TextComponent.new(tag: :div, color: :text_danger, font_weight: :bold)) { t '.draft' }
+            = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.published' }
+            = render(Primer::TextComponent.new) do
+              = time_tag @article.issue.date, format: :long
+          - component.row do
+            = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.issue' }
+            = render(Primer::TextComponent.new) do
+              = link_to t('spina.conferences.primer_theme.journal.volume_issue',
+                          volume_number: @article.issue.volume.number,
+                          issue_number: @article.issue.number), frontend_issue_path(@article.issue)
+          - unless @article.doi.blank?
+            - component.row do
+              = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.doi' }
+              = render(Primer::TextComponent.new(tag: :div, color: :text_secondary, mt: 1)) do
+                = link_to nil, @article.doi
+          - unless @article.url.blank?
+            - component.row do
+              = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.url' }
+              = render(Primer::TextComponent.new(tag: :div, color: :text_secondary, mt: 1)) do
+                = link_to nil, @article.url
+          - if @article.draft?
+            - component.row do
+              = render(Primer::TextComponent.new(tag: :div, color: :text_danger, font_weight: :bold)) { t '.draft' }

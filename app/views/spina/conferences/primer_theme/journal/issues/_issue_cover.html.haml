@@ -1,3 +1,4 @@
+-# locals: issue cover_img size[2]
 - cache cover_img do
   = image_tag main_app.url_for(cover_img.variant(resize_to_limit: size)),
               srcset: srcset(cover_img, variant: { resize_to_limit: size }),
