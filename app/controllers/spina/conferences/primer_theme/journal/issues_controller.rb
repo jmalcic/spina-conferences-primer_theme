@@ -13,6 +13,7 @@ module Spina
           def index
             # having multiple journals is not currently allowed anyway
             @issues = Admin::Journal::Issue.sorted_desc
+            @latest_issue = @issues.find { |issue| issue.date <= Time.zone.today }
           end
 
           def show

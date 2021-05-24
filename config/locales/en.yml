@@ -167,6 +167,8 @@ en:
             index:
               no_issues: This journal has no issues.
               logo: Journal logo
+              all_issues: All Issues
+              latest_issue: "Latest Issue (Vol. %{volume_number} Issue %{issue_number})"
             show:
               no_articles: This issue has no articles.
             article:
