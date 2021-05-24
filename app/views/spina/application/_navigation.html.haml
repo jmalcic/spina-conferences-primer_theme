@@ -7,4 +7,5 @@
       .Header-item.Header-item--full.flex-column.width-full.flex-order-1.mr-0.mt-3
         = render partial: 'mobile_navigation_items'
     = render partial: 'navigation_item', collection: main_navigation_items, cached: true
+    .Header-item.d-none.d-lg-flex= link_to 'Journal', frontend_issues_path, class: %w[Header-link]
     .Header-item.d-none.d-lg-flex= link_to 'Conferences', frontend_conferences_path, class: %w[Header-link]

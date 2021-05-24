@@ -1,0 +1,6 @@
+= render(Primer::FlexComponent.new(tag: :li, mr: 4, align_items: :center)) do
+  = render(Primer::FlexItemComponent.new(mr: 2)) do
+    = render(Primer::OcticonComponent.new('person'))
+  = render(Primer::FlexComponent.new(tag: :address, direction: :column)) do
+    = render(Primer::TextComponent.new(tag: :div, font_weight: :bold)) { authorship.affiliation.name }
+    = render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) { authorship.affiliation.institution.name }

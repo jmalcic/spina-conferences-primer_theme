@@ -1,0 +1,20 @@
+marcus:
+  institution: rockbottom
+  author: marcus
+  first_name: Marcus
+  surname: Atherton
+  status: 1
+
+toope:
+  institution: miami
+  author: marcus
+  first_name: Stephen
+  surname: Toope
+  status: 0
+
+henry:
+  institution: miami
+  author: henry
+  first_name: Henry
+  surname: Higgins
+  status: 1

@@ -99,66 +99,87 @@ en:
     conferences:
       primer_theme:
         conferences:
-          index:
-            subscribe: Subscribe
-            no_conferences: No conferences have been added.
-            search: Search
-            no_matching_conferences: No matching conferences.
-          show:
-            information: Information
-            presentations: Presentations
-            events: Events
-            subscribe: Subscribe
-            tabs:
+          conferences:
+            index:
+              subscribe: Subscribe
+              no_conferences: No conferences have been added.
+              search: Search
+              no_matching_conferences: No matching conferences.
+            show:
               information: Information
               presentations: Presentations
               events: Events
-            no_tab: No tab.
-            tab_does_not_exist: "The tab '%{tab}' does not exist."
-            no_information: No information.
-            conference_navigation: Conference content
+              subscribe: Subscribe
+              tabs:
+                information: Information
+                presentations: Presentations
+                events: Events
+              no_tab: No tab.
+              tab_does_not_exist: "The tab '%{tab}' does not exist."
+              no_information: No information.
+              conference_navigation: Conference content
+            presentations:
+              all_presentation_types: All
+              results: Results
+              search: Search
+              no_matching_presentations: No matching presentations.
+              no_presentations: No presentations.
+            presentation_type:
+              results: Results
+            events:
+              search: Search
+              no_matching_events: No matching events.
+              no_events: No events.
+            event:
+              times_html: "%{start_time}–%{finish_time}"
+            conference:
+              dates_html: "%{start_date}–%{finish_date}"
+              locations: "%{institutions}, %{cities}"
+            submission_flash:
+              submit_by_html: Submit abstracts by %{date}
+              submit_abstract: Submit an abstract
+            header:
+              dates_html: "%{start_date}–%{finish_date}"
+              locations: "%{institutions}, %{cities}"
+              gallery:
+                previous: Previous
+                next: Next
+              sponsors:
+                title: Sponsors
+
           presentations:
-            all_presentation_types: All
-            results: Results
-            search: Search
-            no_matching_presentations: No matching presentations.
-            no_presentations: No presentations.
-          presentation_type:
-            results: Results
-          events:
-            search: Search
-            no_matching_events: No matching events.
-            no_events: No events.
-          event:
-            times_html: "%{start_time}–%{finish_time}"
-          conference:
-            dates_html: "%{start_date}–%{finish_date}"
-            locations: "%{institutions}, %{cities}"
-          submission_flash:
-            submit_by_html: Submit abstracts by %{date}
-            submit_abstract: Submit an abstract
-          header:
-            dates_html: "%{start_date}–%{finish_date}"
-            locations: "%{institutions}, %{cities}"
-            gallery:
-              previous: Previous
+            show:
+              room_and_institution: "%{room}, %{institution}"
+
+          kaminari:
+            next_page:
               next: Next
-            sponsors:
-              title: Sponsors
+              next_page: Next page
+            prev_page:
+              previous: Previous
+              previous_page: Previous page
+            page:
+              page: Page %{number}
 
-        presentations:
-          show:
-            room_and_institution: "%{room}, %{institution}"
-
-        kaminari:
-          next_page:
-            next: Next
-            next_page: Next page
-          prev_page:
-            previous: Previous
-            previous_page: Previous page
-          page:
-            page: Page %{number}
+        journal:
+          volume_issue: "Volume %{volume_number} (Issue %{issue_number})"
+          issues:
+            index:
+              no_issues: This journal has no issues.
+              logo: Journal logo
+            show:
+              no_articles: This issue has no articles.
+            article:
+              download: PDF
+          articles:
+            show:
+              download: PDF
+              doi: DOI
+              url: URL
+              abstract: Abstract
+              published: Published
+              issue: Issue
+              draft: THIS ARTICLE IS A DRAFT
 
   languages:
     en-GB: British English

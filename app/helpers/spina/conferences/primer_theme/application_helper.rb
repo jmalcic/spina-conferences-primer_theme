@@ -25,10 +25,10 @@ module Spina
 
         def calendar(name:)
           Icalendar::Calendar.new
-                             .tap { |calendar| calendar.x_wr_calname = name }
-                             .tap { |calendar| yield(calendar) }
-                             .tap(&:publish)
-                             .then(&:to_ical)
+                              .tap { |calendar| calendar.x_wr_calname = name }
+                              .tap { |calendar| yield(calendar) }
+                              .tap(&:publish)
+                              .then(&:to_ical)
         end
       end
     end
