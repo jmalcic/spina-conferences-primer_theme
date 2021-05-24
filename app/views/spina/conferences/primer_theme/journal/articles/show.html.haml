@@ -46,6 +46,15 @@
               = render(Primer::HeadingComponent.new(tag: :h2, font_size: 4, color: :text_secondary)) { t '.url' }
               = render(Primer::TextComponent.new(tag: :div, color: :text_secondary, mt: 1)) do
                 = link_to nil, @article.url
+          - component.row do
+            -# TODO: allow user to select licence
+            = render(Primer::FlexComponent.new(direction: :column)) do
+              = render(Primer::TextComponent.new(mb: 2)) do
+                Copyright #{@article.issue.date.year} #{@article.affiliations.collect(&:name).to_sentence}
+              %a{ rel: 'licence', href: 'https://creativecommons.org/licenses/by/4.0/' }
+                %img{ alt: 'Creative Commons Attribution 4.0 International Licence', src: '//i.creativecommons.org/l/by/4.0/88x31.png' }
+            = render(Primer::TextComponent.new(mt: 1)) { t '.cc_by_licence_html' }
+
           - if @article.draft?
             - component.row do
               = render(Primer::TextComponent.new(tag: :div, color: :text_danger, font_weight: :bold)) { t '.draft' }
