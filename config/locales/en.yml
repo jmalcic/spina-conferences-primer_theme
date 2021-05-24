@@ -171,6 +171,7 @@ en:
               latest_issue: "Latest Issue (Vol. %{volume_number} Issue %{issue_number})"
             show:
               no_articles: This issue has no articles.
+              download: Full Issue PDF
             article:
               download: PDF
           articles:

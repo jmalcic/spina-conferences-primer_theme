@@ -15,6 +15,11 @@
     = render(Primer::MarkdownComponent.new(my: 4)) do
       = @issue.content.html(:description)
 
+  - if @issue.has_content?(:attachment)
+    = render(Primer::ButtonComponent.new(tag: :a, scheme: :primary, href: main_app.url_for(@issue.content(:attachment)), my: 2, download: '')) do
+      = render Primer::OcticonComponent.new('download')
+      = t '.download'
+
   %div#journal-articles-list.border-top
     - if @articles.any?
       %ul= render partial: 'article', collection: @articles.sorted_asc, layout: 'list_item', cached: true
