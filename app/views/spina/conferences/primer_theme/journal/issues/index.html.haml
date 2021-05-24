@@ -3,7 +3,7 @@
     = render(Primer::HeadingComponent.new) { @journal.name }
     - if @journal.has_content? :description
       = render(Primer::MarkdownComponent.new(my: 4)) { @journal.content.html(:description) }
-  = render(Primer::BorderBoxComponent.new(ml: [nil, nil, 4, nil])) do |sidebar|
+  = render(Primer::BorderBoxComponent.new(ml: [nil, nil, 4, nil], style: 'min-width: 15vw;')) do |sidebar|
     - if @journal.has_content? :logo
       - sidebar.header(bg: :primary) do
         = render(Primer::FlexItemComponent.new(mb: 4)) do
