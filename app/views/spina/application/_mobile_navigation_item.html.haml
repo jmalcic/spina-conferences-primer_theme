@@ -1,13 +1,12 @@
-- cache [navigation_item, navigation_item.children] do
-  .Header-item.mr-0.border-top.border-white-fade-15.flex-column.flex-items-stretch
-    - if navigation_item.has_children?
-      %details.details-reset
-        %summary.Header-link.py-2
-          = navigation_item.menu_title
-          = render Primer::OcticonComponent.new('chevron-down')
-        %ul.list-style-none
-          - navigation_item.children.each do |child|
-            %li= link_to child.menu_title, child.materialized_path, class: %w[d-block py-2 pl-3 border-top border-white-fade color-text-white]
-    - elsif navigation_item.is_root?
-      = link_to navigation_item.menu_title, navigation_item.materialized_path,
-                class: %w[Header-link py-2]
+.Header-item.mr-0.border-top.border-white-fade-15.flex-column.flex-items-stretch
+  - if navigation_item.has_children?
+    %details.details-reset
+      %summary.Header-link.py-2
+        = navigation_item.menu_title
+        = render Primer::OcticonComponent.new('chevron-down')
+      %ul.list-style-none
+        - navigation_item.children.each do |child|
+          %li= link_to child.menu_title, child.materialized_path, class: %w[d-block py-2 pl-3 border-top border-white-fade color-text-white]
+  - elsif navigation_item.is_root?
+    = link_to navigation_item.menu_title, navigation_item.materialized_path,
+              class: %w[Header-link py-2]
