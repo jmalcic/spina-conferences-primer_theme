@@ -3,12 +3,12 @@
     = render(Primer::FlexItemComponent.new(mr: 4)) do
       = render partial: 'issue_cover', locals: { issue: issue, cover_img: issue.content(:cover_img), size: [150, 300] }
   = render(Primer::FlexItemComponent.new(flex_auto: true)) do
-    = render(Primer::HeadingComponent.new(tag: :h2, mb: 1)) do
+    = render(Primer::HeadingComponent.new(tag: :h3, mb: 1)) do
       = link_to t('spina.conferences.primer_theme.journal.volume_issue',
                   volume_number: issue.volume.number,
                   issue_number: issue.number), frontend_issue_path(issue)
     - unless issue.title.blank?
-      = render(Primer::HeadingComponent.new(tag: :h3, color: :text_secondary, mb: 1)) do
+      = render(Primer::HeadingComponent.new(tag: :h4, color: :text_secondary, mb: 1)) do
         = issue.title
     = render(Primer::TextComponent.new(tag: :div, color: :text_secondary, font_weight: :bold)) do
       = time_tag issue.date, format: :long

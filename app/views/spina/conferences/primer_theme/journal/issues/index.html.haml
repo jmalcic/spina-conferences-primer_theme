@@ -1,10 +1,30 @@
-= render(Primer::HeadingComponent.new) { @journal.name }
+= render(Primer::FlexComponent.new(direction: [:column, nil, :row, nil])) do
+  = render(Primer::FlexComponent.new(direction: :column, flex: :auto)) do
+    = render(Primer::HeadingComponent.new) { @journal.name }
+    - if @journal.has_content? :description
+      = render(Primer::MarkdownComponent.new(my: 4)) { @journal.content.html(:description) }
+  = render(Primer::BorderBoxComponent.new(ml: [nil, nil, 4, nil], style: 'min-width: 15vw;')) do |sidebar|
+    - if @journal.has_content? :logo
+      - sidebar.header(bg: :primary) do
+        = render(Primer::FlexItemComponent.new(mb: 4)) do
+          - cache @journal.content(:logo) do
+            = image_tag main_app.url_for(@journal.content(:logo).variant(resize_to_limit: [300, 150])),
+                        srcset: srcset(@journal.content(:logo), variant: { resize_to_limit: [300, 150] }),
+                        alt_description: t('.logo'),
+                        draggable: false,
+                        class: 'p-1'
+    - unless @latest_issue.nil?
+      - sidebar.row do
+        = render(Primer::HeadingComponent.new(tag: :h2, font_size: 3)) do
+          = link_to t('.latest_issue', volume_number: @latest_issue.volume.number, issue_number: @latest_issue.number), frontend_issue_path(@latest_issue)
+    - if @latest_issue.has_content?(:cover_img)
+      - sidebar.row do
+        = link_to(frontend_issue_path(@latest_issue)) do
+          = render partial: 'issue_cover', locals: { issue: @latest_issue, cover_img: @latest_issue.content(:cover_img), size: [150, 300] }
 
-- if @journal.content(:description).present?
-  = render(Primer::MarkdownComponent.new(mt: 4)) { @journal.content.html(:description) }
-
-%div#journal-issues-list.border-top
+#journal-issues-list
+  = render(Primer::HeadingComponent.new(tag: :h2, mt: 3)) { t '.all_issues' }
   - if @issues.any?
-    %ul= render partial: 'issue', collection: @issues, layout: 'list_item'
+    %ul= render partial: 'issue', collection: @issues, layout: 'list_item', cached: true
   - else
     = render Primer::BlankslateComponent.new(title: t(:'.no_issues'), icon: 'mortar-board')

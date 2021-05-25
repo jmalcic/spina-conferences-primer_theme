@@ -13,14 +13,16 @@ module Spina
             get frontend_issues_path
             assert_response :success
             assert_select 'main' do
-              assert_select 'ul' do
-                Spina::Admin::Journal::Issue.sorted_desc.each do |issue|
-                  assert_select 'li' do
-                    assert_select 'h2', text: I18n.t('spina.conferences.primer_theme.journal.volume_issue',
-                                                    volume_number: issue.volume.number,
-                                                    issue_number: issue.number)
-                    assert_select('h3', text: issue.title) if issue.title.present?
-                    assert_select 'time', text: I18n.l(issue.date, format: :long)
+              assert_select 'div#journal-issues-list' do
+                assert_select 'ul' do
+                  Spina::Admin::Journal::Issue.sorted_desc.each do |issue|
+                    assert_select 'li' do
+                      assert_select 'h3', text: I18n.t('spina.conferences.primer_theme.journal.volume_issue',
+                                                      volume_number: issue.volume.number,
+                                                      issue_number: issue.number)
+                      assert_select('h4', text: issue.title) if issue.title.present?
+                      assert_select 'time', text: I18n.l(issue.date, format: :long)
+                    end
                   end
                 end
               end

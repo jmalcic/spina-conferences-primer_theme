@@ -167,8 +167,11 @@ en:
             index:
               no_issues: This journal has no issues.
               logo: Journal logo
+              all_issues: All Issues
+              latest_issue: "Latest Issue (Vol. %{volume_number} Issue %{issue_number})"
             show:
               no_articles: This issue has no articles.
+              download: Full Issue PDF
             article:
               download: PDF
           articles:
@@ -180,6 +183,7 @@ en:
               published: Published
               issue: Issue
               draft: THIS ARTICLE IS A DRAFT
+              cc_by_licence_html: This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
   languages:
     en-GB: British English
