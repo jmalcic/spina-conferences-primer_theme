@@ -12,8 +12,12 @@ module Spina
 
           def index
             # having multiple journals is not currently allowed anyway
-            @issues = Admin::Journal::Issue.sorted_desc
-            @latest_issue = @issues.find_by 'date <= ?', Time.zone.today
+            @issues = if current_spina_user.present?
+                        Admin::Journal::Issue.sorted_desc
+                      else
+                        Admin::Journal::Issue.sorted_desc.where('date <= ?', Time.zone.today)
+                      end
+            @latest_issue = @issues.first
           end
 
           def show
