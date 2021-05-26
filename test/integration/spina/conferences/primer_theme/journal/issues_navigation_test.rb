@@ -10,7 +10,7 @@ module Spina
           include ::Spina::Engine.routes.url_helpers
 
           test 'view issues' do
-            get admin_logout_path
+            log_out_admin
 
             get frontend_issues_path
             assert_response :success
@@ -41,7 +41,7 @@ module Spina
           end
 
           test 'view issues when there are no past issues' do
-            get admin_logout_path
+            log_out_admin
 
             Spina::Admin::Journal::Issue.destroy_all
             new_issue = Spina::Admin::Journal::Issue.create!(number: 1, volume: Spina::Admin::Journal::Volume.first, date: Time.zone.today + 1.day)
@@ -53,8 +53,7 @@ module Spina
           end
 
           test 'view issues as admin when there are no past issues' do
-            user = spina_users :joe
-            post admin_sessions_path, params: { email: user.email, password: 'password' }
+            log_in_as_admin
 
             Spina::Admin::Journal::Issue.destroy_all
             new_issue = Spina::Admin::Journal::Issue.create!(number: 1, volume: Spina::Admin::Journal::Volume.first, date: Time.zone.today + 1.day)
@@ -91,6 +90,17 @@ module Spina
                 end
               end
             end
+          end
+
+          private
+
+          def log_in_as_admin
+            user = spina_users :joe
+            post admin_sessions_path, params: { email: user.email, password: 'password' }
+          end
+
+          def log_out_admin
+            get admin_logout_path
           end
         end
       end
