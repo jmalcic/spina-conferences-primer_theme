@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'primer_view_components', '0.0.37'
   spec.add_dependency 'rails', '~> 6.0'
   spec.add_dependency 'spina', '~> 2.0'
-  spec.add_dependency 'spina-admin-conferences', '~> 2.1.0'
+  spec.add_dependency 'spina-admin-conferences', '>= 2.1', '< 2.3'
   spec.add_dependency 'spina-admin-journal', '~> 0.4.2'
 
   spec.add_development_dependency 'capybara', '~> 3.33'
