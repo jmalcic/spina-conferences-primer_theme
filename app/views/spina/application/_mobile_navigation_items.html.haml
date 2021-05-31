@@ -1,3 +1,4 @@
 %nav.d-flex.flex-column.flex-self-stretch
   = render partial: 'mobile_navigation_item', collection: main_navigation_items, as: :navigation_item, cache: -> navigation_item { [navigation_item, navigation_item.children] }
+  .Header-item.mr-0.border-top.border-white-fade-15= link_to 'Journal', frontend_issues_path, class: %w[Header-link py-2 py-lg-0]
   .Header-item.mr-0.border-top.border-white-fade-15= link_to 'Conferences', frontend_conferences_path, class: %w[Header-link py-2 py-lg-0]
