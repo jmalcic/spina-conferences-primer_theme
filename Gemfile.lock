@@ -8,7 +8,7 @@ PATH
       primer_view_components (= 0.0.37)
       rails (~> 6.0)
       spina (~> 2.0)
-      spina-admin-conferences (~> 2.1.0)
+      spina-admin-conferences (>= 2.1, < 2.3)
       spina-admin-journal (~> 0.4.2)
 
 GEM
@@ -178,7 +178,7 @@ GEM
       mobility (~> 1.1)
       rails (~> 6.0)
     nio4r (2.5.7)
-    nokogiri (1.11.5)
+    nokogiri (1.11.6)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     octicons (14.1.0)
@@ -302,7 +302,7 @@ GEM
       rails (>= 6.0)
       sass-rails
       turbolinks (~> 5)
-    spina-admin-conferences (2.1.0)
+    spina-admin-conferences (2.2.0)
       icalendar (~> 2.5)
       mobility-actiontext (= 0.2.0)
       rails (~> 6.0)
