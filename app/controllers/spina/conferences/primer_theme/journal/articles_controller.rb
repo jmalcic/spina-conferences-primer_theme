@@ -6,7 +6,7 @@ module Spina
       module Journal
         # User-facing controller for journal articles
         class ArticlesController < ApplicationController
-          before_action :set_article, :set_issue, :set_journal, :set_breadcrumb, :set_metadata, :require_admin_for_invisible_article
+          before_action :set_article, :set_issue, :set_journal, :set_licence, :set_breadcrumb, :set_metadata, :require_admin_for_invisible_article
 
           def show
             add_breadcrumb @article.title
@@ -28,6 +28,10 @@ module Spina
 
           def set_journal
             @journal = @issue.volume.journal
+          end
+
+          def set_licence
+            @licence = @article.licence
           end
 
           def set_breadcrumb
