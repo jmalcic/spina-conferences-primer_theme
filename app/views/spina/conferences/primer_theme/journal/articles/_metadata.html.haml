@@ -33,3 +33,4 @@
   %meta{ name: 'citation_volume', content: @issue.volume.number }
   %meta{ name: 'citation_issue', content: @issue.number }
   %meta{ name: 'citation_abstract_html_url', content: frontend_issue_article_url(@issue.id, @article.id) }
+  %meta{ name: 'citation_pdf_url', content: frontend_issue_article_url(@issue.id, @article.id) + '.pdf' }
