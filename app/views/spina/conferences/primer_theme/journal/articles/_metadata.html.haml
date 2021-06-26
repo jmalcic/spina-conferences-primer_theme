@@ -29,7 +29,7 @@
     %meta{ name: 'citation_author', content: authorship.affiliation.name }
     %meta{ name: 'citation_author_institution', content: authorship.affiliation.institution.name }
   %meta{ name: 'citation_language', content: 'en' }
-  %meta{ name: 'citation_date', content: @issue.date.to_s(:iso8601) }
+  %meta{ name: 'citation_date', content: @issue.date.to_s(:iso8601).gsub('-', '/') }
   %meta{ name: 'citation_volume', content: @issue.volume.number }
   %meta{ name: 'citation_issue', content: @issue.number }
   %meta{ name: 'citation_abstract_html_url', content: frontend_issue_article_url(@issue.id, @article.id) }
