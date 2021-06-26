@@ -1,4 +1,6 @@
 - cache [@article, @article.authorships, @article.affiliations, @article.content(:abstract), @article.issue, @article.issue.volume, @article.issue.content(:cover_img)] do
+  = render partial: 'metadata'
+
   = render(Primer::HeadingComponent.new) { @article.title }
 
   = render(Primer::FlexComponent.new(direction: [:column, nil, :row, nil])) do
