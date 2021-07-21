@@ -113,10 +113,10 @@
   resolved "https://registry.yarnpkg.com/@github/details-dialog-element/-/details-dialog-element-3.1.2.tgz#61f6595c71d786b1a77fbbe79db4c0b9a224fc80"
   integrity sha512-kUz7VYKmgOtlAo96TVeXSq5bKDS/3Wm0SZt4UetJK2CcG0/wsx/Eif/fHx1HYEwVsa7FnrB/kCzby0JE8R88zQ==
 
-"@github/details-menu-element@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@github/details-menu-element/-/details-menu-element-1.0.9.tgz#3b40ff5e928131d3049a0a23b2d6df66eaad2cff"
-  integrity sha512-wa6hgqbUH/3BJIrhGZNZN3o7a4Pxw87Ba4QypZs350ww9H0l4qCc4tcJdlIVRzwxsxb4rVo0kXDMRqDPJsSgNg==
+"@github/details-menu-element@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@github/details-menu-element/-/details-menu-element-1.0.10.tgz#fbea4725ff22a09c832629991fd08bb8079494be"
+  integrity sha512-0ZHvO18a2WRpUqgyviYeQZEyuJoAXC0qbhM2++tjuospC4GeCs5q8OlQT/vEwC2IjqV5/l0lDGQdOeQDl6edEw==
 
 "@github/filter-input-element@^0.1.1":
   version "0.1.1"
