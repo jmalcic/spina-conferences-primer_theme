@@ -25,7 +25,7 @@
         = render(Primer::BorderBoxComponent.new) do |component|
           - if @article.has_content?(:attachment)
             - component.row do
-              = render(Primer::ButtonComponent.new(tag: :a, href: main_app.url_for(@article.content(:attachment)), download: '', scheme: :primary)) do
+              = render(Primer::ButtonComponent.new(tag: :a, href: frontend_issue_article_path(@issue, @article, format: :pdf), download: '', scheme: :primary)) do
                 = render Primer::OcticonComponent.new('download')
                 = t '.download'
           - component.row do

@@ -10,6 +10,6 @@
       = render(Primer::TextComponent.new(tag: :div, color: :text_secondary)) do
         = link_to nil, article.doi
     - if article.has_content?(:attachment)
-      = render(Primer::ButtonComponent.new(tag: :a, href: main_app.url_for(article.content(:attachment)), mt: 2, download: '')) do
+      = render(Primer::ButtonComponent.new(tag: :a, href: frontend_issue_article_path(article.issue, article, format: :pdf), mt: 2, download: '')) do
         = render Primer::OcticonComponent.new('download')
         = t '.download'
