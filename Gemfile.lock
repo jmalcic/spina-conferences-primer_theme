@@ -366,7 +366,7 @@ DEPENDENCIES
   selenium-webdriver (~> 3.142)
   simplecov (~> 0.19)
   simplecov-lcov (~> 0.8)
-  spina-conferences-primer_theme!
+  spina-conferences-primer_theme-fork!
   web-console (~> 4.0)
   webdrivers (~> 4.4)
 
