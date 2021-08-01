@@ -1,6 +1,8 @@
 # PrimerTheme
 A plugin for `Spina` that provides a frontend for `Spina::Admin::Conferences` using components from `Primer::ViewComponents`.
 
+This fork provides an updated version of the plugin, as the main repo is currently stale.
+
 ## Usage
 See the README for `Spina::Admin::Conferences`. Also make sure to ensure compilation of the assets for this gem by adding the following line to your
 `manifest.js` file.
@@ -13,7 +15,7 @@ See the README for `Spina::Admin::Conferences`. Also make sure to ensure compila
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'spina-conferences-primer_theme'
+gem 'spina-conferences-primer_theme-fork', require: 'spina/conferences/primer_theme'
 ```
 
 And then execute:
@@ -23,7 +25,7 @@ $ bundle
 
 Or install it yourself as:
 ```bash
-$ gem install spina-conferences-primer_theme
+$ gem install spina-conferences-primer_theme-fork
 ```
 
 ## Contributing
