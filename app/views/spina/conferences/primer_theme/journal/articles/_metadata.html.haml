@@ -1,0 +1,36 @@
+- content_for :head do
+  %link{ rel: 'schema.DC', href: 'http://purl.org/dc/elements/1.1/' }
+  - @article.authorships.sorted_within_article.each do |authorship|
+    %meta{ name: 'DC.Creator.PersonalName', content: authorship.affiliation.name }
+  %meta{ name: 'DC.Date.created', scheme: 'ISO8601', content: @issue.date.to_s(:iso8601) }
+  %meta{ name: 'DC.Date.issued', scheme: 'ISO8601', content: @issue.date.to_s(:iso8601) }
+  %meta{ name: 'DC.Date.modified', scheme: 'ISO8601', content: @issue.date.to_s(:iso8601) }
+  - if @article.has_content? :attachment
+    %meta{ name: 'DC.Format', scheme: 'IMT', content: 'application/pdf' }
+  %meta{ name: 'DC.Identifier', content: @article.id }
+  %meta{ name: 'DC.Identifier.URI', content: frontend_issue_article_url(@issue.id, @article.id) }
+  %meta{ name: 'DC.Language', scheme: 'ISO639-1', content: 'en' }
+  %meta{ name: 'DC.Rights', content: "Copyright #{@article.issue.date.year} #{@article.affiliations.collect(&:name).to_sentence}"  }
+  - if @licence && @licence.has_content?(:url) && !@licence.content(:url).blank?
+    %meta{ name: 'DC.Rights', content: @licence.content(:url) }
+  %meta{ name: 'DC.Source', content: @journal.name }
+  %meta{ name: 'DC.Title', content: @article.title }
+  %meta{ name: 'DC.Type', content: 'Text.Serial.Journal' }
+  %meta{ name: 'DC.Type', 'xml:lang': 'en', content: 'text' }
+
+  %meta{ name: 'gs_meta_revision', content: '1.1' }
+
+  %meta{ name: 'citation_journal_title', content: @journal.name }
+  - if @journal.has_content?(:journal_abbreviation)
+    %meta{ name: 'citation_journal_abbrev', content: @journal.content(:journal_abbreviation) }
+  - if @journal.has_content?(:issn)
+    %meta{ name: 'citation_issn', content: @journal.content(:issn) }
+  - @article.authorships.sorted_within_article.each do |authorship|
+    %meta{ name: 'citation_author', content: authorship.affiliation.name }
+    %meta{ name: 'citation_author_institution', content: authorship.affiliation.institution.name }
+  %meta{ name: 'citation_language', content: 'en' }
+  %meta{ name: 'citation_date', content: @issue.date.to_s(:iso8601).gsub('-', '/') }
+  %meta{ name: 'citation_volume', content: @issue.volume.number }
+  %meta{ name: 'citation_issue', content: @issue.number }
+  %meta{ name: 'citation_abstract_html_url', content: frontend_issue_article_url(@issue.id, @article.id) }
+  %meta{ name: 'citation_pdf_url', content: frontend_issue_article_url(@issue.id, @article.id) + '.pdf' }

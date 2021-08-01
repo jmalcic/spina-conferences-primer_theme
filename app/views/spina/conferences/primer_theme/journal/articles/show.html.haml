@@ -1,4 +1,6 @@
 - cache [@article, @article.authorships, @article.affiliations, @article.content(:abstract), @article.issue, @article.issue.volume, @article.issue.content(:cover_img)] do
+  = render partial: 'metadata'
+
   = render(Primer::HeadingComponent.new) { @article.title }
 
   = render(Primer::FlexComponent.new(direction: [:column, nil, :row, nil])) do
@@ -23,7 +25,7 @@
         = render(Primer::BorderBoxComponent.new) do |component|
           - if @article.has_content?(:attachment)
             - component.row do
-              = render(Primer::ButtonComponent.new(tag: :a, href: main_app.url_for(@article.content(:attachment)), download: '', scheme: :primary)) do
+              = render(Primer::ButtonComponent.new(tag: :a, href: frontend_issue_article_path(@issue, @article, format: :pdf), download: '', scheme: :primary)) do
                 = render Primer::OcticonComponent.new('download')
                 = t '.download'
           - component.row do
@@ -47,13 +49,21 @@
               = render(Primer::TextComponent.new(tag: :div, color: :text_secondary, mt: 1)) do
                 = link_to nil, @article.url
           - component.row do
-            -# TODO: allow user to select licence
             = render(Primer::FlexComponent.new(direction: :column)) do
               = render(Primer::TextComponent.new(mb: 2)) do
                 Copyright #{@article.issue.date.year} #{@article.affiliations.collect(&:name).to_sentence}
-              %a{ rel: 'licence', href: 'https://creativecommons.org/licenses/by/4.0/' }
-                %img{ alt: 'Creative Commons Attribution 4.0 International Licence', src: '//i.creativecommons.org/l/by/4.0/88x31.png' }
-            = render(Primer::TextComponent.new(mt: 1)) { t '.cc_by_licence_html' }
+              - unless @licence.nil?
+                - cache [@licence, @licence.content(:logo), @licence.content(:url)] do
+                  %a{ rel: 'licence', href: @licence.content(:url) }
+                    - if @licence.has_content?(:logo)
+                      = image_tag main_app.url_for(@licence.content(:logo).variant(resize_to_limit: [200, 200])),
+                                  srcset: srcset(@licence.content(:logo), variant: { resize_to_limit: [200, 200] }),
+                                  alt_description: t('.licence_logo'),
+                                  draggable: false,
+                                  class: 'py-1'
+            - unless @licence.nil?
+              - cache [@licence, @licence.content(:text)] do
+                = @licence.has_content?(:text) && render(Primer::TextComponent.new(mt: 1)) { @licence.content(:text) }
 
           - if @article.draft?
             - component.row do
