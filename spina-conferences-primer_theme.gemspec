@@ -7,12 +7,11 @@ require 'spina/conferences/primer_theme/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.name = 'spina-conferences-primer_theme'
+  spec.name = 'spina-conferences-primer_theme-fork'
   spec.version = Spina::Conferences::PrimerTheme::VERSION
   spec.required_ruby_version = '~> 2.7'
-  spec.authors = ['Justin Malčić']
-  spec.email = ['j.malcic@me.com']
-  spec.homepage = 'https://jmalcic.github.io/projects/spina-conferences/primer-theme'
+  spec.authors = ['Justin Malčić', 'Louis Van Steene']
+  spec.email = ['j.malcic@me.com', 'louis@lvs.me.uk']
   spec.summary = 'Spina::Admin::Conferences frontend theme.'
   spec.description = 'Frontend for Spina::Admin::Conferences plugin, based on Primer.'
   spec.license = 'MIT'

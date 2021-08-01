@@ -1,5 +1,5 @@
 {
-  "name": "spina-conferences-primer-theme",
+  "name": "spina-conferences-primer-theme-fork",
   "version": "0.5.2",
   "description": "Spina::Conferences plugin theme.",
   "main": "app/assets/javascripts/spina/conferences/primer_theme/application.es6",
@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "jmalcic/spina-conferences-primer-theme"
+    "url": "louis-vs/spina-conferences-primer_theme-form"
   },
   "keywords": [
     "conference-management",
@@ -19,9 +19,8 @@
   "author": "Justin Malčić <j.malcic@me.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jmalcic/spina-conferences-primer-theme/issues"
+    "url": "https://github.com/louis-vs/spina-conferences-primer-theme-fork/issues"
   },
-  "homepage": "https://jmalcic.github.io/projects/spina-conferences-primer-theme",
   "dependencies": {
     "@github/details-dialog-element": "^3.0.12",
     "@github/details-menu-element": "^1.0.9",
