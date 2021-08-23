@@ -24,7 +24,7 @@
   "homepage": "https://jmalcic.github.io/projects/spina-conferences-primer-theme",
   "dependencies": {
     "@github/details-dialog-element": "^3.0.12",
-    "@github/details-menu-element": "^1.0.9",
+    "@github/details-menu-element": "^1.0.12",
     "@github/filter-input-element": "^0.1.1",
     "@github/include-fragment-element": "^5.3.1",
     "@primer/css": "^16.3.0",
