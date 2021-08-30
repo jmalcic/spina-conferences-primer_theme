@@ -128,25 +128,24 @@
   resolved "https://registry.yarnpkg.com/@github/include-fragment-element/-/include-fragment-element-5.3.1.tgz#eecaa03e3b939fdf5287354bc239768552229820"
   integrity sha512-Dq7gpmrOuDqmelI6fCUGiAGwYjxsA5br6G9oXNqKfU473aobDB9NP4WYebkpNJpHZbpKaQ8aZOipHMBEnK+iGA==
 
-"@primer/css@^16.3.0":
-  version "16.3.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-16.3.0.tgz#1dca32ff75e6bf23fbe8c27c014b35dfe1294ac0"
-  integrity sha512-nfgvRLPVGS1cdEh/Y1cak17gwEVI8HtQpbGQHvBcWrVQ78sbS3EHvdRUGpFM/Lyi/WKVZInAAwIXG9RWKukOag==
+"@primer/css@^17.6.2":
+  version "17.6.2"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-17.6.2.tgz#460fd4a06dde422a734fe482eefc8ad563ab61db"
+  integrity sha512-ywN0+FQgIN9fGNCQ+4TeExgH5kXP4Pu3c891B9ls7s0syEsSTupORz1fPSb82o3LapOVux1kHlBXWaY5hHo0oA==
   dependencies:
-    "@primer/octicons" "13.0.0"
-    "@primer/primitives" "4.2.1"
+    "@primer/primitives" "^4.3.5"
 
-"@primer/octicons@13.0.0", "@primer/octicons@^13.0.0":
+"@primer/octicons@^13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@primer/octicons/-/octicons-13.0.0.tgz#dab1f156ac601d2cb7c83eab9242a1739429cf2e"
   integrity sha512-kMNu3Ny3eocOTl2hxRC0YX0na7zJwpSIQNiZqmyqbLMKp2YwNAwk5Tan4RLGe35f30st+EbNq15dEjiMzslAcw==
   dependencies:
     object-assign "^4.1.1"
 
-"@primer/primitives@4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-4.2.1.tgz#e8fac9b4b78eb81d81384ce5fcfe32bbb4115861"
-  integrity sha512-sI0Bw/PMCZ1kfPX1MRwoNYD6RWdvU0sGk9YYD8euYASwrr4E6aNH9dutMmHTRVe/N3/coBN7QUkV79GMt0UKyQ==
+"@primer/primitives@^4.3.5":
+  version "4.6.7"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-4.6.7.tgz#4909d5267772a98d422ac76abd393676f5bd6e0f"
+  integrity sha512-tP9fgLD+M+jtyn8f9EpbMA3qCUrL11iT7R6DKmm6tvqBOSFNRvb0KiQypZdQRwbEvlDrGzj90wr4DSi/2MZVXg==
 
 "@stimulus/core@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/core.tar.gz":
   version "1.1.1"
