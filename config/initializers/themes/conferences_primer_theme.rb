@@ -182,6 +182,10 @@
     name: 'page_range',
     title: 'Page Range',
     part_type: 'Spina::Parts::Admin::Journal::PageRange'
+  }, {
+    name: 'is_archived',
+    title: 'Archived?',
+    part_type: 'Spina::Parts::Conferences::PrimerTheme::Checkbox'
   }]
 
   theme.view_templates = [{

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_07_131050) do
+ActiveRecord::Schema.define(version: 2021_09_07_142118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -542,6 +542,11 @@ ActiveRecord::Schema.define(version: 2021_09_07_131050) do
   end
 
   create_table "spina_parts_admin_journal_page_ranges", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "spina_parts_conferences_primer_theme_checkboxes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
