@@ -85,7 +85,7 @@
     name: 'events_list',
     title: 'Events',
     part_type: 'Spina::Parts::Repeater',
-    parts: %w[name date start_time location description url]
+    parts: %w[name start_date finish_date start_time application_deadline location is_archived description url]
   }, {
     name: 'current_conference_alert',
     title: 'Alert',
@@ -117,6 +117,18 @@
   }, {
     name: 'date',
     title: 'Date',
+    part_type: 'Spina::Parts::Admin::Conferences::Date'
+  }, {
+    name: 'start_date',
+    title: 'Start Date',
+    part_type: 'Spina::Parts::Admin::Conferences::Date'
+  }, {
+    name: 'finish_date',
+    title: 'Finish Date',
+    part_type: 'Spina::Parts::Admin::Conferences::Date'
+  }, {
+    name: 'application_deadline',
+    title: 'Application Deadline',
     part_type: 'Spina::Parts::Admin::Conferences::Date'
   }, {
     name: 'attachment',
@@ -186,6 +198,14 @@
     name: 'is_archived',
     title: 'Archived?',
     part_type: 'Spina::Parts::Conferences::PrimerTheme::Checkbox'
+  }, {
+    name: 'current_section_title',
+    title: 'Title for \'Current\' section',
+    part_type: 'Spina::Parts::Line'
+  }, {
+    name: 'past_section_title',
+    title: 'Title for \'Archive\' section',
+    part_type: 'Spina::Parts::Line'
   }]
 
   theme.view_templates = [{
@@ -211,7 +231,7 @@
     name: 'events',
     title: 'Events',
     description: 'Contains details of past and upcoming events',
-    parts: %w[text events_list]
+    parts: %w[text current_section_title past_section_title events_list]
   }, {
     name: 'embedded_form',
     title: 'Embedded form',

@@ -6,53 +6,37 @@
 
   - if content(:events_list).present?
     = render Primer::SubheadComponent.new(mt: 4) do |component|
-      = component.heading { t :'.upcoming' }
-    - content(:events_list).filter { |event| event.content(:start_time).blank? || event.content(:start_time) >= Time.now }.then do |events|
+      = component.heading do
+        - if content(:current_section_title).present?
+          = content(:current_section_title)
+        - else
+          = t :'.upcoming'
+
+    - content(:events_list).filter do |event| 
+      - (event.content(:start_date).blank? || event.content(:start_date) >= Date.today) && event.content(:is_archived) != Spina::Parts::Conferences::PrimerTheme::Checkbox::CHECKED_VALUE
+    - end.then do |events|
       - if events.any?
         %ul
           - repeater(events) do |event|
-            %li.list-style-none.py-4.border-bottom
-              = render Primer::FlexComponent.new(direction: :column, align_items: :start) do
-                - if event.has_content?(:name)
-                  = render(Primer::HeadingComponent.new(tag: :h3, flex: :auto)) { event.content(:name) }
-                = render Primer::HeadingComponent.new(tag: :h4, flex: :auto) do
-                  - if event.has_content?(:start_time) && event.has_content?(:date)
-                    = t(:'.time_and_place_html',
-                        time: time_tag(generate_datetime(event.content(:date), event.content(:start_time)), format: :ordinal_datetime_with_year),
-                        place: event.content(:location).presence || t('.location_tbc'))
-                  - else
-                    = t(:'.time_and_place_html', time: t('.time_tbc'), place: event.content(:location).presence || t('.location_tbc'))
-                - if event.content(:description).present?
-                  = render(Primer::TextComponent.new(mt: 1, color: :text_secondary)) { event.content.html(:description) }
-                - if event.content(:url).present?
-                  = render Primer::ButtonComponent.new(tag: :a, href: event.content(:url), mt: 2) do
-                    = render Primer::OcticonComponent.new('link-external')
-                    = t :'.more_info'
+            = render 'conferences_primer_theme/partials/event', event: event
       - else
         = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
+
+
     = render Primer::SubheadComponent.new(mt: 4) do |component|
-      = component.heading { t :'.past' }
-    - content(:events_list).filter { |event| event.content(:start_time).present? && event.content(:start_time) < Time.now }.then do |events|
+      = component.heading do
+        - if content(:past_section_title).present?
+          = content(:past_section_title)
+        - else
+          = t :'.past'
+
+    - content(:events_list).filter do |event|
+      - (event.has_content?(:is_archived) && event.content(:is_archived) == Spina::Parts::Conferences::PrimerTheme::Checkbox::CHECKED_VALUE) || (event.content(:start_date).present? && event.content(:start_date) < Date.today)
+    - end.then do |events|
       - if events.any?
         %ul
           - repeater(events) do |event|
-            %li.list-style-none.py-4.border-bottom
-              = render Primer::FlexComponent.new(direction: :column, align_items: :start) do
-                - if event.has_content?(:name)
-                  = render(Primer::HeadingComponent.new(tag: :h3, flex: :auto)) { event.content(:name) }
-                = render Primer::HeadingComponent.new(tag: :h4, flex: :auto) do
-                  - if event.has_content?(:start_time) && event.has_content?(:date)
-                    = t(:'.time_and_place_html',
-                        time: time_tag(generate_datetime(event.content(:date), event.content(:start_time)), format: :ordinal_datetime_with_year),
-                        place: event.content(:location).presence || t('.location_tbc'))
-                  - else
-                    = t(:'.time_and_place_html', time: t('.time_tbc'), place: event.content(:location).presence || t('.location_tbc'))
-                - if event.content(:description).present?
-                  = render(Primer::TextComponent.new(mt: 1, color: :text_secondary)) { event.content.html(:description) }
-                - if event.content(:url).present?
-                  = render Primer::ButtonComponent.new(tag: :a, href: event.content(:url), mt: 2) do
-                    = render Primer::OcticonComponent.new('link-external')
-                    = t :'.more_info'
+            = render 'conferences_primer_theme/partials/event', event: event
       - else
         = render Primer::BlankslateComponent.new(title: t(:'.no_events'), icon: 'calendar')
   - else

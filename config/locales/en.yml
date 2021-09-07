@@ -72,16 +72,19 @@ en:
         name_and_role: "%{name}, %{role}"
         contact_buttons: Contact buttons
       events:
-        no_events: No events.
+        no_events: No listings.
         upcoming: Upcoming events
         past: Past events
-        time_and_place_html: "%{place}, %{time}"
-        time_tbc: Time TBC
-        location_tbc: Location TBC
-        more_info: More information
       homepage:
         more_info: More info
         dates_html: "%{start_date}–%{finish_date}"
+    partials:
+      event:
+        dates_html: "%{start_date} – %{finish_date}"
+        time_tbc: Time TBC
+        location_tbc: Location TBC
+        more_info: More information
+
 
   spina:
     show: Show

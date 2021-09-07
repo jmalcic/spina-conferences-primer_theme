@@ -4,12 +4,13 @@
   en: {
     date: {
       formats: {
-        full: ->(time, _) { "%A, #{time.day.ordinalize} %B %Y" }
+        full: ->(date, _) { "%A, #{date.day.ordinalize} %B %Y" },
+        long_ordinal: ->(date, _) { "#{date.day.ordinalize} %B %Y" }
       }
     },
     time: {
       formats: {
-        ordinal_datetime_with_year: ->(time, _) { "#{time.day.ordinalize} %b %Y, %R" }
+        ordinal_datetime_with_year: ->(time, _) { "#{time.day.ordinalize} %B %Y, %R" }
       }
     }
   }

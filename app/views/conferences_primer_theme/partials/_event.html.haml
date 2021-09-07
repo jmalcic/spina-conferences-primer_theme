@@ -1,0 +1,30 @@
+%li.list-style-none.py-4.border-bottom
+  = render Primer::FlexComponent.new(direction: :column, align_items: :start) do
+    - if event.content(:name).present?
+      = render(Primer::HeadingComponent.new(tag: :h3, flex: :auto)) { event.content(:name) }
+    = render Primer::HeadingComponent.new(tag: :h4, flex: :auto) do
+      - if event.content(:start_date).present?
+        - if event.content(:finish_date).present?
+          - if event.content(:start_time).present?
+            = t('.dates_html',
+                start_date: time_tag(generate_datetime(event.content(:start_date), event.content(:start_time)), format: :ordinal_datetime_with_year),
+                finish_date: time_tag(event.content(:finish_date), format: :long_ordinal))
+          - else
+            = t('.dates_html',
+                start_date: time_tag(event.content(:start_date), format: :long_ordinal),
+                finish_date: time_tag(event.content(:finish_date), format: :long_ordinal))
+        - else
+          - if event.content(:start_time).present?
+            = time_tag(generate_datetime(event.content(:start_date), event.content(:start_time)), format: :ordinal_datetime_with_year)
+          - else
+            = time_tag(event.content(:start_date), format: :long_ordinal)
+      - else
+        = t '.time_tbc'
+    = render Primer::HeadingComponent.new(tag: :h5, flex: :auto) do
+      = event.content(:location).presence || t('.location_tbc')
+    - if event.content(:description).present?
+      = render(Primer::TextComponent.new(mt: 1, color: :text_secondary)) { event.content.html(:description) }
+    - if event.content(:url).present?
+      = render Primer::ButtonComponent.new(tag: :a, href: event.content(:url), mt: 2) do
+        = render Primer::OcticonComponent.new('link-external')
+        = t '.more_info'
