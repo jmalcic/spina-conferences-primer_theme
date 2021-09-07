@@ -26,7 +26,7 @@
                     = render Primer::HeadingComponent.new(tag: :h4) do
                       = time_tag issue.content(:date), format: :long_ordinal
               - if issue.content(:description).present?
-                = render Primer::TextComponent.new(tag: :div, color: :text_secondary) do
+                = render Primer::MarkdownComponent.new(tag: :div, color: :text_secondary) do
                   = issue.content.html(:description)
               = render Primer::FlexComponent.new(direction: [:column, nil, :row, nil], align_items: :start) do
                 - if issue.content(:url).present?

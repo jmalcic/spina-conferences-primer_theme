@@ -21,7 +21,7 @@
     = render Primer::HeadingComponent.new(tag: :h5, flex: :auto) do
       = event.content(:location).presence
     - if event.content(:description).present?
-      = render(Primer::TextComponent.new(mt: 1, color: :text_secondary)) { event.content.html(:description) }
+      = render(Primer::MarkdownComponent.new(mt: 1, color: :text_secondary)) { event.content.html(:description) }
     - if event.content(:url).present?
       = render Primer::ButtonComponent.new(tag: :a, href: event.content(:url), mt: 2) do
         = render Primer::OcticonComponent.new('link-external')
