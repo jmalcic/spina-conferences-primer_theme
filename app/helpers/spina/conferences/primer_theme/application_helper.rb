@@ -30,6 +30,14 @@ module Spina
                               .tap(&:publish)
                               .then(&:to_ical)
         end
+
+        def generate_datetime(date, time)
+          Time.new(date.year,
+                   date.month,
+                   date.day,
+                   time.hour,
+                   time.min)
+        end
       end
     end
   end

@@ -13,12 +13,12 @@
           - repeater(events) do |event|
             %li.list-style-none.py-4.border-bottom
               = render Primer::FlexComponent.new(direction: :column, align_items: :start) do
-                - if event.content(:name).present?
+                - if event.has_content?(:name)
                   = render(Primer::HeadingComponent.new(tag: :h3, flex: :auto)) { event.content(:name) }
                 = render Primer::HeadingComponent.new(tag: :h4, flex: :auto) do
-                  - if event.content(:start_time).present?
+                  - if event.has_content?(:start_time) && event.has_content?(:date)
                     = t(:'.time_and_place_html',
-                        time: time_tag(event.content(:start_time), format: :ordinal_datetime_with_year),
+                        time: time_tag(generate_datetime(event.content(:date), event.content(:start_time)), format: :ordinal_datetime_with_year),
                         place: event.content(:location).presence || t('.location_tbc'))
                   - else
                     = t(:'.time_and_place_html', time: t('.time_tbc'), place: event.content(:location).presence || t('.location_tbc'))
@@ -38,12 +38,12 @@
           - repeater(events) do |event|
             %li.list-style-none.py-4.border-bottom
               = render Primer::FlexComponent.new(direction: :column, align_items: :start) do
-                - if event.content(:name).present?
+                - if event.has_content?(:name)
                   = render(Primer::HeadingComponent.new(tag: :h3, flex: :auto)) { event.content(:name) }
                 = render Primer::HeadingComponent.new(tag: :h4, flex: :auto) do
-                  - if event.content(:start_time).present?
+                  - if event.has_content?(:start_time) && event.has_content?(:date)
                     = t(:'.time_and_place_html',
-                        time: time_tag(event.content(:start_time), format: :ordinal_datetime_with_year),
+                        time: time_tag(generate_datetime(event.content(:date), event.content(:start_time)), format: :ordinal_datetime_with_year),
                         place: event.content(:location).presence || t('.location_tbc'))
                   - else
                     = t(:'.time_and_place_html', time: t('.time_tbc'), place: event.content(:location).presence || t('.location_tbc'))

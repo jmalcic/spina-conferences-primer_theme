@@ -85,7 +85,7 @@
     name: 'events_list',
     title: 'Events',
     part_type: 'Spina::Parts::Repeater',
-    parts: %w[name start_time location description url]
+    parts: %w[name date start_time location description url]
   }, {
     name: 'current_conference_alert',
     title: 'Alert',
