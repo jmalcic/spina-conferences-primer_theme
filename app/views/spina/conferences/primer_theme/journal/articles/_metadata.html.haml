@@ -12,7 +12,7 @@
   - if @article.has_content? :page_range
     %meta{ name: 'DC.Identifier.pageNumber', content: "#{@article.content(:page_range).first_page}-#{@article.content(:page_range).last_page}" }
   %meta{ name: 'DC.Language', scheme: 'ISO639-1', content: 'en' }
-  %meta{ name: 'DC.Rights', content: "Copyright #{@article.issue.date.year} #{@article.affiliations.collect(&:name).to_sentence}"  }
+  %meta{ name: 'DC.Rights', content: "Copyright © #{@article.issue.date.year} #{@article.affiliations.collect(&:name).to_sentence}"  }
   - if @licence && @licence.has_content?(:url) && !@licence.content(:url).blank?
     %meta{ name: 'DC.Rights', content: @licence.content(:url) }
   %meta{ name: 'DC.Source', content: @journal.name }
