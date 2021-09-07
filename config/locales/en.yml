@@ -84,8 +84,6 @@ en:
     partials:
       event:
         dates_html: "%{start_date} – %{finish_date}"
-        time_tbc: Time TBC
-        location_tbc: Location TBC
         more_info: More information
 
 
