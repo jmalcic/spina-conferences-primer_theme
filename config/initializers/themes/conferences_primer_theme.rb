@@ -174,6 +174,14 @@
     name: 'journal_abbreviation',
     title: 'Journal Abbreviation',
     part_type: 'Spina::Parts::Line'
+  }, {
+    name: 'issn',
+    title: 'ISSN',
+    part_type: 'Spina::Parts::Line'
+  }, {
+    name: 'page_range',
+    title: 'Page Range',
+    part_type: 'Spina::Parts::Admin::Journal::PageRange'
   }]
 
   theme.view_templates = [{
