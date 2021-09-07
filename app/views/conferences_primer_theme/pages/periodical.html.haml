@@ -1,0 +1,39 @@
+- cache current_page do
+  = render(Primer::HeadingComponent.new) { current_page.title }
+
+  - if content(:text).present?
+    = render(Primer::MarkdownComponent.new(mt: 4)) { content.html(:text) }
+  
+  - if content(:periodical_issues).present?
+    %ul.mt-4
+      - repeater(:periodical_issues) do |issue|
+        %li.list-style-none.py-4.border-bottom
+          = render Primer::FlexComponent.new(direction: [:column, nil, :row, nil], align_items: :start) do
+            - if issue.content(:cover_img).present?
+              = render Primer::FlexItemComponent.new(mr: [nil, nil, 3, nil], mb: [3, nil, 0, nil], flex_shrink: 0) do
+                = render Primer::LinkComponent.new(href: issue.content(:url)) do
+                  = image_tag(issue.content.image_url(:cover_img, resize_to_limit: [300, 300]),
+                              srcset: srcset_string(issue.content(:cover_img),
+                                                    variant: { resize_to_limit: [300, 300] }),
+                              alt: issue.content(:cover_img).alt)
+            = render Primer::FlexItemComponent.new(flex_auto: true) do
+              = render Primer::FlexComponent.new(direction: [:column, nil, :row, nil], mb: 1) do
+                = render Primer::BoxComponent.new do
+                  - if issue.content(:name).present?
+                    = render Primer::HeadingComponent.new(tag: :h2) do
+                      = issue.content(:name)
+                  - if issue.content(:date).present?
+                    = render Primer::HeadingComponent.new(tag: :h4) do
+                      = time_tag issue.content(:date), format: :long_ordinal
+              - if issue.content(:description).present?
+                = render Primer::TextComponent.new(tag: :div, color: :text_secondary) do
+                  = issue.content.html(:description)
+              = render Primer::FlexComponent.new(direction: [:column, nil, :row, nil], align_items: :start) do
+                - if issue.content(:url).present?
+                  = render Primer::ButtonComponent.new(scheme: :primary, tag: :a, href: issue.content(:url), mt: 2, mr: 2) do
+                    = render Primer::OcticonComponent.new('link-external')
+                    = t '.more_info'
+                - if issue.content(:attachment).present?
+                  = render Primer::ButtonComponent.new(tag: :a, mt: 2, href: issue.content.attachment_url(:attachment), download: '') do
+                    = render Primer::OcticonComponent.new('desktop-download')
+                    = t '.download'

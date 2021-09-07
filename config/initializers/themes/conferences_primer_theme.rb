@@ -85,7 +85,7 @@
     name: 'events_list',
     title: 'Events',
     part_type: 'Spina::Parts::Repeater',
-    parts: %w[name start_time location description url]
+    parts: %w[name start_date finish_date start_time application_deadline location is_archived description url]
   }, {
     name: 'current_conference_alert',
     title: 'Alert',
@@ -117,6 +117,18 @@
   }, {
     name: 'date',
     title: 'Date',
+    part_type: 'Spina::Parts::Admin::Conferences::Date'
+  }, {
+    name: 'start_date',
+    title: 'Start Date',
+    part_type: 'Spina::Parts::Admin::Conferences::Date'
+  }, {
+    name: 'finish_date',
+    title: 'Finish Date',
+    part_type: 'Spina::Parts::Admin::Conferences::Date'
+  }, {
+    name: 'application_deadline',
+    title: 'Application Deadline',
     part_type: 'Spina::Parts::Admin::Conferences::Date'
   }, {
     name: 'attachment',
@@ -174,6 +186,31 @@
     name: 'journal_abbreviation',
     title: 'Journal Abbreviation',
     part_type: 'Spina::Parts::Line'
+  }, {
+    name: 'issn',
+    title: 'ISSN',
+    part_type: 'Spina::Parts::Line'
+  }, {
+    name: 'page_range',
+    title: 'Page Range',
+    part_type: 'Spina::Parts::Admin::Journal::PageRange'
+  }, {
+    name: 'is_archived',
+    title: 'Archived?',
+    part_type: 'Spina::Parts::Conferences::PrimerTheme::Checkbox'
+  }, {
+    name: 'current_section_title',
+    title: 'Title for \'Current\' section',
+    part_type: 'Spina::Parts::Line'
+  }, {
+    name: 'past_section_title',
+    title: 'Title for \'Archive\' section',
+    part_type: 'Spina::Parts::Line'
+  }, {
+    name: 'periodical_issues',
+    title: 'Periodical Issues',
+    part_type: 'Spina::Parts::Repeater',
+    parts: %w[name date description cover_img attachment url]
   }]
 
   theme.view_templates = [{
@@ -199,7 +236,12 @@
     name: 'events',
     title: 'Events',
     description: 'Contains details of past and upcoming events',
-    parts: %w[text events_list]
+    parts: %w[text current_section_title past_section_title events_list]
+  }, {
+    name: 'periodical',
+    title: 'Periodical',
+    description: 'Can be used to store archives of things like newsletters and magazine issues',
+    parts: %w[text periodical_issues]
   }, {
     name: 'embedded_form',
     title: 'Embedded form',
