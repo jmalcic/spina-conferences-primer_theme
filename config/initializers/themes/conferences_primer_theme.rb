@@ -206,6 +206,11 @@
     name: 'past_section_title',
     title: 'Title for \'Archive\' section',
     part_type: 'Spina::Parts::Line'
+  }, {
+    name: 'periodical_issues',
+    title: 'Periodical Issues',
+    part_type: 'Spina::Parts::Repeater',
+    parts: %w[name date description cover_img attachment url]
   }]
 
   theme.view_templates = [{
@@ -232,6 +237,11 @@
     title: 'Events',
     description: 'Contains details of past and upcoming events',
     parts: %w[text current_section_title past_section_title events_list]
+  }, {
+    name: 'periodical',
+    title: 'Periodical',
+    description: 'Can be used to store archives of things like newsletters and magazine issues',
+    parts: %w[text periodical_issues]
   }, {
     name: 'embedded_form',
     title: 'Embedded form',

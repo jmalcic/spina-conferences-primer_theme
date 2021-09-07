@@ -75,6 +75,9 @@ en:
         no_events: No listings.
         upcoming: Upcoming events
         past: Past events
+      periodical:
+        more_info: View online
+        download: Download PDF
       homepage:
         more_info: More info
         dates_html: "%{start_date}–%{finish_date}"
