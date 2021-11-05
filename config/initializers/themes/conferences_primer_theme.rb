@@ -211,12 +211,25 @@
     title: 'Periodical Issues',
     part_type: 'Spina::Parts::Repeater',
     parts: %w[name date description cover_img attachment url]
+  }, {
+    name: 'title',
+    title: 'Title',
+    part_type: 'Spina::Parts::Line'
+  }, {
+    name: 'background_image',
+    title: 'Background Image',
+    part_type: 'Spina::Parts::Image'
+  }, {
+    name: 'carousel',
+    title: 'Carousel',
+    part_type: 'Spina::Parts::Repeater',
+    parts: %w[title description url background_image]
   }]
 
   theme.view_templates = [{
     name: 'homepage',
     title: 'Homepage',
-    parts: %w[gallery text]
+    parts: %w[carousel text]
   }, {
     name: 'information',
     title: 'Information',

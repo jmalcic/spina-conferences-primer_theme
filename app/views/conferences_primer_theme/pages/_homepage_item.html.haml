@@ -1,0 +1,17 @@
+%div{ data: { slideshow_target: 'slide' } }
+  = image_tag(main_app.url_for(item.content(:background_image).variant(resize_to_limit: [1680, 1680])),
+              draggable: false,
+              srcset: srcset(item.content(:background_image),
+                            variant: { resize_to_limit: [1680, 1680] }),
+              style: 'object-fit: cover; max-width: max-content; max-height: max-content; z-index: 0; position: absolute',
+              class: %w[width-full height-full])
+  .container-lg.p-responsive.position-relative.color-text-white.height-full{ style: 'z-index: 2'}
+
+    %div{'z-index': 5}
+      = render Primer::BoxComponent.new(py: [3, nil, nil, 6]) do
+        %div{ style: 'text-shadow: 0 1px 1px #01040940, 0 1px 25px #010409bf;' }
+          TEST TEXT
+        = link_to t('.more_info'), Spina::Page.find_by(name: 'about').materialized_path,
+                  class: %w[btn-mktg btn-large-mktg btn-primary-mktg f3 mt-4]
+        %div{ style: 'text-shadow: 0 1px 1px rgba(var(--color-scale-black), 0.25), 0 1px 25px rgba(var(--color-scale-black), 0.75);' }
+          = render(Primer::MarkdownComponent.new(my: 4)) { 'TEST TEXT 2' }
