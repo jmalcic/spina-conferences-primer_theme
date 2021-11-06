@@ -30,13 +30,33 @@ class SlideshowController extends Stimulus.Controller {
   }
 
   /**
+   * Returns the delay between slide transitions.
+   * @private
+   * @return {Number} The value for the delay.
+   */
+  get delay() {
+    return this.data.has('delay') 
+      ? Number.parseInt(this.data.get('delay'))
+      : 10000
+  }
+
+  /**
+   * Sets the delay between slide transitions.
+   * @private
+   * @param value {Number} The new value for the delay.
+   */
+  set delay(value) {
+    this.data.set('delay', value.toString())
+  }
+
+  /**
    * Hook to start advancing the slides if necessary.
    * @private
    */
   connect() {
     this.showSlide()
     if (this.data.has('advance')) {
-      setInterval(() => this.next(), 10000)
+      setInterval(() => this.next(), this.delay)
     }
   }
 
