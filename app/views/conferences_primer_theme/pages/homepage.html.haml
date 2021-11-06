@@ -1,18 +1,16 @@
 - content_for :hero do
   - cache [current_page, current_conference] do
     = render Primer::BoxComponent.new(position: :relative, style: 'height: 639px') do
-      -#= render Primer::BoxComponent.new(position: :absolute, top: false, left: false, right: false, bottom: false,
-                                        style: 'background-color: var(--color-scale-blue-9)')
+      = render Primer::BoxComponent.new(position: :absolute, top: false, left: false, right: false, bottom: false,
+                                        style: 'background-color: #057fab; z-index: 0')
       - if content(:carousel).present?
         %div{data: { controller: :slideshow, slideshow_incrementer: 0, slideshow_advance: true }}
           - content(:carousel).each_with_index do |carousel_item, index|
-            = render partial: 'conferences_primer_theme/pages/homepage_item', locals: { item: carousel_item }
-          .position-absolute.top-0.left-0.right-0.bottom-0.container-xl.p-responsive
+            = render partial: 'conferences_primer_theme/partials/homepage_item', locals: { item: carousel_item }
+          .position-absolute.top-0.left-0.right-0.bottom-0.container-xl.p-responsive{ style: 'z-index: 2' }
             - if content(:carousel).many?
-              .d-none.d-sm-flex.flex-justify-between.flex-items-center.height-full
+              .d-flex.flex-justify-between.flex-items-center.height-full
                 = render Primer::ButtonComponent.new(data: { action: :'slideshow#previous' }) do
                   = render Primer::OcticonComponent.new('arrow-left')
-                  Previous
                 = render Primer::ButtonComponent.new(data: { action: :'slideshow#next' }) do
-                  Next
                   = render Primer::OcticonComponent.new('arrow-right')
