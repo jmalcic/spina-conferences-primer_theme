@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spina-conferences-primer_theme-fork (0.7.1)
+    spina-conferences-primer_theme-fork (0.8.0)
       babel-transpiler (~> 0.7)
       icalendar (~> 2.5)
       image_processing (~> 1.9)
@@ -137,7 +137,7 @@ GEM
       concurrent-ruby (~> 1.0)
     icalendar (2.7.1)
       ice_cube (~> 0.16)
-    ice_cube (0.16.3)
+    ice_cube (0.16.4)
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
@@ -183,10 +183,10 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    octicons (15.1.0)
-    octicons_helper (15.1.0)
+    octicons (16.1.1)
+    octicons_helper (16.1.1)
       actionview
-      octicons (= 15.1.0)
+      octicons (= 16.1.1)
       railties
     parallel (1.21.0)
     parser (3.0.2.0)
@@ -236,7 +236,7 @@ GEM
       thor (~> 1.0)
     rainbow (3.0.0)
     rake (13.0.6)
-    redis (4.4.0)
+    redis (4.5.1)
     regexp_parser (2.1.1)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -337,7 +337,7 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
-    view_component (2.39.0)
+    view_component (2.42.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     web-console (4.1.0)

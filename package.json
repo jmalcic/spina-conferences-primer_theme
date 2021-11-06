@@ -1,6 +1,6 @@
 {
   "name": "spina-conferences-primer-theme-fork",
-  "version": "0.5.2",
+  "version": "0.8.0",
   "description": "Spina::Conferences plugin theme.",
   "main": "app/assets/javascripts/spina/conferences/primer_theme/application.es6",
   "files": [
@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "louis-vs/spina-conferences-primer_theme-form"
+    "url": "louis-vs/spina-conferences-primer_theme-fork"
   },
   "keywords": [
     "conference-management",
