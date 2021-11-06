@@ -85,6 +85,8 @@ en:
       event:
         dates_html: "%{start_date} – %{finish_date}"
         more_info: More information
+      homepage_item:
+        more_info: Find out more
 
 
   spina:
