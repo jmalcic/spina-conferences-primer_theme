@@ -123,10 +123,10 @@
   resolved "https://registry.yarnpkg.com/@github/filter-input-element/-/filter-input-element-0.1.1.tgz#9b8caff8fa35e037b6f270795b5bae1d6d34a631"
   integrity sha512-YTAF9gmLfdYvK+BaVOYBwawtdchxgov9ZmLJ3HCyZ7ALyCKEbHhNRRX7GD3KsoPWUedxiH0X3v/loB2njLbjwg==
 
-"@github/include-fragment-element@^5.3.1":
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/@github/include-fragment-element/-/include-fragment-element-5.3.1.tgz#eecaa03e3b939fdf5287354bc239768552229820"
-  integrity sha512-Dq7gpmrOuDqmelI6fCUGiAGwYjxsA5br6G9oXNqKfU473aobDB9NP4WYebkpNJpHZbpKaQ8aZOipHMBEnK+iGA==
+"@github/include-fragment-element@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@github/include-fragment-element/-/include-fragment-element-6.0.0.tgz#d374e7c89916276df358b634e2e88fb6f7ca25ef"
+  integrity sha512-Z51I/vLZwx8vu+YhzMJ9M37//3G1uAc9Uf60GxHMBgx3bH+Rly6DxjB8QcqmmDstmmpTL6Uv5ynbMgYYDuQl5Q==
 
 "@primer/css@^16.3.0":
   version "16.3.0"
