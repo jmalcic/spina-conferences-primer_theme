@@ -136,10 +136,17 @@
     "@primer/octicons" "13.0.0"
     "@primer/primitives" "4.2.1"
 
-"@primer/octicons@13.0.0", "@primer/octicons@^13.0.0":
+"@primer/octicons@13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@primer/octicons/-/octicons-13.0.0.tgz#dab1f156ac601d2cb7c83eab9242a1739429cf2e"
   integrity sha512-kMNu3Ny3eocOTl2hxRC0YX0na7zJwpSIQNiZqmyqbLMKp2YwNAwk5Tan4RLGe35f30st+EbNq15dEjiMzslAcw==
+  dependencies:
+    object-assign "^4.1.1"
+
+"@primer/octicons@^17.4.1":
+  version "17.4.1"
+  resolved "https://registry.yarnpkg.com/@primer/octicons/-/octicons-17.4.1.tgz#278dd5d9c24e503746ab94856622820b8a1c5bf6"
+  integrity sha512-DPlnpsARphzx9+kQexKsfLafOa+3FL3MKxaIPxz/isXiiZWgOuNTV8awHZ2Mm1M45mPqsBerucrFE8z2zVCbrg==
   dependencies:
     object-assign "^4.1.1"
 
