@@ -108,10 +108,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@github/details-dialog-element@^3.0.12":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@github/details-dialog-element/-/details-dialog-element-3.1.2.tgz#61f6595c71d786b1a77fbbe79db4c0b9a224fc80"
-  integrity sha512-kUz7VYKmgOtlAo96TVeXSq5bKDS/3Wm0SZt4UetJK2CcG0/wsx/Eif/fHx1HYEwVsa7FnrB/kCzby0JE8R88zQ==
+"@github/details-dialog-element@^3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@github/details-dialog-element/-/details-dialog-element-3.1.4.tgz#5edf98bc166218232f295655fbd2adf4446b22d0"
+  integrity sha512-7trlBxSNAaPhtqXKz7ZJwYx+wigq4FY+8dGAUzsg35ijp4KJh+o16YVWvcZEBS1sEbDh/m8QyYG3ku3v5J2rmw==
 
 "@github/details-menu-element@^1.0.9":
   version "1.0.9"
