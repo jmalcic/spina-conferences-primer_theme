@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'capybara', '~> 3.33'
   spec.add_development_dependency 'dotenv-rails', '~> 2.7'
-  spec.add_development_dependency 'puma', '~> 5.0'
+  spec.add_development_dependency 'puma', '~> 6.0'
   spec.add_development_dependency 'rubocop', '~> 1.0'
   spec.add_development_dependency 'rubocop-performance', '~> 1.8'
   spec.add_development_dependency 'rubocop-rails', '~> 2.8'
